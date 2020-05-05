@@ -10,6 +10,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Button x:Name="btnAdmin" Content="Admin" HorizontalAlignment="Left" Margin="203,151,0,0" VerticalAlignment="Top" Width="130" Height="67" Click="btnAdmin_Click"/>
+        <Button x:Name="btnPegawai" Content="Pegawai" HorizontalAlignment="Left" Margin="428,151,0,0" VerticalAlignment="Top" Width="123" Height="67" Click="btnPegawai_Click"/>
 
     </Grid>
 </Window>
