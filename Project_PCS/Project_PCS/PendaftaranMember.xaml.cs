@@ -20,9 +20,17 @@ namespace Project_PCS
     /// </summary>
     public partial class PendaftaranMember : Window
     {
+        OracleConnection con;
+        string database;
         public PendaftaranMember(string ds)
         {
             InitializeComponent();
+            this.database = ds;
+        }
+
+        private void btnDaftar_Click(object sender, RoutedEventArgs e)
+        {
+            con = new OracleConnection(database);
         }
     }
 }
