@@ -21,7 +21,7 @@ namespace Project_PCS
     /// </summary>
     public partial class MainWindow : Window
     {
-        OracleConnection con;
+        public static OracleConnection con;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace Project_PCS
                 App.conn = con;
                 Window1 w = new Window1($"Data Source={data};User Id={user}; Password={pass}");
                 w.Show();
-                this.Hide();
+                this.Close();
             }
             catch (Exception)
             {

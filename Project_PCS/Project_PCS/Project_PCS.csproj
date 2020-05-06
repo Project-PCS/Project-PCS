@@ -35,9 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\app\ASUS\product\11.2.0\dbhome_1\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
+      <HintPath>D:\app\USER\product\11.2.0\dbhome_2\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -65,9 +65,38 @@
     <Compile Include="Master_Supplier.xaml.cs">
       <DependentUpon>Master_Supplier.xaml</DependentUpon>
     </Compile>
+    <Compile Include="admin.xaml.cs">
+      <DependentUpon>admin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="cust.xaml.cs">
+      <DependentUpon>cust.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="peg.xaml.cs">
+      <DependentUpon>peg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PegawaiHome.xaml.cs">
+      <DependentUpon>PegawaiHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PendaftaranMember.xaml.cs">
+      <DependentUpon>PendaftaranMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="promo.xaml.cs">
+      <DependentUpon>promo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransaksiPembelian.xaml.cs">
+      <DependentUpon>TransaksiPembelian.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="cust.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,6 +114,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Master_Supplier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="peg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PegawaiHome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PendaftaranMember.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="promo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransaksiPembelian.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

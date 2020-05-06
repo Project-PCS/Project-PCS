@@ -12,34 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Oracle.DataAccess.Client;
+
 namespace Project_PCS
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for TransaksiPembelian.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class TransaksiPembelian : Window
     {
-        OracleConnection conn;
+        OracleConnection con;
         string database;
-        public Window1(string ds)
+        public TransaksiPembelian(string ds)
         {
             InitializeComponent();
-            conn = MainWindow.con;
             this.database = ds;
-        }
-
-        private void admin_Click(object sender, RoutedEventArgs e)
-        {
-            admin a = new admin();
-            a.Show();
-            this.Close();
-        }
-
-        private void pegawai_Click(object sender, RoutedEventArgs e)
-        {
-            PegawaiHome pg = new PegawaiHome(database);
-            pg.Show();
-            this.Close();
         }
     }
 }
