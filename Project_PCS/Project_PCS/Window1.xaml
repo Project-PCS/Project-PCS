@@ -11,7 +11,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="admin" Content="Admin" HorizontalAlignment="Left" Margin="350,139,0,0" VerticalAlignment="Top" Width="96" Height="52" Click="admin_Click"/>
-        <Button x:Name="pegawai" Content="Pegawai" HorizontalAlignment="Left" Margin="350,236,0,0" VerticalAlignment="Top" Width="96" Height="52"/>
+        <Button x:Name="pegawai" Content="Pegawai" HorizontalAlignment="Left" Margin="350,236,0,0" VerticalAlignment="Top" Width="96" Height="52" Click="pegawai_Click"/>
 
     </Grid>
 </Window>
