@@ -61,3 +61,26 @@ C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Pro
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.GenerateResource.cache
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.exe
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.pdb
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.exe.config
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.exe
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.pdb
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csprojAssemblyReference.cache
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\AdminHome.g.cs
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MainWindow.g.cs
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PegawaiHome.g.cs
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PendaftaranMember.g.cs
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Window1.g.cs
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.g.cs
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS_MarkupCompile.cache
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS_MarkupCompile.lref
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\AdminHome.baml
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MainWindow.baml
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PegawaiHome.baml
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PendaftaranMember.baml
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Window1.baml
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.g.resources
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.Properties.Resources.resources
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.GenerateResource.cache
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.exe
+C:\Users\USER\Desktop\DESK\SEM 4\PCS\KELAS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.pdb
