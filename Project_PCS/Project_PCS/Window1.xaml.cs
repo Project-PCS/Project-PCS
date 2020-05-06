@@ -22,6 +22,8 @@ namespace Project_PCS
         public Window1(string ds)
         {
             InitializeComponent();
+            Master_Supplier panel = new Master_Supplier();
+            canvas.Children.Add(panel);
         }
     }
 }

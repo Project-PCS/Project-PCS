@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Project_PCS\Project_PCS\Project_PCS\obj\Debug\
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\
 Project_PCS
 none
 false
 DEBUG;TRACE
-D:\Project_PCS\Project_PCS\Project_PCS\App.xaml
-2462529049
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\App.xaml
+4487144049
 
-6-1344379206
+8-691709336
 14-175932461
-MainWindow.xaml;Window1.xaml;
+MainWindow.xaml;Master_Kategori.xaml;Master_Supplier.xaml;Window1.xaml;
 
 False
 

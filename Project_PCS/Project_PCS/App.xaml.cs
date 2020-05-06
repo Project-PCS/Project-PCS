@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Oracle.DataAccess.Client;
 namespace Project_PCS
 {
     /// <summary>
@@ -13,5 +13,6 @@ namespace Project_PCS
     /// </summary>
     public partial class App : Application
     {
+        public static OracleConnection conn;
     }
 }
