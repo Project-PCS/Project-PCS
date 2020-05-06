@@ -13,7 +13,7 @@
         <Label Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="36,181,0,0" VerticalAlignment="Top"/>
         <Label Content="Alamat" HorizontalAlignment="Left" Margin="36,212,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbKode" HorizontalAlignment="Left" Height="23" Margin="174,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="59" IsEnabled="False"/>
-        <TextBox x:Name="tbNama" HorizontalAlignment="Left" Height="23" Margin="174,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="tbNama" HorizontalAlignment="Left" Height="23" Margin="174,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238" SelectionChanged="tbNama_SelectionChanged"/>
         <TextBox x:Name="tbAlamat" HorizontalAlignment="Left" Height="23" Margin="174,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238"/>
         <RadioButton x:Name="rbLaki" Content="Laki-laki" HorizontalAlignment="Left" Margin="174,187,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rbPerempuan" Content="Perempuan" HorizontalAlignment="Left" Margin="258,187,0,0" VerticalAlignment="Top"/>

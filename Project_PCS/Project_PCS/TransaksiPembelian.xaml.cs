@@ -16,29 +16,16 @@ using Oracle.DataAccess.Client;
 namespace Project_PCS
 {
     /// <summary>
-    /// Interaction logic for PegawaiHome.xaml
+    /// Interaction logic for TransaksiPembelian.xaml
     /// </summary>
-    public partial class PegawaiHome : Window
+    public partial class TransaksiPembelian : Window
     {
+        OracleConnection con;
         string database;
-        public PegawaiHome(string ds)
+        public TransaksiPembelian(string ds)
         {
             InitializeComponent();
             this.database = ds;
-        }
-
-        private void btnPembelian_Click(object sender, RoutedEventArgs e)
-        {
-            TransaksiPembelian tp = new TransaksiPembelian(database);
-            this.Hide();
-            tp.Show();
-        }
-
-        private void btnPendaftaran_Click(object sender, RoutedEventArgs e)
-        {
-            PendaftaranMember pm = new PendaftaranMember(database);
-            this.Hide();
-            pm.Show();
         }
     }
 }

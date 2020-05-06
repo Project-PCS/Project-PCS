@@ -68,6 +68,9 @@
     <Compile Include="PendaftaranMember.xaml.cs">
       <DependentUpon>PendaftaranMember.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TransaksiPembelian.xaml.cs">
+      <DependentUpon>TransaksiPembelian.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PendaftaranMember.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransaksiPembelian.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
