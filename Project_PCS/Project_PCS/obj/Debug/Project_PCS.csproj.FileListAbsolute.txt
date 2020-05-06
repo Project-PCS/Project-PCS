@@ -135,3 +135,7 @@ E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.CoreCompileInputs.cache
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.exe
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.pdb
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Windowmaster.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\WindowMaster2.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Windowmaster.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\WindowMaster2.baml

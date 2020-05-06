@@ -37,7 +37,7 @@ namespace Project_PCS
         {
             try
             {
-                //con.Open();
+                con.Open();
                 string query = "SELECT * from promo";
                 OracleCommand cmd = new OracleCommand(query, con);
                 cmd.ExecuteReader();

@@ -40,6 +40,7 @@ namespace Project_PCS
                 Window1 w = new Window1($"Data Source={data};User Id={user}; Password={pass}");
                 w.Show();
                 this.Close();
+
             }
             catch (Exception)
             {
