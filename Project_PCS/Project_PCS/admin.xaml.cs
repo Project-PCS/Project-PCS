@@ -53,6 +53,19 @@ namespace Project_PCS
                 p.Show();
                 this.Hide();
             }
+            else if (cbPilihan.SelectedItem == "Master Kategori")
+            {
+                WindowMaster2 mkat = new WindowMaster2();
+                mkat.Show();
+                this.Hide();
+            }
+            else if (cbPilihan.SelectedItem == "Master Supplier")
+            {
+                Windowmaster msup = new Windowmaster();
+                msup.Show();
+                this.Hide();
+            }
+
         }
     }
 }
