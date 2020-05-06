@@ -19,31 +19,19 @@ namespace Project_PCS
     /// </summary>
     public partial class Window1 : Window
     {
-        OracleConnection con;
-        string database;
+        OracleConnection conn;
         public Window1(string ds)
         {
             InitializeComponent();
-            this.database = ds;
+            conn = MainWindow.con;
+
         }
 
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        private void admin_Click(object sender, RoutedEventArgs e)
         {
-            con = new OracleConnection(database);
-            con.Open();
-            AdminHome w = new AdminHome(database);
-            w.Show();
-            this.Hide();
-            
-        }
-
-        private void btnPegawai_Click(object sender, RoutedEventArgs e)
-        {
-            con = new OracleConnection(database);
-            con.Open();
-            PegawaiHome w = new PegawaiHome(database);
-            w.Show();
-            this.Hide();
+            admin a = new admin();
+            a.Show();
+            this.Close();
         }
     }
 }
