@@ -31,26 +31,43 @@ namespace Project_PCS
         private void btnDaftar_Click(object sender, RoutedEventArgs e)
         {
             con = new OracleConnection(database);
+
+            try
+            {
+                long telp = Convert.ToInt64(tbTelp.Text);
+                string jk = "";
+                if (rbLaki.IsChecked == true)
+                {
+                    jk = "L";
+                }
+                else if (rbPerempuan.IsChecked == true)
+                {
+                    jk = "P";
+                }
+                if(tbTelp.Text.Length>9 && tbTelp.Text.Length<14)
+                {
+                    MessageBoxResult result = MessageBox.Show("Nama: " + tbNama.Text + "\n" + "Alamat: " + tbAlamat.Text + "\n" + "Nomor Telp : " + tbTelp.Text + "\n" + "Jenis Kelamin: " + jk + "\n" + "Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        con.Open();
+                        string query = $"INSERT INTO CUSTOMER VALUES('{tbKode.Text}','{tbNama.Text}','{jk}','{tbAlamat.Text}',{telp},{0},'{1}')";
+                        OracleCommand cmd = new OracleCommand(query, con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        MessageBox.Show("Customer berhasil didaftarkan");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nomor telp harus terdiri dari 10-13 angka");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Nomor telp harus berupa angka");
+            }
+
             
-            string jk = "";
-            if (rbLaki.IsChecked==true)
-            {
-                jk = "L";
-            }
-            else if (rbPerempuan.IsChecked == true)
-            {
-                jk = "P";
-            }
-            MessageBoxResult result = MessageBox.Show("Nama: "+tbNama.Text+"\n"+"Alamat: "+tbAlamat.Text+"\n"+"Jenis Kelamin: "+jk+"\n"+"Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
-            if(result==MessageBoxResult.Yes)
-            {
-                con.Open();
-                string query = $"INSERT INTO CUSTOMER VALUES('{tbKode.Text}','{tbNama.Text}','{jk}','{tbAlamat.Text}',{0},'{1}')";
-                OracleCommand cmd = new OracleCommand(query, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Customer berhasil didaftarkan");
-            }
         }
 
         private void tbNama_SelectionChanged(object sender, RoutedEventArgs e)
