@@ -92,6 +92,10 @@ C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Peg
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PendaftaranMember.g.cs
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PegawaiHome.baml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PendaftaranMember.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Kategori.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Supplier.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Kategori.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Supplier.baml
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.exe.config
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.exe
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.pdb
@@ -133,3 +137,7 @@ E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.exe
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.pdb
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBarang.g.cs
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBarang.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Windowmaster.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\WindowMaster2.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Windowmaster.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\WindowMaster2.baml
