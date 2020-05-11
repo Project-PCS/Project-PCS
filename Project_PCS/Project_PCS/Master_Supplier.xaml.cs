@@ -36,10 +36,11 @@ namespace Project_PCS
         OracleConnection con;
         DataSet ds;
         string id_supplier;
-        public Master_Supplier()
+        Window w1;
+        public Master_Supplier(Window w1)
         {
             InitializeComponent();
-
+            this.w1 = w1;
             //listsup.Add(new supplier("Supplier_Kongsinyiasi","Supplier Kongsinyiasi"));
             //listsup.Add(new supplier("Supplier","Supplier"));
 
@@ -53,7 +54,7 @@ namespace Project_PCS
         }
         private void loadSupplier()
         {
-            using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from supplier order by lpad(id_supplier,2,0)asc", con))
+            using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from supplier order by 1 asc", con))
             {
                 ds = new DataSet();
                 adap.Fill(ds);
@@ -61,9 +62,9 @@ namespace Project_PCS
             }
         }
        
-        private string autogen(string table)
+        private string autogen()
         {
-            string query = $"SELECT count(id_{table})+1 from {table}";
+            string query = $"SELECT 'SUP'|| lpad(max(substr(id_supplier,-3,3))+1,3,0) from supplier";
             OracleCommand cmd = new OracleCommand(query, con);
             string id = cmd.ExecuteScalar().ToString();
             return id;
@@ -72,7 +73,7 @@ namespace Project_PCS
         private void Insert()
         {
             con.Open();
-            string id = autogen("supplier");
+            string id = autogen();
             string nama = tbnama.Text;
             string alamat = tbalamat.Text;
             long no = Convert.ToInt64(tb_notelepon.Text);
@@ -165,6 +166,11 @@ namespace Project_PCS
             }
         }
 
-        
+        private void Btn_Back_Click(object sender, RoutedEventArgs e)
+        {
+            admin a = new admin();
+            a.Show();
+            w1.Hide();
+        }
     }
 }

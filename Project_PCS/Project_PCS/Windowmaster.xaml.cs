@@ -22,8 +22,8 @@ namespace Project_PCS
         public Windowmaster()
         {
             InitializeComponent();
-            Master_Kategori kat = new Master_Kategori();
-            canvas.Children.Add(kat);
+            Master_Supplier sup = new Master_Supplier(this);
+            canvas.Children.Add(sup);
         }
     }
 }

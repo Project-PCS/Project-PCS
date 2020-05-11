@@ -8,13 +8,15 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="450" Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="800"/>
-        <DataGrid x:Name="viewer" HorizontalAlignment="Left" Height="246" Margin="14,10,0,0" VerticalAlignment="Top" Width="775" SelectionChanged="Viewer_SelectionChanged"/>
+        <DataGrid x:Name="viewer" HorizontalAlignment="Left" Height="205" Margin="14,51,0,0" VerticalAlignment="Top" Width="775" SelectionChanged="Viewer_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="61,274,0,0" TextWrapping="Wrap" Text="Nama" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
         <TextBox x:Name="tbnama" HorizontalAlignment="Left" Height="23" Margin="131,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Content="Insert" HorizontalAlignment="Left" Margin="75,343,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="192,343,0,0" VerticalAlignment="Top" Width="75" Click="BtnUpdate_Click"/>
         <CheckBox x:Name="cbxStatus" Content="" HorizontalAlignment="Left" Margin="132,309,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="62,309,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="12,19,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="355,21,0,0" TextWrapping="Wrap" Text="Kategori" VerticalAlignment="Top" FontSize="14"/>
 
     </Grid>
 </UserControl>

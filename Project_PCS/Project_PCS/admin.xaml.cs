@@ -65,6 +65,12 @@ namespace Project_PCS
                 msup.Show();
                 this.Hide();
             }
+            else if (cbPilihan.SelectedItem == "Master Barang")
+            {
+                MasterBarang mbar = new MasterBarang();
+                mbar.Show();
+                this.Hide();
+            }
 
         }
     }

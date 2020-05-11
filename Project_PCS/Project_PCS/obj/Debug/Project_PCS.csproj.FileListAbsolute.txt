@@ -131,3 +131,5 @@ E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.CoreCompileInputs.cache
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.exe
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.pdb
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBarang.g.cs
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBarang.baml

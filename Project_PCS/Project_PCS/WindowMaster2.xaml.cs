@@ -22,7 +22,7 @@ namespace Project_PCS
         public WindowMaster2()
         {
             InitializeComponent();
-            Master_Kategori kat = new Master_Kategori();
+            Master_Kategori kat = new Master_Kategori(this);
             canvas.Children.Add(kat);
         }
     }

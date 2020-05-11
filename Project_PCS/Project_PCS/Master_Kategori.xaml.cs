@@ -24,10 +24,11 @@ namespace Project_PCS
         OracleConnection con;
         DataSet ds;
         string id_kategori;
-        
-        public Master_Kategori()
+        Window w1;
+        public Master_Kategori(Window w1)
         {
             InitializeComponent();
+            this.w1 = w1;
             con = App.conn;
             loadKategori();
         }
@@ -42,7 +43,7 @@ namespace Project_PCS
         }
         private string autogen()
         {
-            string query_autogen = $"SELECT count(id_kategori)+1 from kategori";
+            string query_autogen = $"SELECT 'KAT'|| lpad(max(substr(id_kategori,-2,2))+1,2,0) from kategori";
             OracleCommand cmd = new OracleCommand(query_autogen, con);
             string idKategori = cmd.ExecuteScalar().ToString();
             return idKategori;
@@ -95,8 +96,15 @@ namespace Project_PCS
             {
                 id_kategori = ds.Tables[0].Rows[viewer.SelectedIndex]["id_kategori"].ToString();
                 tbnama.Text = ds.Tables[0].Rows[viewer.SelectedIndex]["nama_kategori"].ToString();
-                cbxStatus.IsChecked = Convert.ToBoolean( Convert.ToInt32(ds.Tables[0].Rows[viewer.SelectedIndex]["status"].ToString()));
+                cbxStatus.IsChecked = Convert.ToBoolean(Convert.ToInt32(ds.Tables[0].Rows[viewer.SelectedIndex]["status"].ToString()));
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            admin a = new admin();
+            a.Show();
+            w1.Hide();
         }
     }
 }
