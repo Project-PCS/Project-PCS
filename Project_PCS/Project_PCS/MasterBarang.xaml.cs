@@ -135,7 +135,7 @@ namespace Project_PCS
                 {
                     string nama = tb_nama.Text;
                     string status = Convert.ToInt32(cbxStatus.IsChecked).ToString();
-                    string query = $"UPDATE barang set nama_barang='{nama}',harga_eceran={harga_eceran},harga_grosir={harga_grosir},min_jum_barang={min_jum_barang},jum_barang={jum_barang},id_supplier='{cbSupplier.SelectedValue}',id_kategori='{cbKategori.SelectedValue}',jum_min_grosir={jum_min_grosir},status='{status}')";
+                    string query = $"UPDATE barang set nama_barang='{nama}',harga_eceran={harga_eceran},harga_grosir={harga_grosir},min_jum_barang={min_jum_barang},jum_barang={jum_barang},id_supplier='{cbSupplier.SelectedValue}',id_kategori='{cbKategori.SelectedValue}',jum_min_grosir={jum_min_grosir},status='{status}' where id_barang='{id_barang}'";
                     OracleCommand cmd = new OracleCommand(query, con);
                     cmd.ExecuteNonQuery();
                     LoadBarang();
