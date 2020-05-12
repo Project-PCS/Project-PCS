@@ -60,7 +60,7 @@ namespace Project_PCS
                 cbBarang.SelectedValuePath = barang.Tables[0].Columns["id_barang"].ToString();
 
                 con.Close();
-                //MessageBox.Show(barang.Tables[0].Columns["nama_barang"].ToString());
+                MessageBox.Show(barang.Tables[0].Columns["nama_barang"].ToString());
             }
             catch (Exception ex)
             {
@@ -76,41 +76,72 @@ namespace Project_PCS
         private void cbBarang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             con.Open();
-            string query = "SELECT nama_barang from barang where id_barang = '"+cbBarang.SelectedValue+"'";
+            string query = "SELECT nama_barang from barang where id_barang = '" + cbBarang.SelectedValue + "'";
             OracleCommand cmd = new OracleCommand(query, con);
-            //namaBarang.Content= cmd.ExecuteScalar().ToString();
+            if (cbBarang.SelectedValue != null)
+            {
+                namaBarang.Content = cmd.ExecuteScalar().ToString();
+            }
             con.Close();
 
         }
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
-            con.Open();
-
-            string id = tbID.Text;
-            string jenis="";
-            if (diskon.IsChecked == true)
+            try
             {
-                jenis = "DISKON";
+                long no = Convert.ToInt64(tbdisc.Text);
+                con.Open();
+                string id = tbID.Text;
+                string jenis = "";
+                if (diskon.IsChecked == true)
+                {
+                    jenis = "DISKON";
+                }
+                if (promo1.IsChecked == true)
+                {
+                    jenis = "PROMO";
+                }
+                string barang = cbBarang.Text;
+                int potongan = Convert.ToInt32(tbdisc.Text);
+                string awal = dpawal.SelectedDate.Value.Date.ToShortDateString();
+                string akhir = dpakhir.SelectedDate.Value.Date.ToShortDateString();
+                autogen();
+                if(dpawal.SelectedDate <= dpakhir.SelectedDate)
+                {
+                    MessageBoxResult result = MessageBox.Show("Jenis: " + jenis + "\n" + "Barang: " + barang + "\n" + "Potongan : " + potongan + "\n" + "Periode: " + awal + " - " + akhir + "\n" + "Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        string q = $"insert into promo (ID_PROMO,NAMA_PROMO,ID_BARANG," +
+                                  $"POTONGAN_HARGA,TANGGAL_PROMO,AKHIR_PROMO) values" +
+                                 $"('{id_promo}','{jenis}','{barang}',{potongan},TO_DATE('{awal}','DD-MM-YYYY hh24:mi:ss'),TO_DATE('{akhir}','DD-MM-YYYY hh24:mi:ss'))";
+                        OracleCommand cmd = new OracleCommand(q, con);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Promo berhasil didaftarkan");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Periode diskon yang anda masukkan tidak valid");
+                }
+                con.Close();
+                show();
             }
-            if(promo1.IsChecked == true)
+            catch (Exception ex)
             {
-                jenis = "PROMO";
+                MessageBox.Show("Potongan harus angka");
             }
-            string barang = cbBarang.Text;
-            int potongan = Convert.ToInt32(tbdisc.Text);
-            string awal = dpawal.SelectedDate.Value.Date.ToShortDateString();
-            string akhir = dpakhir.SelectedDate.Value.Date.ToShortDateString();
-
-            string q = $"insert into promo (ID_PROMO,NAMA_PROMO,ID_BARANG," +
-                         $"POTONGAN_HARGA,TANGGAL_PROMO,AKHIR_PROMO) values" + 
-                        $"('{id}','{jenis}','{barang}',{potongan},TO_DATE('{awal}','DD-MM-YYYY hh24:mi:ss'),TO_DATE('{akhir}','DD-MM-YYYY hh24:mi:ss'))";
-            OracleCommand cmd = new OracleCommand(q, con);
-            cmd.ExecuteNonQuery();
-            //con.Close();
-            show();
+            
         }
 
+        string id_promo;
+        public void autogen()
+        {
+            string query = "SELECT LPAD(NVL(MAX(SUBSTR(id_promo, -2, 2)) + 1,1),2,'0') AS \"COUNT\" FROM promo";
+            OracleCommand cmd = new OracleCommand(query, con);
+            string ctr = cmd.ExecuteScalar().ToString();
+            id_promo = "DIS" + ctr;
+        }
         private void diskon_Checked(object sender, RoutedEventArgs e)
         {
             ket.Content = "% (persentase diskon)";
@@ -118,7 +149,7 @@ namespace Project_PCS
 
         private void promo1_Checked(object sender, RoutedEventArgs e)
         {
-            ket.Content = "ribu rupiah";
+            ket.Content = "rupiah";
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -146,8 +177,8 @@ namespace Project_PCS
 
                 OracleCommand cmd = new OracleCommand(update, con);
                 cmd.ExecuteNonQuery();
-                
-              
+
+
                 con.Close();
                 MessageBox.Show("Berhasil Update");
             }
@@ -170,8 +201,8 @@ namespace Project_PCS
                 tbID.Text = dr["ID_PROMO"].ToString();
                 cbBarang.SelectedValue = dr["ID_BARANG"].ToString();
                 tbdisc.Text = dr["POTONGAN_HARGA"].ToString();
-                dpawal.SelectedDate =  Convert.ToDateTime(dr["TANGGAL_PROMO"].ToString());
-                dpakhir.SelectedDate = Convert.ToDateTime(dr["AKHIR_PROMO"].ToString()) ;
+                dpawal.SelectedDate = Convert.ToDateTime(dr["TANGGAL_PROMO"].ToString());
+                dpakhir.SelectedDate = Convert.ToDateTime(dr["AKHIR_PROMO"].ToString());
                 string jenis = dr["NAMA_PROMO"].ToString();
 
                 if (jenis == "DISKON")
@@ -182,7 +213,15 @@ namespace Project_PCS
                 {
                     promo1.IsChecked = true;
                 }
+                con.Open();
+                string query = "SELECT nama_barang from barang where id_barang = '" + cbBarang.SelectedValue + "'";
+                OracleCommand cmd = new OracleCommand(query, con);
+                if (cbBarang.SelectedValue != null)
+                {
+                    namaBarang.Content = cmd.ExecuteScalar().ToString();
+                }
+                con.Close();
             }
         }
-    } 
+    }
 }
