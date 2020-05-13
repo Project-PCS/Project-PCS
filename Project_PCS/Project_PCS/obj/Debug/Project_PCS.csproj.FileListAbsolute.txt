@@ -141,6 +141,7 @@ C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Win
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\WindowMaster2.g.cs
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Windowmaster.baml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\WindowMaster2.baml
+
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.exe.config
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.exe
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.pdb
@@ -205,3 +206,4 @@ D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\ShockwaveFlashO
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\stdole.dll
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.g.cs
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.baml
+
