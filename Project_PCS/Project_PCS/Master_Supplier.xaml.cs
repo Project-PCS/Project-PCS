@@ -49,16 +49,29 @@ namespace Project_PCS
             //cbSupplier.SelectedValuePath = "kode";
 
             con = App.conn;
-            loadSupplier();
+            loadSupplier("");
             
         }
-        private void loadSupplier()
+        private void loadSupplier(string param)
         {
-            using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from supplier order by 1 asc", con))
+            if (param == "")
             {
-                ds = new DataSet();
-                adap.Fill(ds);
-                viewer.ItemsSource = ds.Tables[0].DefaultView;
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from supplier order by 1 asc", con))
+                {
+                    ds = new DataSet();
+                    adap.Fill(ds);
+                    viewer.ItemsSource = ds.Tables[0].DefaultView;
+                }
+            }
+            else
+            {
+                param = param.ToLower();
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from supplier  where lower(nama_supplier) like'%{param}%' order by 1 asc", con))
+                {
+                    ds = new DataSet();
+                    adap.Fill(ds);
+                    viewer.ItemsSource = ds.Tables[0].DefaultView;
+                }
             }
         }
        
@@ -98,7 +111,7 @@ namespace Project_PCS
                     try
                     {
                         Insert();
-                        loadSupplier();
+                        loadSupplier("");
                     }
                     catch (Exception ex)
                     {
@@ -139,7 +152,7 @@ namespace Project_PCS
                     try
                     {
                         Update();
-                        loadSupplier();
+                        loadSupplier("");
                     }
                     catch (Exception ex)
                     {
@@ -171,6 +184,11 @@ namespace Project_PCS
             admin a = new admin();
             a.Show();
             w1.Hide();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            loadSupplier(tbSearch.Text);
         }
     }
 }

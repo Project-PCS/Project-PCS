@@ -1,0 +1,17 @@
+﻿<Window x:Class="Project_PCS.TransaksiJual"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_PCS"
+        mc:Ignorable="d"
+        Title="TransaksiJual" Height="450" Width="800">
+    <Grid>
+        <Button Content="BAYAR" HorizontalAlignment="Left" Margin="595,210,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid HorizontalAlignment="Left" Height="100" Margin="86,171,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,59,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="TRANSAKSI PENJUALAN" HorizontalAlignment="Left" Margin="289,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Label Content="Nama Barang:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

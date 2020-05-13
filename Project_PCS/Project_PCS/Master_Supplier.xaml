@@ -21,6 +21,8 @@
         <TextBox x:Name="tb_notelepon" HorizontalAlignment="Left" Height="23" Margin="132,352,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="368,24,0,0" TextWrapping="Wrap" Text="Supplier" VerticalAlignment="Top"/>
         <Button x:Name="btn_Back" Content="Back" HorizontalAlignment="Left" Margin="20,18,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.378,0.15" Click="Btn_Back_Click"/>
+        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="22" Margin="520,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="658,12,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_1"/>
 
     </Grid>
 </UserControl>

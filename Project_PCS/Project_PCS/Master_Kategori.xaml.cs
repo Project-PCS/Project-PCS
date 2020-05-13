@@ -30,16 +30,30 @@ namespace Project_PCS
             InitializeComponent();
             this.w1 = w1;
             con = App.conn;
-            loadKategori();
+            loadKategori("");
         }
-        private void loadKategori()
+        private void loadKategori(string param)
         {
-            using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from kategori order by 1 asc", con))
+            if (param == "")
             {
-                ds = new DataSet();
-                adap.Fill(ds);
-                viewer.ItemsSource = ds.Tables[0].DefaultView;
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from kategori order by 1 asc", con))
+                {
+                    ds = new DataSet();
+                    adap.Fill(ds);
+                    viewer.ItemsSource = ds.Tables[0].DefaultView;
+                }
             }
+            else
+            {
+                param = param.ToLower();
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from kategori where lower(nama_kategori) like'%{param}%' order by 1 desc", con))
+                {
+                    ds = new DataSet();
+                    adap.Fill(ds);
+                    viewer.ItemsSource = ds.Tables[0].DefaultView;
+                }
+            }
+            
         }
         private string autogen()
         {
@@ -61,7 +75,7 @@ namespace Project_PCS
                 OracleCommand cmd = new OracleCommand(insert, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                loadKategori();
+                loadKategori("");
             }
             catch (Exception ex)
             {
@@ -81,7 +95,7 @@ namespace Project_PCS
                 OracleCommand cmd = new OracleCommand(update, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                loadKategori();
+                loadKategori("");
             }
             catch (Exception ex)
             {
@@ -105,6 +119,11 @@ namespace Project_PCS
             admin a = new admin();
             a.Show();
             w1.Hide();
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            loadKategori(tbSearch.Text);
         }
     }
 }
