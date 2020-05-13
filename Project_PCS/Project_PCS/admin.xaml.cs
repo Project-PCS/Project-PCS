@@ -71,6 +71,12 @@ namespace Project_PCS
                 mbar.Show();
                 this.Hide();
             }
+            else if (cbPilihan.SelectedValue.ToString() == "Laporan")
+            {
+                MenuReport mreport = new MenuReport();
+                mreport.Show();
+                this.Hide();
+            }
 
         }
     }
