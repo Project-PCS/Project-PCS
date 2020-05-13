@@ -29,9 +29,9 @@ namespace Project_PCS
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string data = tb_datasource.Text;
-            string user = tb_username.Text;
-            string pass = tb_pass.Text;
+            string data = "orcl2";
+            string user = "system";
+            string pass = "Jessi889";
             con = new OracleConnection($"Data Source={data};User Id={user}; Password={pass}");
             try
             {

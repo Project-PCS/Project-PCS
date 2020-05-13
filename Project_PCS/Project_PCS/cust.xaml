@@ -26,6 +26,7 @@
         <Label Content="MASTER CUSTOMER" HorizontalAlignment="Left" Margin="481,34,0,0" VerticalAlignment="Top" Height="53" Width="284" FontSize="30"/>
         <Label  Content="No telp" HorizontalAlignment="Left" Margin="478,262,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbnotelp" HorizontalAlignment="Left" Height="23" Margin="591,262,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="back" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="33,10,0,0" Click="back_Click"/>
 
     </Grid>
 </Window>

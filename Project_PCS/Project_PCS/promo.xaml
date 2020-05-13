@@ -30,6 +30,7 @@
         <Label x:Name="namaBarang" Content="" HorizontalAlignment="Left" Margin="591,156.4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.847,0.5" Width="140" Grid.Row="1"/>
         <Label x:Name="ket" Content="" HorizontalAlignment="Left" Margin="656,187.4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Label Content="MASTER PROMO" HorizontalAlignment="Left" Margin="500,29,0,0" VerticalAlignment="Top" Height="53" Grid.RowSpan="2" Width="238" FontSize="30"/>
+        <Button x:Name="back" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="27,14,0,0" Click="back_Click"/>
 
     </Grid>
 </Window>
