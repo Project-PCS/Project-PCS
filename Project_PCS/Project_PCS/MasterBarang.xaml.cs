@@ -35,21 +35,36 @@ namespace Project_PCS
         List<cbSupKat> lisSup = new List<cbSupKat>();
         OracleConnection con;
         DataSet ds;
-        public MasterBarang()
+        Window w1;
+        public MasterBarang(Window w1)
         {
             InitializeComponent();
             con = App.conn;
-            LoadBarang();
+            LoadBarang("");
             LoadKategori();
             LoadSupplier();
+            this.w1 = w1;
         }
-        private void LoadBarang()
+        private void LoadBarang(string param)
         {
-            using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from barang order by 1 desc", con))
+            if (param == "")
             {
-                ds = new DataSet();
-                adap.Fill(ds);
-                viewer.ItemsSource = ds.Tables[0].DefaultView;
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from barang order by 1 desc", con))
+                {
+                    ds = new DataSet();
+                    adap.Fill(ds);
+                    viewer.ItemsSource = ds.Tables[0].DefaultView;
+                }
+            }
+            else
+            {
+                param = param.ToLower();
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from barang where lower(nama_barang) like '%{param}%' order  by 1 desc", con))
+                {
+                    ds = new DataSet();
+                    adap.Fill(ds);
+                    viewer.ItemsSource = ds.Tables[0].DefaultView;
+                }
             }
         }
         private void LoadKategori()
@@ -87,7 +102,7 @@ namespace Project_PCS
                     string query = $"INSERT into barang values('','{nama}',{harga_eceran},{harga_grosir},{min_jum_barang},{jum_barang},'{cbSupplier.SelectedValue}','{cbKategori.SelectedValue}',{jum_min_grosir},'{status}')";
                     OracleCommand cmd = new OracleCommand(query, con);
                     cmd.ExecuteNonQuery();
-                    LoadBarang();
+                    LoadBarang("");
                 }
                 catch (Exception ex)
                 {
@@ -138,7 +153,7 @@ namespace Project_PCS
                     string query = $"UPDATE barang set nama_barang='{nama}',harga_eceran={harga_eceran},harga_grosir={harga_grosir},min_jum_barang={min_jum_barang},jum_barang={jum_barang},id_supplier='{cbSupplier.SelectedValue}',id_kategori='{cbKategori.SelectedValue}',jum_min_grosir={jum_min_grosir},status='{status}' where id_barang='{id_barang}'";
                     OracleCommand cmd = new OracleCommand(query, con);
                     cmd.ExecuteNonQuery();
-                    LoadBarang();
+                    LoadBarang("");
                 }
                 catch (Exception ex)
                 {
@@ -168,6 +183,19 @@ namespace Project_PCS
                 tbJumMinGrosir.Text= ds.Tables[0].Rows[viewer.SelectedIndex]["jum_min_grosir"].ToString();
                 cbxStatus.IsChecked = Convert.ToBoolean(Convert.ToInt32(ds.Tables[0].Rows[viewer.SelectedIndex]["status"].ToString()));
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            admin a = new admin();
+            a.Show();
+            w1.Hide();
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LoadBarang(tbSearch.Text);
         }
     }
 }
