@@ -223,5 +223,12 @@ namespace Project_PCS
                 con.Close();
             }
         }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            admin a = new admin();
+            a.Show();
+        }
     }
 }
