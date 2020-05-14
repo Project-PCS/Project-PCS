@@ -13,7 +13,6 @@
         <ComboBox x:Name="cbSupplier" HorizontalAlignment="Left" Margin="108,131,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbSupplier_SelectionChanged"/>
         <TextBox x:Name="tbNomor" HorizontalAlignment="Left" Height="23" Margin="108,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Label Content="Batas Bayar" HorizontalAlignment="Left" Margin="22,168,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dpBayar" HorizontalAlignment="Left" Margin="108,170,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <DataGrid x:Name="dgDaftar" HorizontalAlignment="Left" Height="187" Margin="281,101,0,0" VerticalAlignment="Top" Width="227" MouseDoubleClick="dgDaftar_MouseDoubleClick" IsReadOnly="True"/>
         <DataGrid x:Name="dgKeranjang" HorizontalAlignment="Left" Height="187" Margin="535,101,0,0" VerticalAlignment="Top" Width="227" IsReadOnly="True"/>
         <Label Content="Jumlah:" HorizontalAlignment="Left" Margin="282,336,0,0" VerticalAlignment="Top"/>
@@ -22,7 +21,9 @@
         <Label Content="Id Barang:" HorizontalAlignment="Left" Margin="282,305,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbIdBarang" HorizontalAlignment="Left" Height="23" Margin="346,308,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Button x:Name="btnBeli" Content="Beli" HorizontalAlignment="Left" Margin="30,251,0,0" VerticalAlignment="Top" Width="198" Height="37" Click="btnBeli_Click" IsEnabled="False"/>
-        <Button x:Name="btnReset" Content="Reset" HorizontalAlignment="Left" Margin="30,293,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnReset" Content="Ulang" HorizontalAlignment="Left" Margin="30,293,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="lblTgl" Content="-" HorizontalAlignment="Left" Margin="108,168,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="btnBack" Content="Kembali" HorizontalAlignment="Left" Margin="26,35,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
 
     </Grid>
 </Window>

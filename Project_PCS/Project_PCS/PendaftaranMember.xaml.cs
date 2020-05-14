@@ -55,6 +55,12 @@ namespace Project_PCS
                         cmd.ExecuteNonQuery();
                         con.Close();
                         MessageBox.Show("Customer berhasil didaftarkan");
+                        tbAlamat.Text = "";
+                        tbNama.Text = "";
+                        tbKode.Text = "";
+                        tbTelp.Text = "";
+                        rbLaki.IsChecked = false;
+                        rbPerempuan.IsChecked = false;
                     }
                 }
                 else
@@ -96,6 +102,13 @@ namespace Project_PCS
                 tbKode.Text = id;
                 con.Close();
             }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            PegawaiHome ph = new PegawaiHome(database);
+            this.Close();
+            ph.Show();
         }
     }
 }
