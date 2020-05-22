@@ -40,5 +40,12 @@ namespace Project_PCS
             this.Hide();
             pm.Show();
         }
+
+        private void BtnPenjualan_Click(object sender, RoutedEventArgs e)
+        {
+            TransaksiJual tj = new TransaksiJual(database);
+            this.Hide();
+            tj.Show();
+        }
     }
 }

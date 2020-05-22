@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
-        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="Project_PCS.MenuReport"
+        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="Project_PCS.MasterReport"
         mc:Ignorable="d"
-        Title="MenuReport" Height="560" Width="800">
+        Title="MasterReport" Height="728" Width="800">
     <Grid>
 
-        <Viewer:CrystalReportsViewer x:Name="CRViewer" HorizontalAlignment="Left" Height="403" Margin="10,116,0,0" VerticalAlignment="Top" Width="772"/>
+        <Viewer:CrystalReportsViewer x:Name="CRViewer" HorizontalAlignment="Left" Height="571" Margin="10,116,0,-268" VerticalAlignment="Top" Width="772"/>
         <Label Content="Jenis Laporan:" HorizontalAlignment="Left" Margin="11,53,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbJenis" HorizontalAlignment="Left" Margin="100,57,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tbTahun" HorizontalAlignment="Left" Height="23" Margin="298,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
