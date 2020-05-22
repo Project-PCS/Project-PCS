@@ -17,6 +17,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="62,309,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="12,19,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_1"/>
         <TextBlock HorizontalAlignment="Left" Margin="355,21,0,0" TextWrapping="Wrap" Text="Kategori" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="22" Margin="525,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="676,17,0,0" VerticalAlignment="Top" Width="74" Click="BtnSearch_Click"/>
 
     </Grid>
 </UserControl>

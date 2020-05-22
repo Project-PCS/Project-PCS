@@ -67,7 +67,7 @@ namespace Project_PCS
             }
             else if (cbPilihan.SelectedItem == "Master Barang")
             {
-                MasterBarang mbar = new MasterBarang();
+                MasterBarang mbar = new MasterBarang(this);
                 mbar.Show();
                 this.Hide();
             }
@@ -82,6 +82,11 @@ namespace Project_PCS
                 this.Hide();
             }
 
+        }
+
+        private void mainmenu_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
