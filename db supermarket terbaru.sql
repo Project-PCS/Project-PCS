@@ -402,12 +402,30 @@ INSERT INTO TUKARPOIN_BODY VALUES('TP010','BM005');
 
 --FUNCTION
 --AUTOGEN ID PROMO
-create or replace function autogen
+create or replace function autogenPromo
 return varchar2
 is
 id varchar2(10);
 begin
 	select 'DIS'||LPAD(NVL(MAX(SUBSTR(id_promo, -2, 2)) + 1,1),2,'0') into id from PROMO;
+	return id;
+end;
+/
+create or replace function autogenCustomer
+return varchar2
+is
+id varchar2(10);
+begin
+	select 'CUS'||LPAD(NVL(MAX(SUBSTR(id_customer, -2, 2)) + 1,1),2,'0') into id from customer;
+	return id;
+end;
+/
+create or replace function autogenPegawai
+return varchar2
+is
+id varchar2(10);
+begin
+	select 'PEG'||LPAD(NVL(MAX(SUBSTR(id_pegawai, -2, 2)) + 1,1),2,'0') into id from pegawai;
 	return id;
 end;
 /
@@ -468,7 +486,7 @@ error_tgl exception;
 error_diskon exception;
 begin
 	if inserting then
-		id := autogen();
+		id := autogenPromo();
 		:new.id_promo:=id;	
 	end if;
 	
@@ -489,5 +507,61 @@ begin
 			raise_application_error(-20001,'Periode diskon tidak valid');
 		when error_diskon then
 			raise_application_error(-20002,'Potongan melebihi harga barang');
+end;
+/
+--3
+create or replace trigger insertCustomer
+before insert or update
+on customer
+for each row
+declare
+id varchar2(5);
+notelp number;
+error_sama exception;
+begin
+	if inserting then
+		id := autogenCustomer();
+		:new.id_customer:=id;	
+	end if;
+
+	SELECT :new.no_telp INTO notelp FROM DUAL;
+	
+	for i in(
+        select no_telp from customer where no_telp=:new.no_telp
+    )loop
+        raise error_sama;
+    end loop;
+
+	exception 
+		when error_sama then
+			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
+end;
+/
+--4
+create or replace trigger insertPegawai
+before insert or update
+on pegawai
+for each row
+declare
+id varchar2(5);
+notelp number;
+error_sama exception;
+begin
+	if inserting then
+		id := autogenPegawai();
+		:new.id_pegawai:=id;	
+	end if;
+
+	SELECT :new.no_telp INTO notelp FROM DUAL;
+
+	for i in(
+        select no_telp from pegawai where no_telp=:new.no_telp
+    )loop
+        raise error_sama;
+    end loop;
+
+	exception 
+		when error_sama then
+			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
 end;
 /

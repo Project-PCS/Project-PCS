@@ -105,7 +105,7 @@ namespace Project_PCS
                 string alamat = tbAlamat.Text;
                 int poin = Convert.ToInt32(tbPoin.Text);
                 string stat = "0";
-                long notelp = Convert.ToInt64(tbnotelp.Text);
+                string notelp = tbnotelp.Text;
                 if (cbaktif.IsChecked == true)
                 {
                     stat = "1";
@@ -171,7 +171,7 @@ namespace Project_PCS
                 string alamat = tbAlamat.Text;
                 int poin = Convert.ToInt32(tbPoin.Text);
                 string stat = "0";
-                long notelp = Convert.ToInt64(tbnotelp.Text);
+                string notelp = tbnotelp.Text;
                 if (cbaktif.IsChecked == true)
                 {
                     stat = "1";

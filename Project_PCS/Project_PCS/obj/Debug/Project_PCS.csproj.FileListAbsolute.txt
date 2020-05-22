@@ -315,3 +315,4 @@ C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Materia
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.baml
