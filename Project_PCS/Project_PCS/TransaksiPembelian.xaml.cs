@@ -25,6 +25,7 @@ namespace Project_PCS
         string database;
         private OracleDataAdapter da;
         DataSet db = new DataSet();
+        DataTable dt = new DataTable();
 
         private class Supplier
         {
@@ -32,13 +33,27 @@ namespace Project_PCS
             public string Nama { get; set; }
         }
 
+        public TransaksiPembelian(string ds)
+        {
+            InitializeComponent();
+            this.database = ds;
+            dt.Columns.Add("Id Nota", typeof(string));
+            dt.Columns.Add("Id Barang", typeof(string));
+            dt.Columns.Add("Banyak", typeof(Int64));
+            dt.Columns.Add("Harga Beli", typeof(Int64));
+
+            dgKeranjang.ItemsSource = dt.DefaultView;
+            Reset();
+            LoadNomor();
+        }
+
         private void LoadSup()
         {
             con = new OracleConnection(database);
             con.Open();
-            using(OracleCommand cmd = new OracleCommand("select * from supplier", con))
+            using (OracleCommand cmd = new OracleCommand("select * from supplier", con))
             {
-                using(OracleDataReader reader = cmd.ExecuteReader())
+                using (OracleDataReader reader = cmd.ExecuteReader())
                 {
                     List<Supplier> suplist = new List<Supplier>();
                     while (reader.Read())
@@ -57,29 +72,75 @@ namespace Project_PCS
             con.Close();
         }
 
-        public TransaksiPembelian(string ds)
-        {
-            InitializeComponent();
-            this.database = ds;
-            Reset();
-            LoadNomor();
-        }
-
         public void Reset()
         {
-            DateTime batas = DateTime.Now.AddDays(31);
-            dpBayar.SelectedDate = batas;
             string query = "SELECT NAMA_SUPPLIER FROM SUPPLIER";
             OracleCommand cmd = new OracleCommand(query, con);
+            cbSupplier.SelectedIndex = -1;
+            lblTgl.Content = "-";
+            tbNomor.Text = "";
             LoadSup();
+            LoadNomor();
+            LoadDataSet();
+            btnBeli.IsEnabled = false;
+        }
+
+        private void UpdateBarang()
+        {
+            con = new OracleConnection(database);
+            con.Open();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                int tempjum = 0;
+                string query = "SELECT jum_barang from barang where id_barang ='" + dt.Rows[i][1].ToString() + "'";
+                OracleCommand cmd = new OracleCommand(query, con);
+                tempjum = Convert.ToInt32(cmd.ExecuteScalar());
+                tempjum = tempjum + Convert.ToInt32(dt.Rows[i][2].ToString());
+
+                query = "update barang set jum_barang = " + tempjum + "where id_barang ='" + dt.Rows[i][1].ToString() + "'";
+                cmd = new OracleCommand(query, con);
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
         }
 
         private void btnBeli_Click(object sender, RoutedEventArgs e)
         {
-            /*if (dpBayar.SelectedDate > ((DateTime)dpBeli.SelectedDate).AddDays(31))
+            UpdateBarang();
+            //MessageBox.Show(DateTime.Now.ToString("yyyy-MM-dd"));
+            string tgl = "TO_DATE('" + lblTgl.Content + "','YYYY-MM-DD')";
+            //MessageBox.Show(tgl);
+            con = new OracleConnection(database);
+            con.Open();
+            using (OracleTransaction trans = con.BeginTransaction())
             {
-                MessageBox.Show("Pembayaran lebih dari sebulan");
-            }*/
+                try
+                {
+                    string query = $"INSERT INTO notasupplier_hdr VALUES('{tbNomor.Text}','{cbSupplier.SelectedValue.ToString()}','{""}',{tgl},'{0}')";
+                    OracleCommand cmd = new OracleCommand(query, con);
+                    cmd.ExecuteNonQuery();
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        query = $"INSERT INTO notasupplier_body values('{dt.Rows[i][0].ToString()}','{dt.Rows[i][1].ToString()}',{Convert.ToInt32(dt.Rows[i][2].ToString())},{Convert.ToInt64(dt.Rows[i][3].ToString())})";
+                        cmd = new OracleCommand(query, con);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    trans.Commit();
+                    con.Close();
+                    MessageBox.Show("Transaksi Berhasil");
+                    dt.Rows.Clear();
+                    Reset();
+                }
+                catch (Exception ex)
+                {
+                    trans.Rollback();
+                    con.Close();
+                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Transaksi Gagal");
+                }
+            }
         }
 
         private void LoadDataSet()
@@ -101,9 +162,9 @@ namespace Project_PCS
 
         private void cbSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            dgDaftar.ItemsSource = null;
             LoadDataSet();
-            LoadDataSetKeranjang();
+            DateTime batas = DateTime.Now.AddDays(31);
+            lblTgl.Content = batas.ToString("yyyy-MM-dd");
         }
 
         string id = "";
@@ -160,16 +221,17 @@ namespace Project_PCS
                 OracleCommand cmd = new OracleCommand(query,con);
                 int harga = Convert.ToInt32(cmd.ExecuteScalar());
                 con.Close();
-                DataRow dr = db.Tables[0].NewRow();
-                dr[0] = id;
+                DataRow dr = dt.NewRow();
+                dr[0] = tbNomor.Text;
                 dr[1] = tbIdBarang.Text;
                 dr[2] = jum;
                 dr[3] = harga;
-                db.Tables[0].Rows.Add();
+                dt.Rows.Add(dr);
 
                 tbIdBarang.Text = "";
                 tbbJum.Text = "";
                 btnTambah.IsEnabled = false;
+                btnBeli.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -177,14 +239,24 @@ namespace Project_PCS
             }
         }
 
-        private void LoadDataSetKeranjang()
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            da = new OracleDataAdapter("select * from notasupplier_body where 1 = 2", con);
-            //membuat syntax insert update delete otomatis
-            OracleCommandBuilder builder = new OracleCommandBuilder(da);
-            db = new DataSet();
-            da.Fill(db);
-            dgKeranjang.ItemsSource = db.Tables[0].DefaultView;
+            PegawaiHome ph = new PegawaiHome(database);
+            this.Close();
+            ph.Show();
+        }
+
+        int idx;
+        private void dgKeranjang_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            idx = dgKeranjang.Items.IndexOf(dgKeranjang.CurrentItem);
+            btnHapus.IsEnabled = true;
+        }
+
+        private void btnHapus_Click(object sender, RoutedEventArgs e)
+        {
+            dt.Rows.RemoveAt(idx);
+            btnHapus.IsEnabled = false;
         }
     }
 }

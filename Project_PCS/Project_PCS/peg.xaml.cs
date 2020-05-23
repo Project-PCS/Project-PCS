@@ -233,7 +233,11 @@ namespace Project_PCS
             //show();
         }
 
-        
-
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            admin a = new admin();
+            a.Show();
+        }
     }
 }

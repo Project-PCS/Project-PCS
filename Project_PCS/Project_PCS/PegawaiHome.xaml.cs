@@ -40,5 +40,19 @@ namespace Project_PCS
             this.Hide();
             pm.Show();
         }
+
+        private void BtnPenjualan_Click(object sender, RoutedEventArgs e)
+        {
+            TransaksiJual tj = new TransaksiJual(database);
+            this.Hide();
+            tj.Show();
+        }
+
+        private void btnPenukaran_Click(object sender, RoutedEventArgs e)
+        {
+            Penukaran_Poin pp = new Penukaran_Poin(database);
+            this.Hide();
+            pp.Show();
+        }
     }
 }

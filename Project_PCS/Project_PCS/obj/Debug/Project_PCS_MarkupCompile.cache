@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\
 Project_PCS
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\App.xaml
 16-1006078869
 
-221049920806
-24-31940601
-admin.xaml;cust.xaml;MainWindow.xaml;MasterBarang.xaml;Master_Kategori.xaml;Master_Supplier.xaml;MenuReport.xaml;peg.xaml;PegawaiHome.xaml;PendaftaranMember.xaml;promo.xaml;TransaksiJual.xaml;TransaksiPembelian.xaml;Window1.xaml;Windowmaster.xaml;WindowMaster2.xaml;
+26-513842750
+26862209592
+admin.xaml;cust.xaml;MainWindow.xaml;MasterBarang.xaml;MasterBrgMenarik.xaml;MasterReport.xaml;Master_Kategori.xaml;Master_Supplier.xaml;peg.xaml;PegawaiHome.xaml;PendaftaranMember.xaml;Penukaran Poin.xaml;promo.xaml;TransaksiJual.xaml;TransaksiPembelian.xaml;Window1.xaml;Windowmaster.xaml;WindowMaster2.xaml;
 
-False
+True
 
