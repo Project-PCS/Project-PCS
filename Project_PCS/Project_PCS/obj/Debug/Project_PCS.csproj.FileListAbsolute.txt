@@ -315,3 +315,10 @@ C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Materia
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.dll
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml

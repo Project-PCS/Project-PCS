@@ -104,6 +104,9 @@
     <Compile Include="PendaftaranMember.xaml.cs">
       <DependentUpon>PendaftaranMember.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Penukaran Poin.xaml.cs">
+      <DependentUpon>Penukaran Poin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="promo.xaml.cs">
       <DependentUpon>promo.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
     <Page Include="PendaftaranMember.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Penukaran Poin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="promo.xaml">
       <SubType>Designer</SubType>
