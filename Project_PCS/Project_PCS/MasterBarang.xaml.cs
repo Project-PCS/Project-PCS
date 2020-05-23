@@ -92,6 +92,7 @@ namespace Project_PCS
             {
                 int harga_eceran = Convert.ToInt32(tbHargaEceran.Text);
                 int harga_grosir = Convert.ToInt32(tbHargaGrosir.Text);
+                int harga_beli = Convert.ToInt32(tbHargaBeli.Text);
                 int min_jum_barang = Convert.ToInt32(tbMinJum.Text);
                 int jum_barang = Convert.ToInt32(tbJumBarang.Text);
                 int jum_min_grosir = Convert.ToInt32(tbJumMinGrosir.Text);
@@ -99,21 +100,21 @@ namespace Project_PCS
                 {
                     string nama = tb_nama.Text;
                     string status = Convert.ToInt32(cbxStatus.IsChecked).ToString();
-                    string query = $"INSERT into barang values('','{nama}',{harga_eceran},{harga_grosir},{min_jum_barang},{jum_barang},'{cbSupplier.SelectedValue}','{cbKategori.SelectedValue}',{jum_min_grosir},'{status}')";
+                    string query = $"INSERT into barang values('','{nama}',{harga_eceran},{harga_grosir},{harga_beli},{min_jum_barang},{jum_barang},'{cbSupplier.SelectedValue}','{cbKategori.SelectedValue}',{jum_min_grosir},'{status}')";
                     OracleCommand cmd = new OracleCommand(query, con);
                     cmd.ExecuteNonQuery();
                     LoadBarang("");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.StackTrace);
-                    MessageBox.Show(ex.Message);
+                    string[] msg = ex.Message.Split(':');
+                    System.Windows.Forms.MessageBox.Show(msg[1].Substring(0,msg[1].Length-9));
                 }
                 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Harga Eceran,Harga Grosir,Min Jum Barang, Jum Barang, Jum Min Grosir harus angka");
+                MessageBox.Show("Harga Eceran,Harga Grosir,Harga Beli,Min Jum Barang, Jum Barang, Jum Min Grosir harus angka");
             }
             con.Close();
         }
@@ -135,7 +136,23 @@ namespace Project_PCS
             }
 
         }
-
+        private bool cek_namabarang(string nama_barang)
+        {
+            string query = $"SELECT nama_barang from barang  where id_barang<>'{id_barang}'";
+            using (OracleDataAdapter adap = new OracleDataAdapter(query, con))
+            {
+                DataTable dt = new DataTable();
+                adap.Fill(dt);
+                foreach (DataRow item in dt.Rows)
+                {
+                    if (item["nama_barang"].ToString() == nama_barang)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         private void Btn_Update_Click(object sender, RoutedEventArgs e)
         {
             con.Open();
@@ -143,27 +160,40 @@ namespace Project_PCS
             {
                 int harga_eceran = Convert.ToInt32(tbHargaEceran.Text);
                 int harga_grosir = Convert.ToInt32(tbHargaGrosir.Text);
+                int harga_beli = Convert.ToInt32(tbHargaBeli.Text);
                 int min_jum_barang = Convert.ToInt32(tbMinJum.Text);
                 int jum_barang = Convert.ToInt32(tbJumBarang.Text);
                 int jum_min_grosir = Convert.ToInt32(tbJumMinGrosir.Text);
+                
                 try
                 {
                     string nama = tb_nama.Text;
-                    string status = Convert.ToInt32(cbxStatus.IsChecked).ToString();
-                    string query = $"UPDATE barang set nama_barang='{nama}',harga_eceran={harga_eceran},harga_grosir={harga_grosir},min_jum_barang={min_jum_barang},jum_barang={jum_barang},id_supplier='{cbSupplier.SelectedValue}',id_kategori='{cbKategori.SelectedValue}',jum_min_grosir={jum_min_grosir},status='{status}' where id_barang='{id_barang}'";
-                    OracleCommand cmd = new OracleCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    LoadBarang("");
+                    bool isKembar = cek_namabarang(nama);
+                    if (!isKembar)
+                    {
+                        string status = Convert.ToInt32(cbxStatus.IsChecked).ToString();
+                        string query = $"UPDATE barang set nama_barang='{nama}',harga_eceran={harga_eceran},harga_grosir={harga_grosir},harga_beli={harga_beli},min_jum_barang={min_jum_barang},jum_barang={jum_barang},id_supplier='{cbSupplier.SelectedValue}',id_kategori='{cbKategori.SelectedValue}',jum_min_grosir={jum_min_grosir},status='{status}' where id_barang='{id_barang}'";
+                        OracleCommand cmd = new OracleCommand(query, con);
+                        cmd.ExecuteNonQuery();
+                        LoadBarang("");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nama Barang Sama");
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.StackTrace);
+                    string[] msg = ex.Message.Split(':');
+                    System.Windows.Forms.MessageBox.Show(msg[1].Substring(0, msg[1].Length - 9));
+
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Harga Eceran,Harga Grosir,Min Jum Barang, Jum Barang, Jum Min Grosir harus angka");
+                MessageBox.Show("Harga Eceran,Harga Grosir,Harga Beli, Min Jum Barang, Jum Barang, Jum Min Grosir harus angka");
             }
             con.Close();
         }
@@ -176,6 +206,7 @@ namespace Project_PCS
                 tb_nama.Text = ds.Tables[0].Rows[viewer.SelectedIndex]["nama_barang"].ToString();
                 tbHargaEceran.Text= ds.Tables[0].Rows[viewer.SelectedIndex]["harga_eceran"].ToString();
                 tbHargaGrosir.Text = ds.Tables[0].Rows[viewer.SelectedIndex]["harga_grosir"].ToString();
+                tbHargaBeli.Text = ds.Tables[0].Rows[viewer.SelectedIndex]["harga_beli"].ToString();
                 tbMinJum.Text = ds.Tables[0].Rows[viewer.SelectedIndex]["min_jum_barang"].ToString();
                 tbJumBarang.Text = ds.Tables[0].Rows[viewer.SelectedIndex]["jum_barang"].ToString();
                 cbKategori.SelectedValue= ds.Tables[0].Rows[viewer.SelectedIndex]["id_kategori"].ToString();

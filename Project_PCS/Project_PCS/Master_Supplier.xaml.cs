@@ -56,7 +56,7 @@ namespace Project_PCS
         {
             if (param == "")
             {
-                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from supplier order by 1 asc", con))
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from supplier order by 1 desc", con))
                 {
                     ds = new DataSet();
                     adap.Fill(ds);
@@ -89,9 +89,9 @@ namespace Project_PCS
             string id = autogen();
             string nama = tbnama.Text;
             string alamat = tbalamat.Text;
-            long no = Convert.ToInt64(tb_notelepon.Text);
+            string no = tb_notelepon.Text;
             string status= (Convert.ToInt32(cbxStatus.IsChecked)).ToString();
-            string query = $"INSERT into supplier values('{id}','{nama}','{alamat}',{no},'{status}')";
+            string query = $"INSERT into supplier values('{id}','{nama}','{alamat}','{no}','{status}')";
             OracleCommand cmd = new OracleCommand(query, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -102,9 +102,9 @@ namespace Project_PCS
             try
             {
                 long no = Convert.ToInt64(tb_notelepon.Text);
-                if (no.ToString().Length != 13)
+                if (tb_notelepon.Text.ToString().Length != 13&& tb_notelepon.Text.ToString().Length != 12)
                 {
-                    MessageBox.Show("No Hp harus 13 digit");
+                    MessageBox.Show("No Hp harus 12/13 digit");
                 }
                 else
                 {
@@ -130,9 +130,9 @@ namespace Project_PCS
             con.Open();
             string nama = tbnama.Text;
             string alamat = tbalamat.Text;
-            long no = Convert.ToInt64(tb_notelepon.Text);
+            string no = tb_notelepon.Text;
             string status = (Convert.ToInt32(cbxStatus.IsChecked)).ToString();
-            string query = $"UPDATE supplier set nama_supplier='{nama}',alamat_supplier='{alamat}',nomor_telp={no},status='{status}' where id_supplier='{id_supplier}'";
+            string query = $"UPDATE supplier set nama_supplier='{nama}',alamat_supplier='{alamat}',nomor_telp='{no}',status='{status}' where id_supplier='{id_supplier}'";
             MessageBox.Show(query);
             OracleCommand cmd = new OracleCommand(query, con);
             cmd.ExecuteNonQuery();
@@ -143,9 +143,10 @@ namespace Project_PCS
             try
             {
                 long no = Convert.ToInt64(tb_notelepon.Text);
-                if (no.ToString().Length != 13)
+               
+                if (tb_notelepon.Text.ToString().Length != 13 && tb_notelepon.Text.ToString().Length != 12)
                 {
-                    MessageBox.Show("No Hp harus 13 digit");
+                    MessageBox.Show("No Hp harus 12/13 digit");
                 }
                 else
                 {
@@ -189,6 +190,33 @@ namespace Project_PCS
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             loadSupplier(tbSearch.Text);
+        }
+
+        private void Tb_notelepon_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void Tb_notelepon_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void Tb_notelepon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tb_notelepon.Text != "")
+            {
+                string kata = tb_notelepon.Text;
+                try
+                {
+                    long angka = Convert.ToInt64(kata);
+                }
+                catch (Exception)
+                {
+                    string potong = kata.Substring(0, kata.Length - 1);
+                    tb_notelepon.Text = potong;
+                }
+            }
         }
     }
 }

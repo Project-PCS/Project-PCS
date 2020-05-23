@@ -36,7 +36,7 @@ namespace Project_PCS
         {
             if (param == "")
             {
-                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from kategori order by 1 asc", con))
+                using (OracleDataAdapter adap = new OracleDataAdapter($"SELECT * from kategori order by 1 desc", con))
                 {
                     ds = new DataSet();
                     adap.Fill(ds);
