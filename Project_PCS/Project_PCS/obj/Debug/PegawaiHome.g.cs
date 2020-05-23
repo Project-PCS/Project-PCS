@@ -114,6 +114,12 @@ namespace Project_PCS {
             return;
             case 2:
             this.btnPenjualan = ((System.Windows.Controls.Button)(target));
+            
+            #line 11 "..\..\PegawaiHome.xaml"
+            this.btnPenjualan.Click += new System.Windows.RoutedEventHandler(this.BtnPenjualan_Click);
+            
+            #line default
+            #line hidden
             return;
             case 3:
             this.btnPendaftaran = ((System.Windows.Controls.Button)(target));

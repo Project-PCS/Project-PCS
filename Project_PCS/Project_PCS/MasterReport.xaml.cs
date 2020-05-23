@@ -1,5 +1,4 @@
-﻿using Oracle.DataAccess.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,18 +15,18 @@ using System.Windows.Shapes;
 namespace Project_PCS
 {
     /// <summary>
-    /// Interaction logic for MenuReport.xaml
+    /// Interaction logic for MasterReport.xaml
     /// </summary>
-    public partial class MenuReport : Window
+    public partial class MasterReport : Window
     {
         List<string> listjenis = new List<string>();
         List<string> listbulan = new List<string>();
         long tahun; int bulan; string strParam;
+        MainWindow mw = new MainWindow();
 
-        public MenuReport()
+        public MasterReport()
         {
             InitializeComponent();
-
             listjenis.Add("Penjualan Barang");
             listjenis.Add("Pembelian Barang");
             listjenis.Add("Customer Aktif");
@@ -68,6 +67,8 @@ namespace Project_PCS
                 if (cbJenis.SelectedIndex == 0)
                 {
                     ReportJual rjual = new ReportJual();
+                    rjual.SetDatabaseLogon(mw.tb_username.Text, mw.tb_pass.Text, mw.tb_datasource.Text, "");
+                    MessageBox.Show("user: " + mw.tb_username.Text + "\n pass: " + mw.tb_pass.Text + "\n ds: " + mw.tb_datasource.Text);
                     rjual.SetParameterValue("bulan", cbBulan.SelectedValue.ToString().ToUpper());
                     rjual.SetParameterValue("tahun", tahun);
                     rjual.SetParameterValue("BlnTh", strParam);
@@ -76,6 +77,7 @@ namespace Project_PCS
                 else if (cbJenis.SelectedIndex == 1)
                 {
                     ReportBeli rbeli = new ReportBeli();
+                    rbeli.SetDatabaseLogon(mw.user, mw.pass, mw.data, "");
                     rbeli.SetParameterValue("bulan", cbBulan.SelectedValue.ToString().ToUpper());
                     rbeli.SetParameterValue("tahun", tahun);
                     rbeli.SetParameterValue("BlnTh", strParam);

@@ -71,9 +71,13 @@ namespace Project_PCS
                 mbar.Show();
                 this.Hide();
             }
+            else if (cbPilihan.SelectedValue.ToString() == "Barang Menarik")
+            {
+
+            }
             else if (cbPilihan.SelectedValue.ToString() == "Laporan")
             {
-                MenuReport mreport = new MenuReport();
+                MasterReport mreport = new MasterReport();
                 mreport.Show();
                 this.Hide();
             }

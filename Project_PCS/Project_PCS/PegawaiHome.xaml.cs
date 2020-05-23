@@ -41,11 +41,11 @@ namespace Project_PCS
             pm.Show();
         }
 
-        private void btnPenukaran_Click(object sender, RoutedEventArgs e)
+        private void BtnPenjualan_Click(object sender, RoutedEventArgs e)
         {
-            Penukaran_Poin pp = new Penukaran_Poin(database);
+            TransaksiJual tj = new TransaksiJual(database);
             this.Hide();
-            pp.Show();
+            tj.Show();
         }
     }
 }
