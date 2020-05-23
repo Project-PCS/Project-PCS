@@ -22,6 +22,7 @@ namespace Project_PCS
     public partial class MainWindow : Window
     {
         public static OracleConnection con;
+        public string data, user, pass;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,14 +30,17 @@ namespace Project_PCS
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string data = "orcl2";
-            string user = "system";
-            string pass = "Jessi889";
+            data = tb_datasource.Text;
+            user = tb_username.Text;
+            pass = tb_pass.Text;
+
             con = new OracleConnection($"Data Source={data};User Id={user}; Password={pass}");
             try
             {
               
                 App.conn = con;
+                con.Open();
+                con.Close();
                 Window1 w = new Window1($"Data Source={data};User Id={user}; Password={pass}");
                 w.Show();
                 this.Close();

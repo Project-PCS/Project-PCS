@@ -36,7 +36,8 @@ namespace Project_PCS
             try
             {
                 con.Open();
-                string query = "SELECT * from customer";
+                string query = "SELECT ID_CUSTOMER as \"ID\", NAMA_CUSTOMER as \"NAMA\",JK as \"JENIS KELAMIN\"," +
+                            $"ALAMAT_CUSTOMER as \"ALAMAT\",NO_TELP as \"NO TELP\",POIN as \"POIN\",STATUS as \"STATUS\" from customer";
                 OracleCommand cmd = new OracleCommand(query, con);
                 cmd.ExecuteReader();
                 OracleDataAdapter adapter = new OracleDataAdapter(cmd);
@@ -50,7 +51,7 @@ namespace Project_PCS
                 con.Close();
                 //Console.WriteLine(ex.StackTrace);
                 //MessageBox.Show("EROR");
-                //MessageBox.Show("Gagal karena " + ex.Message);
+                MessageBox.Show("Gagal karena " + ex.Message);
             }
         }
 
@@ -60,10 +61,11 @@ namespace Project_PCS
             if (tblCust.SelectedIndex != -1)
             {
                 DataRow dr = db.Tables[0].Rows[tblCust.SelectedIndex];
-                tbID.Text = dr["ID_CUSTOMER"].ToString();
-                tbNama1.Text = dr["NAMA_CUSTOMER"].ToString();
-                tbAlamat.Text = dr["ALAMAT_CUSTOMER"].ToString();
+                tbID.Text = dr["ID"].ToString();
+                tbNama1.Text = dr["NAMA"].ToString();
+                tbAlamat.Text = dr["ALAMAT"].ToString();
                 tbPoin.Text = dr["POIN"].ToString();
+                tbnotelp.Text = dr["NO TELP"].ToString();
                 string stat = dr["STATUS"].ToString();
                 if (stat == "0")
                 {
@@ -74,7 +76,7 @@ namespace Project_PCS
                     cbaktif.IsChecked = true;
                 }
 
-                string jenis = dr["JK"].ToString();
+                string jenis = dr["JENIS KELAMIN"].ToString();
 
                 if (jenis == "L")
                 {
@@ -110,33 +112,24 @@ namespace Project_PCS
                 {
                     stat = "1";
                 }
-                autogen();
-                try
+                //autogen();
+                MessageBoxResult result = MessageBox.Show("Nama: " + nama + "\n" + "JK: " + jenis + "\n" + "Alamat : " + alamat + "\n" + "No telp: " + notelp + "\n" + "Poin: " + poin + "\n" + "Status: " + stat + "\n" + "Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
-                    MessageBoxResult result = MessageBox.Show("Nama: " + nama + "\n" + "JK: " + jenis + "\n" + "Alamat : " + alamat + "\n" + "No telp: " + notelp + "\n" + "Poin: " + poin + "\n" + "Status: " + stat + "\n" + "Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        string q = $"insert into customer (ID_CUSTOMER,NAMA_CUSTOMER,JK," +
-                             $"ALAMAT_CUSTOMER,NO_TELP,POIN,AKTIF) values" +
-                            $"('{id_cust}','{nama}','{jenis}','{alamat}','{notelp}',{poin},'{stat}')";
-                        OracleCommand cmd = new OracleCommand(q, con);
-                        cmd.ExecuteNonQuery();
-                    }
+                    string q = $"insert into customer (ID_CUSTOMER,NAMA_CUSTOMER,JK," +
+                            $"ALAMAT_CUSTOMER,NO_TELP,POIN,STATUS) values" +
+                        $"('{id_cust}','{nama}','{jenis}','{alamat}','{notelp}',{poin},'{stat}')";
+                    OracleCommand cmd = new OracleCommand(q, con);
+                    cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
-                {
-                    //Console.WriteLine(ex.StackTrace);
-                    //MessageBox.Show("EROR");
-                    MessageBox.Show("Gagal karena " + ex.Message);
-
-                }
+                
                 con.Close();
                 show();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No telp harus angka");
+                MessageBox.Show(ex.Message);
             }
 
 
@@ -177,7 +170,7 @@ namespace Project_PCS
                     stat = "1";
                 }
                 string update = $"UPDATE customer SET NAMA_CUSTOMER = '{nama}'" +
-                $", ALAMAT_CUSTOMER ='{alamat}' , JK = '{jenis}', POIN = {poin}, AKTIF = '{stat}', no_telp ='{notelp}'  where id_customer = '{id}'";
+                $", ALAMAT_CUSTOMER ='{alamat}' , JK = '{jenis}', POIN = {poin}, STATUS = '{stat}', no_telp ='{notelp}'  where id_customer = '{id}'";
 
                 OracleCommand cmd = new OracleCommand(update, con);
                 cmd.ExecuteNonQuery();
@@ -190,7 +183,7 @@ namespace Project_PCS
             {
                 con.Close();
                 Console.WriteLine(ex.StackTrace);
-                MessageBox.Show("Gagal");
+                MessageBox.Show(ex.Message);
             }
             show();
         }

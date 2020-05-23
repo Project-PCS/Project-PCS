@@ -123,21 +123,21 @@ ID_BARANG_MENARIK REFERENCES BARANG_MENARIK(ID_BARANG_MENARIK)
 
 --insert into
 
-INSERT INTO CUSTOMER VALUES('CUS001','Alexander Widodo','L','Jl. Dharmausada Indah Timur IV/105','123123',20,'1');
-INSERT INTO CUSTOMER VALUES('CUS002','Fitri Nabilla','P','Jl. Ngagel Jaya Selatan 156','123123',10,'1');
-INSERT INTO CUSTOMER VALUES('CUS003','Billy Saputra','L','Galaxy Bumi Permai I Blok B-5','123123',5,'1');
-INSERT INTO CUSTOMER VALUES('CUS004','Carolina Kosasih','P','Regency 21 blok H-50','123123',12,'1');
-INSERT INTO CUSTOMER VALUES('CUS005','Jesselyn Wijaya','P','Puri Galaxy Bamboo Lakes Blok C-7','123123',7,'1');
-INSERT INTO CUSTOMER VALUES('CUS006','Andreas Gunawan','L','Jl. Klampis Anom No.48','123123',35,'1');
-INSERT INTO CUSTOMER VALUES('CUS007','Vicky Yuwono','L','Jl. Kertajaya No.222','123123',8,'1');
-INSERT INTO CUSTOMER VALUES('CUS008','Michelle Hadi','P','Dharmausada Indah Utara V/65','123123',90,'1');
-INSERT INTO CUSTOMER VALUES('CUS009','Olivia Cahya','P','Jl. Arief Rahman Hakim no 145-146','123123',105,'1');
-INSERT INTO CUSTOMER VALUES('CUS010','Cynthia Dewi','P','Jl. Raya Laguna KJW Putih Tambak No.32','123123',220,'1');
-INSERT INTO CUSTOMER VALUES('CUS011','Jason Paulino','L','Jl. Embong Sawo No.22','123123',200,'1');
-INSERT INTO CUSTOMER VALUES('CUS012','Felicia Yuana','P','Jl. Walikota Mustajab No.50','123123',92,'1');
-INSERT INTO CUSTOMER VALUES('CUS013','Gabriella Tanoyo','P','Jl. Mleto No.42 A','123123',43,'1');
-INSERT INTO CUSTOMER VALUES('CUS014','Liliana Betty','P',' Jl. Kapasari No.97-101','123123',80,'1');
-INSERT INTO CUSTOMER VALUES('CUS015','Mega Tan','P','Jl. Tumapel No.78','123123',20,'1');
+INSERT INTO CUSTOMER VALUES('CUS001','Alexander Widodo','L','Jl. Dharmausada Indah Timur IV/105','081333168889',20,'1');
+INSERT INTO CUSTOMER VALUES('CUS002','Fitri Nabilla','P','Jl. Ngagel Jaya Selatan 156','08112312367',10,'1');
+INSERT INTO CUSTOMER VALUES('CUS003','Billy Saputra','L','Galaxy Bumi Permai I Blok B-5','082364363689',5,'1');
+INSERT INTO CUSTOMER VALUES('CUS004','Carolina Kosasih','P','Regency 21 blok H-50','03171525088',12,'1');
+INSERT INTO CUSTOMER VALUES('CUS005','Jesselyn Wijaya','P','Puri Galaxy Bamboo Lakes Blok C-7','081706900878',7,'1');
+INSERT INTO CUSTOMER VALUES('CUS006','Andreas Gunawan','L','Jl. Klampis Anom No.48','04159978947',35,'1');
+INSERT INTO CUSTOMER VALUES('CUS007','Vicky Yuwono','L','Jl. Kertajaya No.222','0853218889',8,'1');
+INSERT INTO CUSTOMER VALUES('CUS008','Michelle Hadi','P','Dharmausada Indah Utara V/65','085123789372',90,'1');
+INSERT INTO CUSTOMER VALUES('CUS009','Olivia Cahya','P','Jl. Arief Rahman Hakim no 145-146','03178936829',105,'1');
+INSERT INTO CUSTOMER VALUES('CUS010','Cynthia Dewi','P','Jl. Raya Laguna KJW Putih Tambak No.32','081666677779',220,'1');
+INSERT INTO CUSTOMER VALUES('CUS011','Jason Paulino','L','Jl. Embong Sawo No.22','062887862829',200,'1');
+INSERT INTO CUSTOMER VALUES('CUS012','Felicia Yuana','P','Jl. Walikota Mustajab No.50','085777783930',92,'1');
+INSERT INTO CUSTOMER VALUES('CUS013','Gabriella Tanoyo','P','Jl. Mleto No.42 A','081537392829',43,'1');
+INSERT INTO CUSTOMER VALUES('CUS014','Liliana Betty','P',' Jl. Kapasari No.97-101','08263738678',80,'1');
+INSERT INTO CUSTOMER VALUES('CUS015','Mega Tan','P','Jl. Tumapel No.78','082738392728',20,'1');
 
 INSERT INTO PEGAWAI VALUES('PEG01','Ani','W','08170388889','Jl mawar no 2','Pagi',1);
 INSERT INTO PEGAWAI VALUES('PEG02','Fiko','P','081200385889','Jl duren no 11','Pagi',1);
@@ -519,19 +519,17 @@ id varchar2(5);
 notelp number;
 error_sama exception;
 begin
+	SELECT :new.no_telp INTO notelp FROM DUAL;
 	if inserting then
 		id := autogenCustomer();
 		:new.id_customer:=id;	
+
+		for i in(
+        select no_telp from customer where :old.no_telp=:new.no_telp
+		)loop
+			raise error_sama;
+    	end loop;
 	end if;
-
-	SELECT :new.no_telp INTO notelp FROM DUAL;
-	
-	for i in(
-        select no_telp from customer where no_telp=:new.no_telp
-    )loop
-        raise error_sama;
-    end loop;
-
 	exception 
 		when error_sama then
 			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
@@ -547,19 +545,16 @@ id varchar2(5);
 notelp number;
 error_sama exception;
 begin
+	SELECT :new.no_telp INTO notelp FROM DUAL;
 	if inserting then
 		id := autogenPegawai();
 		:new.id_pegawai:=id;	
-	end if;
-
-	SELECT :new.no_telp INTO notelp FROM DUAL;
-
-	for i in(
+		for i in(
         select no_telp from pegawai where no_telp=:new.no_telp
-    )loop
-        raise error_sama;
-    end loop;
-
+		)loop
+			raise error_sama;
+    	end loop;
+	end if;
 	exception 
 		when error_sama then
 			raise_application_error(-20001,'Nomor telpon sudah terdaftar');

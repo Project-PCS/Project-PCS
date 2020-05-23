@@ -274,7 +274,6 @@ C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MainWin
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBarang.g.cs
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Kategori.g.cs
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Supplier.g.cs
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.g.cs
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\peg.g.cs
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PegawaiHome.g.cs
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PendaftaranMember.g.cs
@@ -293,7 +292,6 @@ C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MainWin
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBarang.baml
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Kategori.baml
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Master_Supplier.baml
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.baml
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\peg.baml
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PegawaiHome.baml
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\PendaftaranMember.baml
@@ -316,3 +314,7 @@ C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Materia
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.baml
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml

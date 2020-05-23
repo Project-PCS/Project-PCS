@@ -54,9 +54,12 @@ namespace Project_PCS
                 //Console.WriteLine(ex.StackTrace);
                 //MessageBox.Show("EROR");
                 MessageBox.Show("Gagal karena " + ex.Message);
-
-
             }
+
+            tbID.Text = "";
+            tbNama1.Text = "";
+            tbAlamat.Text = "";
+            tbnotelp.Text = "";
         }
 
         private void tblpeg_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -137,7 +140,7 @@ namespace Project_PCS
             {
                 shift = "Malam";
             }
-            autogen();
+            //autogen();
             try
             {
                 MessageBoxResult result = MessageBox.Show("Nama: " + nama + "\n" + "JK: " + jk + "\n" + "No telp : " + notelp + "\n" + "Alamat: " + alamat  +"\n" + "Shift: " + shift+  "\n" + "Status: " + stat + "\n" + "Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
@@ -161,17 +164,10 @@ namespace Project_PCS
             show();
 
 
-}
-        string id_peg;
-        public void autogen()
-        {
-            //con.Open();
-            string query = "SELECT LPAD(NVL(MAX(SUBSTR(id_pegawai, -2, 2)) + 1,1),2,'0') AS \"COUNT\" FROM pegawai";
-            OracleCommand cmd = new OracleCommand(query, con);
-            string ctr = cmd.ExecuteScalar().ToString();
-            id_peg = "PEG" + ctr;
-            //con.Close();
         }
+
+        string id_peg;
+  
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {

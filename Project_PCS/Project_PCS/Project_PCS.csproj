@@ -80,6 +80,12 @@
     <Compile Include="MasterBarang.xaml.cs">
       <DependentUpon>MasterBarang.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MasterBrgMenarik.xaml.cs">
+      <DependentUpon>MasterBrgMenarik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterReport.xaml.cs">
+      <DependentUpon>MasterReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Master_Kategori.xaml.cs">
       <DependentUpon>Master_Kategori.xaml</DependentUpon>
     </Compile>
@@ -91,9 +97,6 @@
     </Compile>
     <Compile Include="cust.xaml.cs">
       <DependentUpon>cust.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MenuReport.xaml.cs">
-      <DependentUpon>MenuReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="peg.xaml.cs">
       <DependentUpon>peg.xaml</DependentUpon>
@@ -117,6 +120,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportJual.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportTukar.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportTukar.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TransaksiJual.xaml.cs">
@@ -158,15 +167,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MasterBrgMenarik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MasterReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Master_Kategori.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Master_Supplier.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MenuReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,7 +246,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportJual.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <EmbeddedResource Include="ReportTukar.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportTukar.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
