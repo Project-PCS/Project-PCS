@@ -206,8 +206,6 @@ D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\AxShockwaveFlas
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\ShockwaveFlashObjects.dll
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\stdole.dll
-D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.g.cs
-D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.baml
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
@@ -315,3 +313,14 @@ C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Materia
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.dll
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.g.cs
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.baml

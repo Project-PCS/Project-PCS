@@ -5,26 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MasterBrgMenarik" Height="450" Width="800">
+        Title="MasterBrgMenarik" Height="458" Width="808">
     <Grid>
         <Label Content="MASTER BARANG MENARIK" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="284,10,284,0"/>
-        <Button x:Name="btnTambah" Content="&gt;" HorizontalAlignment="Left" Margin="381,260,0,0" VerticalAlignment="Top" Width="30" Height="30"/>
-        <DataGrid HorizontalAlignment="Left" Height="209" Margin="10,200,0,0" VerticalAlignment="Top" Width="350"/>
-        <DataGrid HorizontalAlignment="Left" Height="209" Margin="432,200,0,0" VerticalAlignment="Top" Width="350"/>
-        <Button x:Name="btnHapus" Content="&lt;" HorizontalAlignment="Left" Margin="381,326,0,0" VerticalAlignment="Top" Width="30" Height="30"/>
-        <Canvas HorizontalAlignment="Left" Height="100" Margin="10,51,0,0" VerticalAlignment="Top" Width="261">
+        <Button x:Name="btnKembali" Content="Kembali" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="75" Click="BtnKembali_Click"/>
+        <DataGrid x:Name="dgBrgMenarik" HorizontalAlignment="Left" Height="363" Margin="9,46,0,0" VerticalAlignment="Top" Width="489" SelectedCellsChanged="DgBrgMenarik_SelectedCellsChanged"/>
+        <Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="363" Margin="503,46,0,0" VerticalAlignment="Top" Width="279">
             <Canvas.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="White"/>
-                    <GradientStop Color="#FFD6D6D6" Offset="1"/>
+                    <GradientStop Color="#FFA5A5A5" Offset="1"/>
                 </LinearGradientBrush>
             </Canvas.Background>
-            <Label Content="Nama Customer:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="6" Canvas.Top="38"/>
-            <TextBox x:Name="tbNamaCust" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Canvas.Left="110" Canvas.Top="39"/>
-            <Label Content="Kode Customer:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="11" Canvas.Top="9"/>
-            <Label Content="Jumlah Poin:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29" Canvas.Top="64"/>
-            <TextBox x:Name="tbKodeCust" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Canvas.Left="110" Canvas.Top="12"/>
-            <TextBox x:Name="tbPoin" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" Canvas.Left="110" Canvas.Top="67"/>
+            <TextBox x:Name="tbJmlBarang" Height="23" Canvas.Left="137" TextWrapping="Wrap" Canvas.Top="208" Width="133" PreviewTextInput="TbJmlBarang_PreviewTextInput" MaxLength="2"/>
+            <Label Content="ID Barang Menarik" Canvas.Left="10" Canvas.Top="10"/>
+            <Label Content="ID Barang" Canvas.Left="10" Canvas.Top="108"/>
+            <Label Content="Jumlah Barang" Canvas.Left="10" Canvas.Top="204"/>
+            <Label x:Name="labIDBrgMenarik" Content="-" Canvas.Left="137" Canvas.Top="10" Width="55"/>
+            <TextBox x:Name="tbJmlPoin" Height="23" Canvas.Left="137" TextWrapping="Wrap" Canvas.Top="236" Width="133" PreviewTextInput="TbJmlPoin_PreviewTextInput" MaxLength="3"/>
+            <Label Content="Jumlah Poin" Canvas.Left="10" Canvas.Top="232"/>
+            <CheckBox x:Name="cbBerlaku" Content="Berlaku" Canvas.Left="10" Canvas.Top="263"/>
+            <Label Content="Cari ID/Nama Barang" Canvas.Left="10" Canvas.Top="50"/>
+            <TextBox x:Name="tbCari" Height="23" Canvas.Left="137" TextWrapping="Wrap" Canvas.Top="54" Width="133" KeyUp="TbCari_KeyUp"/>
+            <Label Content="Nama Barang" Canvas.Left="10" Canvas.Top="134"/>
+            <Label x:Name="labIDBrg" Content="-" Canvas.Left="137" Canvas.Top="108" Width="133"/>
+            <Label x:Name="labNamaBrg" Content="-" Canvas.Left="137" Canvas.Top="134" Width="133"/>
+            <Label Content="Harga Eceran" Canvas.Left="10" Canvas.Top="160"/>
+            <Label x:Name="labHarga" Content="0" Canvas.Left="137" Canvas.Top="160" Width="133"/>
+            <Label Content="Kategori" Canvas.Left="10" Canvas.Top="82"/>
+            <Label x:Name="labKategori" Content="-" Canvas.Left="137" Canvas.Top="82" Width="133"/>
+            <Button x:Name="btnTambah" Content="Tambah" Canvas.Left="10" Canvas.Top="301" Width="122" Height="35" Click="BtnTambah_Click"/>
+            <Button x:Name="btnUbah" Content="Edit" Canvas.Left="137" Canvas.Top="301" Width="132" Height="35" Click="BtnUbah_Click"/>
         </Canvas>
     </Grid>
 </Window>

@@ -43,6 +43,18 @@ namespace Project_PCS
             labPoin.Content = poin.ToString();
         }
 
+        bool cekDataGrid(string idbarang)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (idbarang == dt.Rows[i][0].ToString())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public TransaksiJual(string ds)
         {
             InitializeComponent();
@@ -64,6 +76,7 @@ namespace Project_PCS
             dt.Columns.Add("Harga", typeof(Int64));
             dt.Columns.Add("Subtotal", typeof(Int64));
 
+            cCust.IsEnabled = true;
             cBarang.IsEnabled = false;
             cBayar.IsEnabled = false;
             
@@ -134,6 +147,7 @@ namespace Project_PCS
                     {
                         MessageBox.Show("Stok tidak cukup!");
                         tbJumlah.Text = "";
+                        con.Close();
                     }
                     else
                     {
@@ -141,6 +155,7 @@ namespace Project_PCS
                         drow[0] = dr.GetString(0);
                         drow[1] = dr.GetString(1);
                         drow[2] = tbJumlah.Text;
+                        
                         if (Convert.ToInt32(tbJumlah.Text) < dr.GetInt64(9))
                         {
                             drow[3] = dr.GetInt64(2);
@@ -152,6 +167,7 @@ namespace Project_PCS
                         drow[4] = Convert.ToInt64(drow[3].ToString()) * Convert.ToInt64(drow[2].ToString());
                         dr.Close();
                         dt.Rows.Add(drow);
+                        
                         con.Close();
                         labIDBrg.Content = "-";
                         labNamaBrg.Content = "-";
@@ -183,11 +199,52 @@ namespace Project_PCS
             {
                 btnEnter.Focus();
             }
+            else {
+                if (tbCariCust.Text != "")
+                {
+                    try
+                    {
+                        con.Open();
+                        labIDCust.Content = "";
+                        labNamaCust.Content = "";
+                        qry = $"select id_customer, nama_customer, poin from customer where upper(nama_customer) like '%{tbCariCust.Text.ToUpper()}%' or upper(id_customer) like '%{tbCariCust.Text.ToUpper()}%' and rownum = 1";
+                        OracleCommand cmd = new OracleCommand(qry, con);
+                        dr = cmd.ExecuteReader();
+                        dr.Read();
+                        labIDCust.Content = dr.GetString(0);
+                        labNamaCust.Content = dr.GetString(1);
+                        poinAwal = dr.GetInt32(2);
+                        dr.Close();
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        labIDCust.Content = "-";
+                        labNamaCust.Content = "-";
+                    }
+                }
+                else
+                {
+                    labIDCust.Content = "-";
+                    labNamaCust.Content = "-";
+                }
+            }
         }
 
         private void DgJual_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             idxtabel = dgJual.Items.IndexOf(dgJual.CurrentItem);
+        }
+
+        private void TbBayar_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                kembali = Convert.ToInt64(tbBayar.Text) - total;
+                labKembali.Content = kembali.ToString();
+                btnSelesai.Focus();
+            }
         }
 
         private void BtnSelesai_Click(object sender, RoutedEventArgs e)
@@ -217,8 +274,6 @@ namespace Project_PCS
                     cmd.Parameters.Add("qty", OracleDbType.Int32).Value = Convert.ToInt32(dt.Rows[i][2].ToString());
                     cmd.Parameters.Add("harga", OracleDbType.Long).Value = Convert.ToInt64(dt.Rows[i][3].ToString());
                     cmd.ExecuteNonQuery();
-
-                    //qry = "update barang set jum_barang="
                 }
 
                 poin += poinAwal;
@@ -227,11 +282,21 @@ namespace Project_PCS
 
                 trans.Commit();
                 dt.Rows.Clear();
+                dt = new DataTable();
                 con.Close();
 
                 PoinHarga();
                 idcust = "";
                 kembali = 0;
+                labNoNota.Content = "-";
+                labKembali.Content = "0";
+                tbBayar.Text = "";
+                labIDCust.Content = "-";
+                labNamaCust.Content = "-";
+
+                cCust.IsEnabled = true;
+                cBarang.IsEnabled = false;
+                cBayar.IsEnabled = false;
 
             }
             catch (Exception ex)
@@ -239,16 +304,6 @@ namespace Project_PCS
                 MessageBox.Show(ex.Message);
                 trans.Rollback();
                 con.Close();
-            }
-        }
-
-        private void TbBayar_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                kembali = Convert.ToInt64(tbBayar.Text) - total;
-                labKembali.Content = kembali.ToString();
-                btnSelesai.Focus();
             }
         }
 
@@ -298,35 +353,7 @@ namespace Project_PCS
 
         private void TbCariCust_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-            if (tbCariCust.Text != "")
-            {
-                try
-                {
-                    con.Open();
-                    labIDCust.Content = "";
-                    labNamaCust.Content = "";
-                    qry = $"select id_customer, nama_customer, poin from customer where upper(nama_customer) like '%{tbCariCust.Text.ToUpper()}%' or upper(id_customer) like '%{tbCariCust.Text.ToUpper()}%' and rownum = 1";
-                    OracleCommand cmd = new OracleCommand(qry, con);
-                    dr = cmd.ExecuteReader();
-                    dr.Read();
-                    labIDCust.Content = dr.GetString(0);
-                    labNamaCust.Content = dr.GetString(1);
-                    poinAwal = dr.GetInt32(2);
-                    dr.Close();
-                    con.Close();
-                }
-                catch (Exception ex)
-                {
-                    con.Close();
-                    labIDCust.Content = "-";
-                    labNamaCust.Content = "-";
-                }
-            }
-            else
-            {
-                labIDCust.Content = "-";
-                labNamaCust.Content = "-";
-            }
+            
         }
         
         private void TbJumlah_PreviewTextInput(object sender, TextCompositionEventArgs e)
