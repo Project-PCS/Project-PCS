@@ -243,9 +243,7 @@ C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\AxS
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\stdole.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.g.cs
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.g.cs
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.baml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.baml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.CopyComplete
 C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Project_PCS.exe.config
@@ -322,3 +320,7 @@ C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Mat
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.g.cs
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
