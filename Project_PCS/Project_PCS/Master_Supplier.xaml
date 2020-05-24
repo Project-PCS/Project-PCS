@@ -18,7 +18,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="60,315,0,0" TextWrapping="Wrap" Text="Alamat" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
         <TextBox x:Name="tbalamat" HorizontalAlignment="Left" Height="23" Margin="130,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="62,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"><Run Text="No Te"/><Run Text="l"/><Run Text="epon"/></TextBlock>
-        <TextBox x:Name="tb_notelepon" HorizontalAlignment="Left" Height="23" Margin="132,352,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_notelepon" HorizontalAlignment="Left" Height="23" Margin="132,352,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" MaxLength="13" KeyDown="Tb_notelepon_KeyDown" KeyUp="Tb_notelepon_KeyUp" TextChanged="Tb_notelepon_TextChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="368,24,0,0" TextWrapping="Wrap" Text="Supplier" VerticalAlignment="Top"/>
         <Button x:Name="btn_Back" Content="Back" HorizontalAlignment="Left" Margin="20,18,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.378,0.15" Click="Btn_Back_Click"/>
         <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="22" Margin="520,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
