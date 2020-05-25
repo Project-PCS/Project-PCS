@@ -298,12 +298,6 @@ namespace Project_PCS {
             this.tbCariCust = ((System.Windows.Controls.TextBox)(target));
             
             #line 31 "..\..\TransaksiJual.xaml"
-            this.tbCariCust.PreviewKeyUp += new System.Windows.Input.KeyEventHandler(this.TbCariCust_PreviewKeyUp);
-            
-            #line default
-            #line hidden
-            
-            #line 31 "..\..\TransaksiJual.xaml"
             this.tbCariCust.KeyUp += new System.Windows.Input.KeyEventHandler(this.TbCariCust_KeyUp);
             
             #line default
@@ -343,7 +337,7 @@ namespace Project_PCS {
             #line hidden
             
             #line 40 "..\..\TransaksiJual.xaml"
-            this.tbBayar.PreviewKeyUp += new System.Windows.Input.KeyEventHandler(this.TbBayar_PreviewKeyUp);
+            this.tbBayar.KeyUp += new System.Windows.Input.KeyEventHandler(this.TbBayar_KeyUp);
             
             #line default
             #line hidden
