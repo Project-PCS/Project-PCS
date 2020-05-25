@@ -10,7 +10,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="276,149,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="278,193,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
         <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="23" Margin="378,148,0,0" TextWrapping="Wrap" Text="project" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tb_pass" HorizontalAlignment="Left" Height="23" Margin="382,193,0,0" TextWrapping="Wrap" Text="123" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_pass" HorizontalAlignment="Left" Height="23" Margin="378,193,0,0" TextWrapping="Wrap" Text="123" VerticalAlignment="Top" Width="124"/>
         <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="346,271,0,0" VerticalAlignment="Top" Width="75" Click="BtnLogin_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="274,114,0,0" TextWrapping="Wrap" Text="Data Source" VerticalAlignment="Top"/>
         <TextBox x:Name="tb_datasource" HorizontalAlignment="Left" Height="23" Margin="378,112,0,0" TextWrapping="Wrap" Text="orcl" VerticalAlignment="Top" Width="120"/>
