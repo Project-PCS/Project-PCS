@@ -97,7 +97,7 @@ namespace Project_PCS
                 tempjum = Convert.ToInt32(cmd.ExecuteScalar());
                 tempjum = tempjum + Convert.ToInt32(dt.Rows[i][2].ToString());
 
-                query = "update barang set jum_barang = " + tempjum + "where id_barang ='" + dt.Rows[i][1].ToString() + "'";
+                query = $"update barang set jum_barang = {tempjum} where id_barang ='{dt.Rows[i][1].ToString()}'";
                 cmd = new OracleCommand(query, con);
                 cmd.ExecuteNonQuery();
             }

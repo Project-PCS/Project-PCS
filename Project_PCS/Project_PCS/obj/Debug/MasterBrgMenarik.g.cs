@@ -44,31 +44,47 @@ namespace Project_PCS {
         
         #line 11 "..\..\MasterBrgMenarik.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button btnTambah;
+        internal System.Windows.Controls.Button btnKembali;
         
         #line default
         #line hidden
         
         
-        #line 14 "..\..\MasterBrgMenarik.xaml"
+        #line 12 "..\..\MasterBrgMenarik.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button btnHapus;
+        internal System.Windows.Controls.DataGrid dgBrgMenarik;
         
         #line default
         #line hidden
         
         
-        #line 23 "..\..\MasterBrgMenarik.xaml"
+        #line 13 "..\..\MasterBrgMenarik.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox tbNamaCust;
+        internal System.Windows.Controls.Canvas canvas1;
         
         #line default
         #line hidden
         
         
-        #line 26 "..\..\MasterBrgMenarik.xaml"
+        #line 20 "..\..\MasterBrgMenarik.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox tbKodeCust;
+        internal System.Windows.Controls.TextBox tbJmlBarang;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 24 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label labIDBrgMenarik;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 25 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox tbJmlPoin;
         
         #line default
         #line hidden
@@ -76,7 +92,63 @@ namespace Project_PCS {
         
         #line 27 "..\..\MasterBrgMenarik.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox tbPoin;
+        internal System.Windows.Controls.CheckBox cbBerlaku;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 29 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox tbCari;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 31 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label labIDBrg;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 32 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label labNamaBrg;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 34 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label labHarga;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 36 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label labKategori;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 37 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnTambah;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 38 "..\..\MasterBrgMenarik.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnUbah;
         
         #line default
         #line hidden
@@ -112,19 +184,88 @@ namespace Project_PCS {
             switch (connectionId)
             {
             case 1:
-            this.btnTambah = ((System.Windows.Controls.Button)(target));
+            this.btnKembali = ((System.Windows.Controls.Button)(target));
+            
+            #line 11 "..\..\MasterBrgMenarik.xaml"
+            this.btnKembali.Click += new System.Windows.RoutedEventHandler(this.BtnKembali_Click);
+            
+            #line default
+            #line hidden
             return;
             case 2:
-            this.btnHapus = ((System.Windows.Controls.Button)(target));
+            this.dgBrgMenarik = ((System.Windows.Controls.DataGrid)(target));
+            
+            #line 12 "..\..\MasterBrgMenarik.xaml"
+            this.dgBrgMenarik.SelectedCellsChanged += new System.Windows.Controls.SelectedCellsChangedEventHandler(this.DgBrgMenarik_SelectedCellsChanged);
+            
+            #line default
+            #line hidden
             return;
             case 3:
-            this.tbNamaCust = ((System.Windows.Controls.TextBox)(target));
+            this.canvas1 = ((System.Windows.Controls.Canvas)(target));
             return;
             case 4:
-            this.tbKodeCust = ((System.Windows.Controls.TextBox)(target));
+            this.tbJmlBarang = ((System.Windows.Controls.TextBox)(target));
+            
+            #line 20 "..\..\MasterBrgMenarik.xaml"
+            this.tbJmlBarang.PreviewTextInput += new System.Windows.Input.TextCompositionEventHandler(this.TbJmlBarang_PreviewTextInput);
+            
+            #line default
+            #line hidden
             return;
             case 5:
-            this.tbPoin = ((System.Windows.Controls.TextBox)(target));
+            this.labIDBrgMenarik = ((System.Windows.Controls.Label)(target));
+            return;
+            case 6:
+            this.tbJmlPoin = ((System.Windows.Controls.TextBox)(target));
+            
+            #line 25 "..\..\MasterBrgMenarik.xaml"
+            this.tbJmlPoin.PreviewTextInput += new System.Windows.Input.TextCompositionEventHandler(this.TbJmlPoin_PreviewTextInput);
+            
+            #line default
+            #line hidden
+            return;
+            case 7:
+            this.cbBerlaku = ((System.Windows.Controls.CheckBox)(target));
+            return;
+            case 8:
+            this.tbCari = ((System.Windows.Controls.TextBox)(target));
+            
+            #line 29 "..\..\MasterBrgMenarik.xaml"
+            this.tbCari.KeyUp += new System.Windows.Input.KeyEventHandler(this.TbCari_KeyUp);
+            
+            #line default
+            #line hidden
+            return;
+            case 9:
+            this.labIDBrg = ((System.Windows.Controls.Label)(target));
+            return;
+            case 10:
+            this.labNamaBrg = ((System.Windows.Controls.Label)(target));
+            return;
+            case 11:
+            this.labHarga = ((System.Windows.Controls.Label)(target));
+            return;
+            case 12:
+            this.labKategori = ((System.Windows.Controls.Label)(target));
+            return;
+            case 13:
+            this.btnTambah = ((System.Windows.Controls.Button)(target));
+            
+            #line 37 "..\..\MasterBrgMenarik.xaml"
+            this.btnTambah.Click += new System.Windows.RoutedEventHandler(this.BtnTambah_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 14:
+            this.btnUbah = ((System.Windows.Controls.Button)(target));
+            
+            #line 38 "..\..\MasterBrgMenarik.xaml"
+            this.btnUbah.Click += new System.Windows.RoutedEventHandler(this.BtnUbah_Click);
+            
+            #line default
+            #line hidden
             return;
             }
             this._contentLoaded = true;

@@ -120,6 +120,12 @@ namespace Project_PCS {
             return;
             case 3:
             this.tbTahun = ((System.Windows.Controls.TextBox)(target));
+            
+            #line 15 "..\..\MasterReport.xaml"
+            this.tbTahun.PreviewTextInput += new System.Windows.Input.TextCompositionEventHandler(this.TbTahun_PreviewTextInput);
+            
+            #line default
+            #line hidden
             return;
             case 4:
             this.btnCreate = ((System.Windows.Controls.Button)(target));

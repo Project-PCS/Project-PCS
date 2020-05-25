@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace Project_PCS
 {
@@ -68,7 +69,7 @@ namespace Project_PCS
                 {
                     ReportJual rjual = new ReportJual();
                     rjual.SetDatabaseLogon(mw.tb_username.Text, mw.tb_pass.Text, mw.tb_datasource.Text, "");
-                    MessageBox.Show("user: " + mw.tb_username.Text + "\n pass: " + mw.tb_pass.Text + "\n ds: " + mw.tb_datasource.Text);
+                    MessageBox.Show("user: " + mw.user + "\n pass: " + mw.pass + "\n ds: " + mw.data);
                     rjual.SetParameterValue("bulan", cbBulan.SelectedValue.ToString().ToUpper());
                     rjual.SetParameterValue("tahun", tahun);
                     rjual.SetParameterValue("BlnTh", strParam);
@@ -95,6 +96,12 @@ namespace Project_PCS
             cbJenis.SelectedIndex = -1;
             cbBulan.SelectedIndex = -1;
             tbTahun.Text = "";
+        }
+
+        private void TbTahun_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex reg = new Regex("[^0-9]");
+            e.Handled = reg.IsMatch(e.Text);
         }
     }
 }
