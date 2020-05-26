@@ -79,7 +79,6 @@ namespace Project_PCS
                 {
                     Pria.IsChecked = true;
                 }
-                MessageBox.Show(jk);
                 tbAlamat.Text = dr["ALAMAT"].ToString();
                 tbnotelp.Text = dr["NO_TELP"].ToString();
                 if (dr["STATUS"].ToString()=="1")

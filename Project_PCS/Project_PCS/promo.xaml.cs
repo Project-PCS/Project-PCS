@@ -39,11 +39,11 @@ namespace Project_PCS
         }
         public void show()
         {
+            con.Open();
             try
             {
-                con.Open();
                 string query = "SELECT id_promo as \"ID PROMO\", nama_promo as \"NAMA PROMO\", nama_barang as \"NAMA BARANG\", " +
-                    "potongan_harga as \"POTONGAN HARGA\", tanggal_promo as \"AWAL PROMO\", akhir_promo as \"AKHIR PROMO\"from promo p, barang b where p.id_barang = b.id_barang";
+                    "potongan_harga as \"POTONGAN HARGA\", tanggal_promo as \"AWAL PROMO\", akhir_promo as \"AKHIR PROMO\"from promo p, barang b where p.id_barang = b.id_barang order by 1";
                 OracleCommand cmd = new OracleCommand(query, con);
                 cmd.ExecuteReader();
                 OracleDataAdapter adapter = new OracleDataAdapter(cmd);
@@ -64,17 +64,16 @@ namespace Project_PCS
                 cbBarang.DisplayMemberPath = barang.Tables[0].Columns["nama_barang"].ToString();
                 cbBarang.SelectedValuePath = barang.Tables[0].Columns["nama_barang"].ToString();
 
-                con.Close();
             }
             catch (Exception ex)
             {
-                con.Close();
                 //Console.WriteLine(ex.StackTrace);
                 //MessageBox.Show("EROR");
                 MessageBox.Show("Gagal karena " + ex.Message);
 
 
             }
+            con.Close();
         }
 
         private void cbBarang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -92,10 +91,10 @@ namespace Project_PCS
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
+            con.Open();
             try
             {
                 long no = Convert.ToInt64(tbdisc.Text);
-                con.Open();
                 string id = tbID.Text;
                 string jenis = "";
                 if (diskon.IsChecked == true)
@@ -125,8 +124,6 @@ namespace Project_PCS
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Promo berhasil didaftarkan");
                 }
-                
-                con.Close();
                 show();
                 diskon.IsChecked = false;
                 promo1.IsChecked = false;
@@ -138,7 +135,7 @@ namespace Project_PCS
             {
                 MessageBox.Show(ex.Message);
             }
-            
+            con.Close();
         }
 
         string id_promo;
@@ -154,9 +151,9 @@ namespace Project_PCS
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            con.Open();
             try
             {
-                con.Open();
                 string jenis = "";
 
                 if (diskon.IsChecked == true)
@@ -185,15 +182,13 @@ namespace Project_PCS
                 cmd = new OracleCommand(update, con);
                 cmd.ExecuteNonQuery();
 
-
-                con.Close();
                 MessageBox.Show("Berhasil Update");
             }
             catch (Exception ex)
             {
-                con.Close();
                 MessageBox.Show(ex.Message);
             }
+            con.Close();
             show();
         }
 
