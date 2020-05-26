@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MasterBrgMenarik" Height="458" Width="808">
+        Title="MasterBrgMenarik" Height="458" Width="808" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="MASTER BARANG MENARIK" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="284,10,284,0"/>
-        <Button x:Name="btnKembali" Content="Kembali" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="75" Click="BtnKembali_Click"/>
-        <DataGrid x:Name="dgBrgMenarik" HorizontalAlignment="Left" Height="363" Margin="9,46,0,0" VerticalAlignment="Top" Width="489" SelectedCellsChanged="DgBrgMenarik_SelectedCellsChanged"/>
-        <Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="363" Margin="503,46,0,0" VerticalAlignment="Top" Width="279">
+        <Button x:Name="btnKembali" Content="Kembali" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="88" Click="BtnKembali_Click"/>
+        <DataGrid x:Name="dgBrgMenarik" HorizontalAlignment="Left" Height="355" Margin="9,54,0,0" VerticalAlignment="Top" Width="489" SelectedCellsChanged="DgBrgMenarik_SelectedCellsChanged"/>
+        <Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="353" Margin="503,54,0,0" VerticalAlignment="Top" Width="279">
             <Canvas.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="White"/>

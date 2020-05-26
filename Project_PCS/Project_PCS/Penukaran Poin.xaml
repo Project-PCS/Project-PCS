@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="Penukaran_Poin" Height="450" Width="800">
+        Title="Penukaran_Poin" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="btnBack" Content="Kembali" HorizontalAlignment="Left" Margin="29,38,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
+        <Button x:Name="btnBack" Content="Kembali" HorizontalAlignment="Left" Margin="29,38,0,0" VerticalAlignment="Top" Width="87" Click="btnBack_Click"/>
         <Label Content="Penukaran Poin" HorizontalAlignment="Left" Margin="258,26,0,0" VerticalAlignment="Top" FontFamily="Broadway" FontSize="24" Foreground="#FF001FFF"/>
-        <Label Content="ID Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,96,0,0"/>
+        <Label Content="ID Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,103,0,0"/>
         <TextBox x:Name="tbId" HorizontalAlignment="Left" Height="23" Margin="121,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnCari" Content="Cari" HorizontalAlignment="Left" Margin="258,100,0,0" VerticalAlignment="Top" Width="75" Click="btnCari_Click"/>
+        <Button x:Name="btnCari" Content="Cari" HorizontalAlignment="Left" Margin="270,100,0,0" VerticalAlignment="Top" Width="82" Click="btnCari_Click"/>
         <DataGrid x:Name="dgBarang" HorizontalAlignment="Left" Height="146" Margin="29,156,0,0" VerticalAlignment="Top" Width="323" IsReadOnly="True" MouseDoubleClick="dgBarang_MouseDoubleClick"/>
         <Label Content="Total Poin : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="568,96,0,0" Width="75"/>
         <Label x:Name="lbPoin" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="643,96,0,0" Width="75"/>
         <Label Content="ID Barang" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,319,0,0"/>
         <TextBox x:Name="tbIdBarang" HorizontalAlignment="Left" Height="23" Margin="121,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button x:Name="btnTambah" Content="Tambah" HorizontalAlignment="Left" Margin="258,323,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnTambah_Click"/>
+        <Button x:Name="btnTambah" Content="Tambah" HorizontalAlignment="Left" Margin="258,323,0,0" VerticalAlignment="Top" Width="94" IsEnabled="False" Click="btnTambah_Click"/>
         <DataGrid x:Name="dgList" HorizontalAlignment="Left" Height="146" Margin="395,156,0,0" VerticalAlignment="Top" Width="323" SelectedCellsChanged="dgList_SelectedCellsChanged"/>
         <Label Content="Total Poin yang diperlukan" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="395,317,0,0"/>
         <Label x:Name="poinreq" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="550,317,0,0"/>
         <Label x:Name="lbketerangan" Content=" " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="409,343,0,0"/>
-        <Button x:Name="btnTukar" Content="Tukar" HorizontalAlignment="Left" Margin="643,354,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnTukar_Click"/>
-        <Button x:Name="btnHapus" Content="Hapus" HorizontalAlignment="Left" Margin="643,320,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnHapus_Click"/>
+        <Button x:Name="btnTukar" Content="Tukar" HorizontalAlignment="Left" Margin="627,354,0,0" VerticalAlignment="Top" Width="91" IsEnabled="False" Click="btnTukar_Click"/>
+        <Button x:Name="btnHapus" Content="Hapus" HorizontalAlignment="Left" Margin="627,320,0,0" VerticalAlignment="Top" Width="91" IsEnabled="False" Click="btnHapus_Click"/>
 
     </Grid>
 </Window>

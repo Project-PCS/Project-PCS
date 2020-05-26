@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="admin" Height="450" Width="800">
+        Title="admin" Height="337" Width="408" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label Content="MASTER ADMIN" HorizontalAlignment="Left" Margin="204,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.346,0.285" Height="80" Width="379" FontSize="48"/>
-        <Button Content="Open" HorizontalAlignment="Left" Margin="349,254,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="cbPilihan" HorizontalAlignment="Left" Margin="328,193,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="mainmenu" Content="Menu Utama" HorizontalAlignment="Left" Margin="346,296,0,0" VerticalAlignment="Top" Width="78" Height="26" Click="mainmenu_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="MASTER ADMIN" HorizontalAlignment="Left" Margin="23,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.346,0.285" Height="80" Width="354" FontSize="48" Grid.ColumnSpan="2"/>
+        <Button Content="Open" HorizontalAlignment="Left" Margin="132,175,0,0" VerticalAlignment="Top" Width="136" Click="Button_Click" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cbPilihan" HorizontalAlignment="Left" Margin="117,111,0,0" VerticalAlignment="Top" Width="168" Grid.ColumnSpan="2" Height="28"/>
+        <Button x:Name="mainmenu" Content="Menu Utama" HorizontalAlignment="Left" Margin="132,228,0,0" VerticalAlignment="Top" Width="136" Height="32" Click="mainmenu_Click" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

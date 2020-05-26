@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        Title="Window1" Height="154.5" Width="321.5" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="admin" Content="Admin" HorizontalAlignment="Left" Margin="350,139,0,0" VerticalAlignment="Top" Width="96" Height="52" Click="admin_Click"/>
-        <Button x:Name="pegawai" Content="Pegawai" HorizontalAlignment="Left" Margin="350,236,0,0" VerticalAlignment="Top" Width="96" Height="52" Click="pegawai_Click"/>
+        <Button x:Name="admin" Content="ADMIN" HorizontalAlignment="Left" Margin="31,26,0,0" VerticalAlignment="Top" Width="104" Height="67" Click="admin_Click"/>
+        <Button x:Name="pegawai" Content="PEGAWAI" HorizontalAlignment="Left" Margin="178,26,0,0" VerticalAlignment="Top" Width="104" Height="67" Click="pegawai_Click"/>
 
     </Grid>
 </Window>

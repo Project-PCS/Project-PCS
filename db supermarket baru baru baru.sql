@@ -45,7 +45,7 @@ CREATE TABLE SUPPLIER(
 ID_SUPPLIER VARCHAR2(10) PRIMARY KEY,
 NAMA_SUPPLIER VARCHAR2(20) NOT NULL,
 ALAMAT_SUPPLIER VARCHAR2(50) NOT NULL,
-NOMOR_TELP NUMBER (13) NOT NULL,
+NOMOR_TELP VARCHAR2 (13) NOT NULL,
 STATUS VARCHAR2(3)
 );
 
@@ -430,6 +430,53 @@ begin
 end;
 /
 
+--AUTOGEN NO_NOTA JUAL
+create or replace function NewNotaJual
+return varchar2
+is
+	ctr varchar2(3);
+	idnota varchar2(7);
+begin
+	select lpad(count(*)+1, 3, 0) into ctr
+	from notajual_hdr;
+	
+	idnota := 'JUAL' || ctr;
+	return idnota;
+end;
+/
+
+--AUTOGEN ID BARANG MENARIK
+create or replace function NewBarangMenarik
+return varchar2
+is
+	ctr varchar2(3);
+	idbaru varchar2(7);
+begin
+	select lpad(count(*)+1, 3, 0) into ctr
+	from barang_menarik;
+	
+	idbaru := 'BM' || ctr;
+	return idbaru;
+end;
+/
+
+--PROCEDURE 
+--CEK NAMA BARANG
+create or replace procedure cekNamaBarang(nama_barang_param in varchar2)
+is
+    error_namabarang exception;
+begin
+ for i in(
+        select * from barang where nama_barang=nama_barang_param
+    )loop
+        raise error_namabarang;
+    end loop;
+ exception 
+  when error_namabarang then
+   raise_application_error(-20001,'Nama Barang Sama');
+end;
+/
+
 --TRIGGER
 --1
 create or replace trigger insertbarang
@@ -439,42 +486,31 @@ for each row
 declare
 id varchar2(5);
 error_harga exception;
-error_minbarang exception;
 error_grosir exception;
-error_namabarang exception;
 begin
-	
-	if inserting then
-		select 'B'||lpad(max(substr(id_barang,-3,3))+1,3,0) into id from barang;
-		:new.id_barang:=id;	
-	end if;
-	
-	if(:new.harga_eceran < :new.harga_grosir)then
-		raise error_harga;
-	end if;
-	if(:new.min_jum_barang > :new.jum_barang)then
-		raise error_minbarang;
-	end if;
-	if(:new.jum_min_grosir<12)then
-		raise error_grosir;
-	end if;
-	for i in(
-        select * from barang where nama_barang=:new.nama_barang
-    )loop
-        raise error_namabarang;
-    end loop;
-	
-	exception 
-		when error_harga then
-			raise_application_error(-20001,'Harga Eceran Harus Lebih Mahal Daripada Harga Grosir');
-		when error_minbarang then
-			raise_application_error(-20002,'Jumlah Barang Harus Lebih Banyak Daripada Minimal Jumlah Barang');
-		when error_grosir then
-		raise_application_error(-20003,'Jumlah Minimal Grosir Harus Lebih Dari 12');
-		when error_namabarang then
-		raise_application_error(-20004,'Nama Barang yang diinputkan Tidak Boleh Sama');
+ 
+ if inserting then
+  select 'B'||lpad(max(substr(id_barang,-3,3))+1,3,0) into id from barang;
+  :new.id_barang:=id; 
+  
+  cekNamaBarang(:new.nama_barang);
+ end if;
+ 
+ if(:new.harga_eceran < :new.harga_grosir)then
+  raise error_harga;
+ end if;
+ if(:new.jum_min_grosir<12)then
+  raise error_grosir;
+ end if;
+ 
+ exception 
+  when error_harga then
+   raise_application_error(-20001,'Harga Eceran Harus Lebih Mahal Daripada Harga Grosir');
+  when error_grosir then
+  raise_application_error(-20003,'Jumlah Minimal Grosir Harus Lebih Dari 12');
 end;
 /
+
 --2
 create or replace trigger insertPromo
 before insert or update
@@ -509,6 +545,7 @@ begin
 			raise_application_error(-20002,'Potongan melebihi harga barang');
 end;
 /
+
 --3
 create or replace trigger insertCustomer
 before insert or update
@@ -535,6 +572,7 @@ begin
 			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
 end;
 /
+
 --4
 create or replace trigger insertPegawai
 before insert or update
@@ -560,3 +598,25 @@ begin
 			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
 end;
 /
+
+--5
+create or replace trigger UpdateStok
+after insert on notajual_body
+for each row
+declare
+	stok number;
+	jml number;
+begin
+	jml := :new.qty;
+	
+	select jum_barang into stok
+	from barang
+	where id_barang = :new.id_barang;
+	
+	stok := stok - jml;
+	
+	update barang set jum_barang=stok where id_barang=:new.id_barang;
+end;
+/
+
+commit;

@@ -167,7 +167,12 @@ namespace Project_PCS
                         drow[4] = Convert.ToInt64(drow[3].ToString()) * Convert.ToInt64(drow[2].ToString());
                         dr.Close();
                         dt.Rows.Add(drow);
-                        
+
+                        //qry = $"select * from promo where id_barang = {drow[0]} and to_char(tanggal_promo, 'dd-MMM-yy') > {DateTime.Now.Date.ToString("dd-MMM-yy")} ";
+                        //cmd = new OracleCommand(qry, con);
+
+
+
                         con.Close();
                         labIDBrg.Content = "-";
                         labNamaBrg.Content = "-";

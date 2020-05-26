@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="217.833" Width="278" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="276,149,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="278,193,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
-        <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="23" Margin="378,148,0,0" TextWrapping="Wrap" Text="project" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tb_pass" HorizontalAlignment="Left" Height="23" Margin="382,193,0,0" TextWrapping="Wrap" Text="123" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="346,271,0,0" VerticalAlignment="Top" Width="75" Click="BtnLogin_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="274,114,0,0" TextWrapping="Wrap" Text="Data Source" VerticalAlignment="Top"/>
-        <TextBox x:Name="tb_datasource" HorizontalAlignment="Left" Height="23" Margin="378,112,0,0" TextWrapping="Wrap" Text="orcl" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="19,53,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="19,91,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="23" Margin="123,49,0,0" TextWrapping="Wrap" Text="project" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_pass" HorizontalAlignment="Left" Height="23" Margin="123,87,0,0" TextWrapping="Wrap" Text="123" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="72,137,0,0" VerticalAlignment="Top" Width="131" Click="BtnLogin_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="19,14,0,0" TextWrapping="Wrap" Text="Data Source" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_datasource" HorizontalAlignment="Left" Height="23" Margin="123,10,0,0" TextWrapping="Wrap" Text="orcl" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
