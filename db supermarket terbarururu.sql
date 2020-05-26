@@ -401,6 +401,7 @@ INSERT INTO TUKARPOIN_BODY VALUES('TP010','BM002');
 INSERT INTO TUKARPOIN_BODY VALUES('TP010','BM005');
 
 --FUNCTION
+
 --AUTOGEN ID PROMO
 create or replace function autogenPromo
 return varchar2
@@ -411,15 +412,17 @@ begin
 	return id;
 end;
 /
+--AUTOGEN CUSTOMER
 create or replace function autogenCustomer
 return varchar2
 is
 id varchar2(10);
 begin
-	select 'CUS'||LPAD(NVL(MAX(SUBSTR(id_customer, -2, 2)) + 1,1),2,'0') into id from customer;
+	select 'CUS'||LPAD(NVL(MAX(SUBSTR(id_customer, -2, 2)) + 1,1),3,'0') into id from customer;
 	return id;
 end;
 /
+--AUTOGEN PEGAWAI
 create or replace function autogenPegawai
 return varchar2
 is
@@ -477,6 +480,51 @@ begin
 end;
 /
 
+--CEK PROMO
+create or replace procedure cekPromo(pid_barang in varchar2, pawal in varchar2, pakhir in varchar2)
+is
+    error_exist exception;
+begin
+ for i in(
+        select * from promo where id_barang=pid_barang and tanggal_promo = pawal and akhir_promo = pakhir
+    )loop
+        raise error_exist;
+    end loop;
+ exception 
+  when error_exist then
+   raise_application_error(-20001,'Promo sudah terdaftar');
+end;
+/
+--CEK NO TELP CUST
+create or replace procedure cekNotelpCust(pno_telp in varchar2)
+is
+    error_exist exception;
+begin
+ for i in(
+        select * from customer where no_telp=pno_telp
+    )loop
+        raise error_exist;
+    end loop;
+ exception 
+  when error_exist then
+   raise_application_error(-20001,'No telp sudah terdaftar');
+end;
+/
+--CEK NO TELP PEGAWAI
+create or replace procedure cekNotelpPeg(pno_telp in varchar2)
+is
+    error_exist exception;
+begin
+ for i in(
+        select * from pegawai where no_telp=pno_telp
+    )loop
+        raise error_exist;
+    end loop;
+ exception 
+  when error_exist then
+   raise_application_error(-20001,'No telp sudah terdaftar');
+end;
+/
 --TRIGGER
 --1
 create or replace trigger insertbarang
@@ -524,6 +572,7 @@ begin
 	if inserting then
 		id := autogenPromo();
 		:new.id_promo:=id;	
+        cekPromo(:new.id_barang, :new.tanggal_promo, :new.akhir_promo);
 	end if;
 	
 	if(:new.akhir_promo < :new.tanggal_promo )then
@@ -545,7 +594,6 @@ begin
 			raise_application_error(-20002,'Potongan melebihi harga barang');
 end;
 /
-
 --3
 create or replace trigger insertCustomer
 before insert or update
@@ -553,26 +601,14 @@ on customer
 for each row
 declare
 id varchar2(5);
-notelp number;
-error_sama exception;
 begin
-	SELECT :new.no_telp INTO notelp FROM DUAL;
 	if inserting then
 		id := autogenCustomer();
 		:new.id_customer:=id;	
-
-		for i in(
-        select no_telp from customer where :old.no_telp=:new.no_telp
-		)loop
-			raise error_sama;
-    	end loop;
+		cekNotelpCust(:new.no_telp);
 	end if;
-	exception 
-		when error_sama then
-			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
 end;
 /
-
 --4
 create or replace trigger insertPegawai
 before insert or update
@@ -580,25 +616,14 @@ on pegawai
 for each row
 declare
 id varchar2(5);
-notelp number;
-error_sama exception;
 begin
-	SELECT :new.no_telp INTO notelp FROM DUAL;
 	if inserting then
 		id := autogenPegawai();
-		:new.id_pegawai:=id;	
-		for i in(
-        select no_telp from pegawai where no_telp=:new.no_telp
-		)loop
-			raise error_sama;
-    	end loop;
+		:new.id_pegawai:=id;		
+		cekNotelpPeg(:new.no_telp);
 	end if;
-	exception 
-		when error_sama then
-			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
 end;
 /
-
 --5
 create or replace trigger UpdateStok
 after insert on notajual_body
