@@ -68,7 +68,7 @@ namespace Project_PCS
                 if (cbJenis.SelectedIndex == 0)
                 {
                     ReportJual rjual = new ReportJual();
-                    rjual.SetDatabaseLogon(mw.tb_username.Text, mw.tb_pass.Text, mw.tb_datasource.Text, "");
+                    rjual.SetDatabaseLogon(mw.tb_username.Text, mw.tb_pass.Password, mw.tb_datasource.Text, "");
                     MessageBox.Show("user: " + mw.user + "\n pass: " + mw.pass + "\n ds: " + mw.data);
                     rjual.SetParameterValue("bulan", cbBulan.SelectedValue.ToString().ToUpper());
                     rjual.SetParameterValue("tahun", tahun);

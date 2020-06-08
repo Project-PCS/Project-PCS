@@ -27,19 +27,47 @@ namespace Project_PCS
             conn = MainWindow.con;
             this.database = ds;
         }
+        public Window1()
+        {
+            InitializeComponent();
+            conn = MainWindow.con;
+        }
 
         private void admin_Click(object sender, RoutedEventArgs e)
         {
-            admin a = new admin();
-            a.Show();
-            this.Close();
         }
 
         private void pegawai_Click(object sender, RoutedEventArgs e)
         {
-            PegawaiHome pg = new PegawaiHome(database);
-            pg.Show();
-            this.Close();
+           
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            if (peg.IsChecked==true)
+            {
+                PegawaiHome pg = new PegawaiHome(database);
+                pg.Show();
+                this.Close();
+            }
+            else if (adm.IsChecked == true)
+            {
+                if(tb_username.Text=="admin" && tb_pass.Password == "nimda")
+                {
+
+                    admin a = new admin();
+                    a.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Password salah");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih login sebagai apa");
+            }
         }
     }
 }

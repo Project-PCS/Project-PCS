@@ -5,14 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="276,149,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="278,193,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
-        <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="23" Margin="378,148,0,0" TextWrapping="Wrap" Text="project" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tb_pass" HorizontalAlignment="Left" Height="23" Margin="382,193,0,0" TextWrapping="Wrap" Text="123" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="346,271,0,0" VerticalAlignment="Top" Width="75" Click="BtnLogin_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="274,114,0,0" TextWrapping="Wrap" Text="Data Source" VerticalAlignment="Top"/>
-        <TextBox x:Name="tb_datasource" HorizontalAlignment="Left" Height="23" Margin="378,112,0,0" TextWrapping="Wrap" Text="orcl" VerticalAlignment="Top" Width="120"/>
+        Title="Login Database" Height="447.2" Width="390.8">
+    <Grid Margin="0,0,0,1.6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="305*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="10.067,199,0,0" TextWrapping="Wrap" Text="Username"  FontFamily="Microsoft YaHei Light" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" FontFamily="Microsoft YaHei Light" Margin="11.8,253,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="23" Margin="10.067,215,0,0" TextWrapping="Wrap" Text="project" VerticalAlignment="Top" Width="219" Grid.Column="1"/>
+        <Button x:Name="btnLogin" Content="" HorizontalAlignment="Left" Margin="12.067,321,0,0" VerticalAlignment="Top" Width="219" Click="BtnLogin_Click" Height="64" BorderBrush="{x:Null}" Grid.Column="1">
+            <Button.Background>
+                <ImageBrush ImageSource="login.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="7.067,148,0,0" TextWrapping="Wrap" Text="Data Source" VerticalAlignment="Top" FontFamily="Microsoft YaHei Light" Grid.Column="1"/>
+        <TextBox x:Name="tb_datasource" HorizontalAlignment="Left" Height="23" Margin="7.067,165,0,0" TextWrapping="Wrap" Text="orcl"  VerticalAlignment="Top" Width="224" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="113" Margin="62.067,30,0,0" VerticalAlignment="Top" Width="142" Source="log.png" Grid.Column="1"/>
+        <PasswordBox x:Name="tb_pass" HorizontalAlignment="Left" Margin="11.8,267,0,0" VerticalAlignment="Top" Width="219" Grid.Column="1"/>
     </Grid>
 </Window>

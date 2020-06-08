@@ -26,17 +26,18 @@ namespace Project_PCS
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            //data = tb_datasource.Text;
-            //user = tb_username.Text;
-            //pass = tb_pass.Text;
+        {            
+            data = tb_datasource.Text;
+            user = tb_username.Text;
+            pass = tb_pass.Password;
 
-            data = "orcl";
-            user = "leony";
-            pass = "leony8";
+            //data = "orcl";
+            //user = "leony";
+            //pass = "leony8";
 
             con = new OracleConnection($"Data Source={data};User Id={user}; Password={pass}");
             try

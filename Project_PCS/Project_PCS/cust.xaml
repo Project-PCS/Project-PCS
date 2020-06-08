@@ -8,25 +8,25 @@
         Title="cust" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="tblCust" HorizontalAlignment="Left" Height="358" Margin="33,34,0,0" VerticalAlignment="Top" Width="428" SelectionChanged="tblCust_SelectionChanged"/>
-        <TextBox x:Name="tbID" HorizontalAlignment="Left" Height="23" Margin="591,103,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="tbID" HorizontalAlignment="Left" Height="23" Margin="591,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Label Content="ID Customer" HorizontalAlignment="Left" Margin="478,100,0,0" VerticalAlignment="Top"/>
         <Label x:Name="tbNama" Content="Jenis Kelamin" HorizontalAlignment="Left" Margin="478,176,0,0" VerticalAlignment="Top"/>
         <Label Content="Alamat" HorizontalAlignment="Left" Margin="481,220,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbNama1" HorizontalAlignment="Left" Height="23" Margin="591,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbNama1" HorizontalAlignment="Left" Height="23" Margin="591,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="tbdiskon" Content="Nama" HorizontalAlignment="Left" Margin="478,137,0,0" VerticalAlignment="Top"/>
         <Label  Content="Poin" HorizontalAlignment="Left" Margin="478,293,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnInsert" Content="Insert" HorizontalAlignment="Left" Margin="500,373,0,0" VerticalAlignment="Top" Width="75" Click="btnInsert_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="656,373,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="656,373,0,0" VerticalAlignment="Top" Width="100" Click="btnUpdate_Click"/>
         <RadioButton x:Name="rbL" Content="Laki-Laki" HorizontalAlignment="Left" Margin="591,182,0,0" VerticalAlignment="Top" />
         <RadioButton x:Name="rbP" Content="Perempuan" HorizontalAlignment="Left" Margin="677,182,0,0" VerticalAlignment="Top" />
         <Label x:Name="ket" Content="" HorizontalAlignment="Left" Margin="656,139,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbPoin" HorizontalAlignment="Left" Height="23" Margin="591,293,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbPoin" HorizontalAlignment="Left" Height="23" Margin="591,293,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <CheckBox x:Name="cbaktif" Content="Member Aktif" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="481,326,0,0"/>
-        <TextBox x:Name="tbAlamat" HorizontalAlignment="Left" Height="33" Margin="591,224,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="165"/>
+        <TextBox x:Name="tbAlamat" HorizontalAlignment="Left" Height="33" Margin="591,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="165"/>
         <Label Content="MASTER CUSTOMER" HorizontalAlignment="Left" Margin="481,34,0,0" VerticalAlignment="Top" Height="53" Width="284" FontSize="30"/>
         <Label  Content="No telp" HorizontalAlignment="Left" Margin="478,262,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbnotelp" HorizontalAlignment="Left" Height="23" Margin="591,262,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="back" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="33,10,0,0" Click="back_Click"/>
+        <TextBox x:Name="tbnotelp" HorizontalAlignment="Left" Height="23" Margin="591,262,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="back" Content="Kembali" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Margin="33,10,0,0" Click="back_Click"/>
 
     </Grid>
 </Window>
