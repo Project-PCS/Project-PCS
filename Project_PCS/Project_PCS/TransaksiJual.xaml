@@ -5,12 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="TransaksiJual" Height="568" Width="800">
+        Title="TransaksiJual" Height="568" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="dgJual" HorizontalAlignment="Left" Height="288" Margin="25,225,0,0" VerticalAlignment="Top" Width="532" SelectedCellsChanged="DgJual_SelectedCellsChanged"/>
+        <DataGrid x:Name="dgJual" HorizontalAlignment="Left" Height="318" Margin="25,209,0,0" VerticalAlignment="Top" Width="532" SelectedCellsChanged="DgJual_SelectedCellsChanged"/>
         <Label Content="TRANSAKSI PENJUALAN" HorizontalAlignment="Left" Margin="289,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Label Content="TOTAL : Rp." HorizontalAlignment="Left" Margin="27,179,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Label x:Name="labTotal" Content="1.000.000" HorizontalAlignment="Left" Margin="160,179,0,0" VerticalAlignment="Top" FontSize="24" Width="180"/>
         <Canvas x:Name="cBarang" HorizontalAlignment="Left" Height="151" Margin="400,53,0,0" VerticalAlignment="Top" Width="370" Background="#FFD4D4D4">
             <Label Content="Nama Barang" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="89" Canvas.Left="4"/>
             <Label Content="No. Nota" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="4" Canvas.Top="5"/>
@@ -23,17 +21,17 @@
             <Label x:Name="labNamaBrg" Content="nama barang" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="106" Canvas.Top="89"/>
             <TextBox x:Name="tbCariBrg" Height="23" Canvas.Left="106" TextWrapping="Wrap" Canvas.Top="40" Width="254" KeyUp="TbCariBrg_KeyUp"/>
         </Canvas>
-        <Button x:Name="btnBack" Content="Kembali" HorizontalAlignment="Left" Margin="25,17,0,0" VerticalAlignment="Top" Width="75" Click="BtnBack_Click"/>
-        <Canvas x:Name="cCust" HorizontalAlignment="Left" Height="121" Margin="25,53,0,0" VerticalAlignment="Top" Width="370" Background="#FFD4D4D4">
+        <Button x:Name="btnBack" Content="Kembali" HorizontalAlignment="Left" Margin="25,17,0,0" VerticalAlignment="Top" Width="89" Click="BtnBack_Click"/>
+        <Canvas x:Name="cCust" HorizontalAlignment="Left" Height="151" Margin="25,53,0,0" VerticalAlignment="Top" Width="370" Background="#FFD4D4D4">
             <Label Content="ID Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="35" Width="75"/>
             <Label Content="Nama Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="63" Width="98"/>
             <Label x:Name="labIDCust" Content="id cust" Canvas.Left="113" Canvas.Top="35" Width="110"/>
             <TextBox x:Name="tbCariCust" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Canvas.Left="113" Canvas.Top="9" KeyUp="TbCariCust_KeyUp"/>
-            <Button x:Name="btnEnter" Content="INPUT CUSTOMER" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Canvas.Left="72" Canvas.Top="94" Click="BtnEnter_Click"/>
+            <Button x:Name="btnEnter" Content="INPUT CUSTOMER" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Canvas.Left="73" Canvas.Top="109" Click="BtnEnter_Click"/>
             <Label Content="Cari ID/Nama" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="6" Width="86"/>
             <Label x:Name="labNamaCust" Content="nama cust" Canvas.Left="113" Canvas.Top="61" Width="246"/>
         </Canvas>
-        <Canvas x:Name="cBayar" HorizontalAlignment="Left" Height="150" Margin="569,275,0,0" VerticalAlignment="Top" Width="201" Background="#FFD4D4D4">
+        <Canvas x:Name="cBayar" HorizontalAlignment="Left" Height="150" Margin="569,376,0,0" VerticalAlignment="Top" Width="201" Background="#FFD4D4D4">
             <Button x:Name="btnSelesai" Content="SELESAI" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="30" Canvas.Left="7" Canvas.Top="106" Click="BtnSelesai_Click"/>
             <Label Content="Bayar" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="38"/>
             <Label Content="Kembali" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="69"/>
@@ -42,7 +40,9 @@
             <Label Content="Poin" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="10"/>
             <Label x:Name="labPoin" Content="poin" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="67" Canvas.Top="10"/>
         </Canvas>
-        <Button x:Name="btnHapus" Content="Hapus Barang" HorizontalAlignment="Left" Margin="569,225,0,0" VerticalAlignment="Top" Width="87" Height="38" Click="BtnHapus_Click"/>
+        <Button x:Name="btnHapus" Content="Hapus Barang" HorizontalAlignment="Left" Margin="569,326,0,0" VerticalAlignment="Top" Width="127" Height="38" Click="BtnHapus_Click"/>
+        <Label Content="TOTAL :" HorizontalAlignment="Left" Margin="569,209,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Label x:Name="labTotal" Content="1.000.000" HorizontalAlignment="Left" Margin="569,249,0,0" VerticalAlignment="Top" FontSize="24" Width="201"/>
 
     </Grid>
 </Window>

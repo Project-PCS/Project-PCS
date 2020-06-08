@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="cust" Height="450" Width="800">
+        Title="cust" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <DataGrid x:Name="tblCust" HorizontalAlignment="Left" Height="358" Margin="33,34,0,0" VerticalAlignment="Top" Width="428" SelectionChanged="tblCust_SelectionChanged"/>
         <TextBox x:Name="tbID" HorizontalAlignment="Left" Height="23" Margin="591,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>

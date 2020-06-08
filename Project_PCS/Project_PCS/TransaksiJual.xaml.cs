@@ -167,7 +167,36 @@ namespace Project_PCS
                         drow[4] = Convert.ToInt64(drow[3].ToString()) * Convert.ToInt64(drow[2].ToString());
                         dr.Close();
                         dt.Rows.Add(drow);
-                        
+
+                        //cek promo
+                        qry = $"select id_promo, nama_promo || id_barang, potongan_harga from promo where id_barang = '{dt.Rows[dt.Rows.Count-1][0]}' and to_date(sysdate, 'dd-MM-yy') > to_date(tanggal_promo, 'dd-MM-yy') and to_date(sysdate, 'dd-MM-yy') < to_date(akhir_promo, 'dd-MM-yy') and rownum=1";
+                        cmd = new OracleCommand(qry, con);
+                        dr = cmd.ExecuteReader();
+
+                        while(dr.Read())
+                        {
+                            long potonganharga;
+                            drow = dt.NewRow();
+                            drow[0] = dr.GetString(0);
+                            drow[1] = dr.GetString(1);
+                            drow[2] = dt.Rows[dt.Rows.Count-1][2].ToString();
+
+                            if (dr.GetString(1).Contains("DISKON"))
+                            {
+                                potonganharga = (Convert.ToInt64(dt.Rows[dt.Rows.Count-1][3].ToString()) * dr.GetInt64(2))/100;
+                                MessageBox.Show("harga asli: " + dt.Rows[dt.Rows.Count - 1][3].ToString() + "\n potongan: " + dr.GetInt64(2));
+                                MessageBox.Show("hasil: " + potonganharga);
+                            }
+                            else
+                            {
+                                potonganharga = dr.GetInt64(2);
+                            }
+                            drow[3] = potonganharga * -1;
+                            drow[4] = Convert.ToInt64(drow[3].ToString()) * Convert.ToInt64(drow[2].ToString());
+                            dt.Rows.Add(drow);
+                        }
+                        dr.Close();
+
                         con.Close();
                         labIDBrg.Content = "-";
                         labNamaBrg.Content = "-";
@@ -179,7 +208,7 @@ namespace Project_PCS
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Input tidak valid!");
                     con.Close();
                 }
             }
@@ -243,12 +272,26 @@ namespace Project_PCS
             {
                 kembali = Convert.ToInt64(tbBayar.Text) - total;
                 labKembali.Content = kembali.ToString();
+                
+                long hargabaru;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    hargabaru = 0;
+                    if (dt.Rows[i][0].ToString().Substring(0, 1) == "D")
+                    {
+                        hargabaru = Convert.ToInt64(dt.Rows[i - 1][3].ToString()) + Convert.ToInt64(dt.Rows[i][3].ToString());
+                        dt.Rows[i - 1][3] = hargabaru;
+                        dt.Rows[i-1][4] = Convert.ToInt64(dt.Rows[i-1][3].ToString()) * Convert.ToInt64(dt.Rows[i-1][2].ToString());
+                        dt.Rows.RemoveAt(i);
+                    }
+                }
                 btnSelesai.Focus();
             }
         }
 
         private void BtnSelesai_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("btnselesai masuk");
             con.Open();
             OracleTransaction trans = con.BeginTransaction();
 
@@ -264,26 +307,35 @@ namespace Project_PCS
                 cmd.Parameters.Add("idcust", OracleDbType.Varchar2).Value = idcust;
                 cmd.Parameters.Add("idpegawai", OracleDbType.Varchar2).Value = "PEG01";
                 cmd.ExecuteNonQuery();
-
+                
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     qry = "insert into notajual_body values (:no_nota, :idbarang, :qty, :harga)";
+                    MessageBox.Show("qry string");
                     cmd = new OracleCommand(qry, con);
-                    cmd.Parameters.Add("no_nota", OracleDbType.Varchar2).Value = labNoNota.Content;
+                    MessageBox.Show("new cmd");
+                    cmd.Parameters.Add("no_nota", OracleDbType.Varchar2).Value = nonota;
+                    MessageBox.Show("param nonota added");
                     cmd.Parameters.Add("idbarang", OracleDbType.Varchar2).Value = dt.Rows[i][0].ToString();
-                    cmd.Parameters.Add("qty", OracleDbType.Int32).Value = Convert.ToInt32(dt.Rows[i][2].ToString());
-                    cmd.Parameters.Add("harga", OracleDbType.Long).Value = Convert.ToInt64(dt.Rows[i][3].ToString());
+                    MessageBox.Show("param idbrg added");
+                    cmd.Parameters.Add("qty", OracleDbType.Int32).Value = dt.Rows[i][2];
+                    MessageBox.Show("param qty added");
+                    cmd.Parameters.Add("harga", OracleDbType.Long).Value = dt.Rows[i][3];
+                    MessageBox.Show("param harga added");
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("done execute " + i);
                 }
-
+                
                 poin += poinAwal;
                 qry = $"update customer set poin={poin} where id_customer='{idcust}'";
-                MessageBox.Show("Transaksi penjualan berhasil");
+                cmd = new OracleCommand(qry, con);
+                cmd.ExecuteNonQuery();
 
                 trans.Commit();
+                con.Close();
+                MessageBox.Show("Transaksi penjualan berhasil");
                 dt.Rows.Clear();
                 dt = new DataTable();
-                con.Close();
 
                 PoinHarga();
                 idcust = "";
@@ -309,9 +361,14 @@ namespace Project_PCS
 
         private void BtnHapus_Click(object sender, RoutedEventArgs e)
         {
-            if (idxtabel >= 0)
+            if (idxtabel >= 0 && dt.Rows[idxtabel][0].ToString().Substring(0,1) == "B")
             {
+                if (idxtabel < dt.Rows.Count - 1 && dt.Rows[idxtabel+1][0].ToString().Substring(0,1) == "D")
+                {
+                    dt.Rows.RemoveAt(idxtabel + 1);
+                }
                 dt.Rows.RemoveAt(idxtabel);
+
                 PoinHarga();
             }
         }

@@ -45,7 +45,7 @@ CREATE TABLE SUPPLIER(
 ID_SUPPLIER VARCHAR2(10) PRIMARY KEY,
 NAMA_SUPPLIER VARCHAR2(20) NOT NULL,
 ALAMAT_SUPPLIER VARCHAR2(50) NOT NULL,
-NOMOR_TELP NUMBER (13) NOT NULL,
+NOMOR_TELP VARCHAR2 (13) NOT NULL,
 STATUS VARCHAR2(3)
 );
 
@@ -218,6 +218,8 @@ INSERT INTO PROMO VALUES('DIS02','DISKON','B035',10,TO_DATE('2019-05-08','YYYY-M
 INSERT INTO PROMO VALUES('DIS03','POTONGAN','B005',1000,TO_DATE('2019-05-15','YYYY-MM-DD'), TO_DATE('2019-05-21','YYYY-MM-DD'));
 INSERT INTO PROMO VALUES('DIS04','POTONGAN','B012',3000,TO_DATE('2019-05-22','YYYY-MM-DD'), TO_DATE('2019-05-26','YYYY-MM-DD'));
 INSERT INTO PROMO VALUES('DIS05','DISKON','B024',10,TO_DATE('2019-05-27','YYYY-MM-DD'), TO_DATE('2019-05-31','YYYY-MM-DD'));
+INSERT INTO PROMO VALUES('DIS06', 'POTONGAN', 'B041', '1500', TO_DATE('2020-05-25', 'YYYY-MM-DD'), TO_DATE('2020-06-30', 'YYYY-MM-DD'));
+INSERT INTO PROMO VALUES('DIS07', 'DISKON', 'B040', '20', TO_DATE('2020-05-25', 'YYYY-MM-DD'), TO_DATE('2020-06-30', 'YYYY-MM-DD'));
 
 INSERT INTO NOTAJUAL_HDR VALUES('JUAL001',TO_DATE('2019-05-05','YYYY-MM-DD'),8,'CUS001','PEG01');
 INSERT INTO NOTAJUAL_HDR VALUES('JUAL002',TO_DATE('2019-05-05','YYYY-MM-DD'),0,'CUS002','PEG02');
@@ -401,6 +403,7 @@ INSERT INTO TUKARPOIN_BODY VALUES('TP010','BM002');
 INSERT INTO TUKARPOIN_BODY VALUES('TP010','BM005');
 
 --FUNCTION
+
 --AUTOGEN ID PROMO
 create or replace function autogenPromo
 return varchar2
@@ -411,15 +414,17 @@ begin
 	return id;
 end;
 /
+--AUTOGEN CUSTOMER
 create or replace function autogenCustomer
 return varchar2
 is
 id varchar2(10);
 begin
-	select 'CUS'||LPAD(NVL(MAX(SUBSTR(id_customer, -2, 2)) + 1,1),2,'0') into id from customer;
+	select 'CUS'||LPAD(NVL(MAX(SUBSTR(id_customer, -2, 2)) + 1,1),3,'0') into id from customer;
 	return id;
 end;
 /
+--AUTOGEN PEGAWAI
 create or replace function autogenPegawai
 return varchar2
 is
@@ -430,6 +435,98 @@ begin
 end;
 /
 
+--AUTOGEN NO_NOTA JUAL
+create or replace function NewNotaJual
+return varchar2
+is
+	ctr varchar2(3);
+	idnota varchar2(7);
+begin
+	select lpad(count(*)+1, 3, 0) into ctr
+	from notajual_hdr;
+	
+	idnota := 'JUAL' || ctr;
+	return idnota;
+end;
+/
+
+--AUTOGEN ID BARANG MENARIK
+create or replace function NewBarangMenarik
+return varchar2
+is
+	ctr varchar2(3);
+	idbaru varchar2(7);
+begin
+	select lpad(count(*)+1, 3, 0) into ctr
+	from barang_menarik;
+	
+	idbaru := 'BM' || ctr;
+	return idbaru;
+end;
+/
+
+--PROCEDURE 
+--CEK NAMA BARANG
+create or replace procedure cekNamaBarang(nama_barang_param in varchar2)
+is
+    error_namabarang exception;
+begin
+ for i in(
+        select * from barang where nama_barang=nama_barang_param
+    )loop
+        raise error_namabarang;
+    end loop;
+ exception 
+  when error_namabarang then
+   raise_application_error(-20001,'Nama Barang Sama');
+end;
+/
+
+--CEK PROMO
+create or replace procedure cekPromo(pid_barang in varchar2, pawal in varchar2, pakhir in varchar2)
+is
+    error_exist exception;
+begin
+ for i in(
+        select * from promo where id_barang=pid_barang and tanggal_promo = pawal and akhir_promo = pakhir
+    )loop
+        raise error_exist;
+    end loop;
+ exception 
+  when error_exist then
+   raise_application_error(-20001,'Promo sudah terdaftar');
+end;
+/
+--CEK NO TELP CUST
+create or replace procedure cekNotelpCust(pno_telp in varchar2)
+is
+    error_exist exception;
+begin
+ for i in(
+        select * from customer where no_telp=pno_telp
+    )loop
+        raise error_exist;
+    end loop;
+ exception 
+  when error_exist then
+   raise_application_error(-20001,'No telp sudah terdaftar');
+end;
+/
+--CEK NO TELP PEGAWAI
+create or replace procedure cekNotelpPeg(pno_telp in varchar2)
+is
+    error_exist exception;
+begin
+ for i in(
+        select * from pegawai where no_telp=pno_telp
+    )loop
+        raise error_exist;
+    end loop;
+ exception 
+  when error_exist then
+   raise_application_error(-20001,'No telp sudah terdaftar');
+end;
+/
 --TRIGGER
 --1
 create or replace trigger insertbarang
@@ -439,42 +536,31 @@ for each row
 declare
 id varchar2(5);
 error_harga exception;
-error_minbarang exception;
 error_grosir exception;
-error_namabarang exception;
 begin
-	
-	if inserting then
-		select 'B'||lpad(max(substr(id_barang,-3,3))+1,3,0) into id from barang;
-		:new.id_barang:=id;	
-	end if;
-	
-	if(:new.harga_eceran < :new.harga_grosir)then
-		raise error_harga;
-	end if;
-	if(:new.min_jum_barang > :new.jum_barang)then
-		raise error_minbarang;
-	end if;
-	if(:new.jum_min_grosir<12)then
-		raise error_grosir;
-	end if;
-	for i in(
-        select * from barang where nama_barang=:new.nama_barang
-    )loop
-        raise error_namabarang;
-    end loop;
-	
-	exception 
-		when error_harga then
-			raise_application_error(-20001,'Harga Eceran Harus Lebih Mahal Daripada Harga Grosir');
-		when error_minbarang then
-			raise_application_error(-20002,'Jumlah Barang Harus Lebih Banyak Daripada Minimal Jumlah Barang');
-		when error_grosir then
-		raise_application_error(-20003,'Jumlah Minimal Grosir Harus Lebih Dari 12');
-		when error_namabarang then
-		raise_application_error(-20004,'Nama Barang yang diinputkan Tidak Boleh Sama');
+ 
+ if inserting then
+  select 'B'||lpad(max(substr(id_barang,-3,3))+1,3,0) into id from barang;
+  :new.id_barang:=id; 
+  
+  cekNamaBarang(:new.nama_barang);
+ end if;
+ 
+ if(:new.harga_eceran < :new.harga_grosir)then
+  raise error_harga;
+ end if;
+ if(:new.jum_min_grosir<12)then
+  raise error_grosir;
+ end if;
+ 
+ exception 
+  when error_harga then
+   raise_application_error(-20001,'Harga Eceran Harus Lebih Mahal Daripada Harga Grosir');
+  when error_grosir then
+  raise_application_error(-20003,'Jumlah Minimal Grosir Harus Lebih Dari 12');
 end;
 /
+
 --2
 create or replace trigger insertPromo
 before insert or update
@@ -488,6 +574,7 @@ begin
 	if inserting then
 		id := autogenPromo();
 		:new.id_promo:=id;	
+        cekPromo(:new.id_barang, :new.tanggal_promo, :new.akhir_promo);
 	end if;
 	
 	if(:new.akhir_promo < :new.tanggal_promo )then
@@ -516,23 +603,12 @@ on customer
 for each row
 declare
 id varchar2(5);
-notelp number;
-error_sama exception;
 begin
-	SELECT :new.no_telp INTO notelp FROM DUAL;
 	if inserting then
 		id := autogenCustomer();
 		:new.id_customer:=id;	
-
-		for i in(
-        select no_telp from customer where :old.no_telp=:new.no_telp
-		)loop
-			raise error_sama;
-    	end loop;
+		cekNotelpCust(:new.no_telp);
 	end if;
-	exception 
-		when error_sama then
-			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
 end;
 /
 --4
@@ -542,21 +618,32 @@ on pegawai
 for each row
 declare
 id varchar2(5);
-notelp number;
-error_sama exception;
 begin
-	SELECT :new.no_telp INTO notelp FROM DUAL;
 	if inserting then
 		id := autogenPegawai();
-		:new.id_pegawai:=id;	
-		for i in(
-        select no_telp from pegawai where no_telp=:new.no_telp
-		)loop
-			raise error_sama;
-    	end loop;
+		:new.id_pegawai:=id;		
+		cekNotelpPeg(:new.no_telp);
 	end if;
-	exception 
-		when error_sama then
-			raise_application_error(-20001,'Nomor telpon sudah terdaftar');
 end;
 /
+--5
+create or replace trigger UpdateStok
+after insert on notajual_body
+for each row
+declare
+	stok number;
+	jml number;
+begin
+	jml := :new.qty;
+	
+	select jum_barang into stok
+	from barang
+	where id_barang = :new.id_barang;
+	
+	stok := stok - jml;
+	
+	update barang set jum_barang=stok where id_barang=:new.id_barang;
+end;
+/
+
+commit;

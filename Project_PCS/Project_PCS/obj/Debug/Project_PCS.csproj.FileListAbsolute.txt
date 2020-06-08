@@ -226,21 +226,6 @@ E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.g.cs
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.baml
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.baml
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.CopyComplete
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\AxShockwaveFlashObjects.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\ShockwaveFlashObjects.dll
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\stdole.dll
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.g.cs
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.baml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.CopyComplete
@@ -327,3 +312,18 @@ C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Mas
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
+C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.baml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.dll
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.g.cs
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.g.cs
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.baml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml
+D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.baml

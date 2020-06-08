@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="admin" Height="450" Width="800">
+        Title="admin" Height="337" Width="408" WindowStartupLocation="CenterScreen">
     <Grid>
         <Canvas HorizontalAlignment="Left" Height="110" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794">
             <Canvas.Background>
