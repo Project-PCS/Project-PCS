@@ -37,7 +37,7 @@ namespace Project_PCS
         {
             try
             {
-                con.Open();
+                buka();
                 string query = "SELECT * from pegawai";
                 OracleCommand cmd = new OracleCommand(query, con);
                 cmd.ExecuteReader();
@@ -46,11 +46,11 @@ namespace Project_PCS
                 adapter.Fill(db);
                 tblPeg.ItemsSource = db.Tables[0].DefaultView;
 
-                con.Close();
+                
             }
             catch (Exception ex)
             {
-                con.Close();
+                
                 //Console.WriteLine(ex.StackTrace);
                 //MessageBox.Show("EROR");
                 MessageBox.Show("Gagal karena " + ex.Message);
@@ -104,11 +104,15 @@ namespace Project_PCS
                 }
             }
         }
+        public void buka()
+        {
+            if (con.State == System.Data.ConnectionState.Closed) con.Open();
 
+        }
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
           
-            con.Open();
+            buka();
             string id = tbID.Text;
             string nama = tbNama1.Text;
             string shift = ""; int stat = 0;
@@ -159,7 +163,7 @@ namespace Project_PCS
                 MessageBox.Show("Gagal karena " + ex.Message);
 
             }
-            con.Close();
+            
             show();
 
 
@@ -172,7 +176,7 @@ namespace Project_PCS
         {
             try
             {
-                con.Open();
+                buka();
                 string id = tbID.Text;
                 string nama = tbNama1.Text;
                 string shift = ""; int stat = 0;
@@ -208,13 +212,13 @@ namespace Project_PCS
 
                 OracleCommand cmd = new OracleCommand(update, con);
                 cmd.ExecuteNonQuery();
-                con.Close();
+                
                 show();
                 MessageBox.Show("Berhasil Update");
             }
             catch (Exception ex)
             {
-                con.Close();
+                
                 MessageBox.Show(ex.Message);
             }
             //show();

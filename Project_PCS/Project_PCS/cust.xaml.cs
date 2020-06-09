@@ -35,7 +35,7 @@ namespace Project_PCS
         {
             try
             {
-                con.Open();
+                buka();
                 string query = "SELECT ID_CUSTOMER as \"ID\", NAMA_CUSTOMER as \"NAMA\",JK as \"JENIS KELAMIN\"," +
                             $"ALAMAT_CUSTOMER as \"ALAMAT\",NO_TELP as \"NO TELP\",POIN as \"POIN\",STATUS as \"STATUS\" from customer";
                 OracleCommand cmd = new OracleCommand(query, con);
@@ -44,11 +44,11 @@ namespace Project_PCS
                 db = new DataSet();
                 adapter.Fill(db);
                 tblCust.ItemsSource = db.Tables[0].DefaultView;
-                con.Close();
+                
             }
             catch (Exception ex)
             {
-                con.Close();
+                
                 //Console.WriteLine(ex.StackTrace);
                 //MessageBox.Show("EROR");
                 MessageBox.Show("Gagal karena " + ex.Message);
@@ -88,11 +88,16 @@ namespace Project_PCS
                 }
             }
         }
+        public void buka()
+        {
+            if (con.State == System.Data.ConnectionState.Closed) con.Open();
+
+        }
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                con.Open();
+                buka();
                 string id = tbID.Text;
                 string jenis = "";
                 if (rbL.IsChecked == true)
@@ -118,12 +123,12 @@ namespace Project_PCS
                 {
                     string q = $"insert into customer (ID_CUSTOMER,NAMA_CUSTOMER,JK," +
                             $"ALAMAT_CUSTOMER,NO_TELP,POIN,STATUS) values" +
-                        $"('{id_cust}','{nama}','{jenis}','{alamat}','{notelp}',{poin},'{stat}')";
+                        $"('CUS','{nama}','{jenis}','{alamat}','{notelp}',{poin},'{stat}')";
                     OracleCommand cmd = new OracleCommand(q, con);
                     cmd.ExecuteNonQuery();
                 }
                 
-                con.Close();
+                
                 show();
 
             }
@@ -136,20 +141,20 @@ namespace Project_PCS
         }
 
         string id_cust;
-        public void autogen()
-        {
-            //con.Open();
-            string query = "SELECT LPAD(NVL(MAX(SUBSTR(id_pegawai, -2, 2)) + 1,1),2,'0') AS \"COUNT\" FROM customer";
-            OracleCommand cmd = new OracleCommand(query, con);
-            string ctr = cmd.ExecuteScalar().ToString();
-            id_cust = "CUS" + ctr;
-            //con.Close();
-        }
+        //public void autogen()
+        //{
+        //    //buka();
+        //    string query = "SELECT LPAD(NVL(MAX(SUBSTR(id_pegawai, -2, 2)) + 1,1),2,'0') AS \"COUNT\" FROM customer";
+        //    OracleCommand cmd = new OracleCommand(query, con);
+        //    string ctr = cmd.ExecuteScalar().ToString();
+        //    id_cust = "CUS" + ctr;
+        //    //
+        //}
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                con.Open();
+                buka();
                 string id = tbID.Text;
                 string jenis = "";
                 if (rbL.IsChecked == true)
@@ -176,12 +181,12 @@ namespace Project_PCS
                 cmd.ExecuteNonQuery();
 
 
-                con.Close();
+                
                 MessageBox.Show("Berhasil Update");
             }
             catch (Exception ex)
             {
-                con.Close();
+                
                 Console.WriteLine(ex.StackTrace);
                 MessageBox.Show(ex.Message);
             }

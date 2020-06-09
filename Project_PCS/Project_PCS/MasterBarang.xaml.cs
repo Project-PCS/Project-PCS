@@ -85,9 +85,14 @@ namespace Project_PCS
                 cbKategori.SelectedValuePath = "kode";
             }
         }
+        private void buka()
+        {
+            if (con.State == System.Data.ConnectionState.Closed) con.Open();
+
+        }
         private void Btn_Insert_Click(object sender, RoutedEventArgs e)
         {
-            con.Open();
+            buka();
             try
             {
                 int harga_eceran = Convert.ToInt32(tbHargaEceran.Text);
@@ -116,7 +121,7 @@ namespace Project_PCS
             {
                 MessageBox.Show("Harga Eceran,Harga Grosir,Harga Beli,Min Jum Barang, Jum Barang, Jum Min Grosir harus angka");
             }
-            con.Close();
+            
         }
         private void LoadSupplier()
         {
@@ -155,7 +160,7 @@ namespace Project_PCS
         }
         private void Btn_Update_Click(object sender, RoutedEventArgs e)
         {
-            con.Open();
+            buka();
             try
             {
                 int harga_eceran = Convert.ToInt32(tbHargaEceran.Text);
@@ -195,7 +200,7 @@ namespace Project_PCS
             {
                 MessageBox.Show("Harga Eceran,Harga Grosir,Harga Beli, Min Jum Barang, Jum Barang, Jum Min Grosir harus angka");
             }
-            con.Close();
+            
         }
         string id_barang;
         private void Viewer_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -220,7 +225,7 @@ namespace Project_PCS
         {
             admin a = new admin();
             a.Show();
-            w1.Close();
+            this.Close();
             
         }
 
