@@ -22,9 +22,9 @@
         <TextBox x:Name="tbIdBarang" HorizontalAlignment="Left" Height="23" Margin="346,308,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Button x:Name="btnBeli" Content="Beli" HorizontalAlignment="Left" Margin="30,251,0,0" VerticalAlignment="Top" Width="198" Height="37" Click="btnBeli_Click" IsEnabled="False"/>
         <Button x:Name="btnReset" Content="Ulang" HorizontalAlignment="Left" Margin="30,293,0,0" VerticalAlignment="Top" Width="80" Click="btnReset_Click"/>
-        <Label x:Name="lblTgl" Content="-" HorizontalAlignment="Left" Margin="108,168,0,0" VerticalAlignment="Top" Width="90"/>
         <Button x:Name="btnBack" Content="Kembali" HorizontalAlignment="Left" Margin="26,35,0,0" VerticalAlignment="Top" Width="96" Click="btnBack_Click"/>
         <Button x:Name="btnHapus" Content="Hapus" HorizontalAlignment="Left" Margin="535,308,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False" Click="btnHapus_Click"/>
+        <DatePicker x:Name="dpTime" HorizontalAlignment="Left" Margin="108,167,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
