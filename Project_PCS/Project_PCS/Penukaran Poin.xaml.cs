@@ -235,7 +235,7 @@ namespace Project_PCS
                     trans.Rollback();
                     con.Close();
                     MessageBox.Show(ex.Message);
-                    //MessageBox.Show("Transaksi Gagal");
+                    MessageBox.Show("Penukaran Gagal");
                 }
             }
         }

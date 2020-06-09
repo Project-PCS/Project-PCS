@@ -35,8 +35,8 @@ namespace Project_PCS
             //pass = tb_pass.Text;
 
             data = "orcl";
-            user = "leony";
-            pass = "leony8";
+            user = tb_username.Text;
+            pass = tb_pass.Text;
             
             con = new OracleConnection($"Data Source={data};User Id={user}; Password={pass}");
             try
