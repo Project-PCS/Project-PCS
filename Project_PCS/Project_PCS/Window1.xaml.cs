@@ -46,11 +46,40 @@ namespace Project_PCS
         {
             if (peg.IsChecked==true)
             {
-                if (tb_username.Text == tb_pass.Password.ToString())
+                bool done = false;
+                conn.Open();
+                string query = "SELECT id_pegawai FROM PEGAWAI";
+                OracleCommand cmd = new OracleCommand(query, conn);
+                OracleDataReader reader = cmd.ExecuteReader();
+                List<string> listpeg = new List<string>();
+                while (reader.Read())
                 {
-                    PegawaiHome pg = new PegawaiHome(database,tb_username.Text);
-                    pg.Show();
-                    this.Close();
+                    listpeg.Add(reader.GetString(0));
+                }
+                conn.Close();
+                for (int i = 0; i < listpeg.Count; i++)
+                {
+                    if (listpeg[i] == tb_username.Text)
+                    {
+                        done = true;
+                    }
+                }
+                if(!done)
+                {
+                    MessageBox.Show("Id pegawai tidak terdaftar");
+                }
+                else
+                {
+                    if (tb_username.Text == tb_pass.Password.ToString())
+                    {
+                        PegawaiHome pg = new PegawaiHome(database, tb_username.Text);
+                        pg.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Password salah");
+                    }
                 }
             }
             else if (adm.IsChecked == true)
