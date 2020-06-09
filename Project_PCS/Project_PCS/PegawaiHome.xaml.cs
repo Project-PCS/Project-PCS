@@ -21,36 +21,38 @@ namespace Project_PCS
     public partial class PegawaiHome : Window
     {
         string database;
-        public PegawaiHome(string ds)
+        string pegawai;
+        public PegawaiHome(string ds, string user)
         {
             InitializeComponent();
             this.database = ds;
+            this.pegawai = user;
         }
 
         private void btnPembelian_Click(object sender, RoutedEventArgs e)
         {
-            TransaksiPembelian tp = new TransaksiPembelian(database);
+            TransaksiPembelian tp = new TransaksiPembelian(database, pegawai);
             this.Close();
             tp.Show();
         }
 
         private void btnPendaftaran_Click(object sender, RoutedEventArgs e)
         {
-            PendaftaranMember pm = new PendaftaranMember(database);
+            PendaftaranMember pm = new PendaftaranMember(database, pegawai);
             this.Close();
             pm.Show();
         }
 
         private void BtnPenjualan_Click(object sender, RoutedEventArgs e)
         {
-            TransaksiJual tj = new TransaksiJual(database);
+            TransaksiJual tj = new TransaksiJual(database, pegawai);
             this.Close();
             tj.Show();
         }
 
         private void btnPenukaran_Click(object sender, RoutedEventArgs e)
         {
-            Penukaran_Poin pp = new Penukaran_Poin(database);
+            Penukaran_Poin pp = new Penukaran_Poin(database, pegawai);
             this.Close();
             pp.Show();
         }

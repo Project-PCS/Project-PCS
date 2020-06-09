@@ -13,8 +13,8 @@
         <Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="353" Margin="503,54,0,0" VerticalAlignment="Top" Width="279">
             <Canvas.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White"/>
-                    <GradientStop Color="#FFA5A5A5" Offset="1"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FFE1D0FF"/>
                 </LinearGradientBrush>
             </Canvas.Background>
             <TextBox x:Name="tbJmlBarang" Height="23" Canvas.Left="137" TextWrapping="Wrap" Canvas.Top="208" Width="133" PreviewTextInput="TbJmlBarang_PreviewTextInput" MaxLength="2"/>

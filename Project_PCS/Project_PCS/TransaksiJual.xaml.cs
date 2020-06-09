@@ -22,7 +22,7 @@ namespace Project_PCS
     /// </summary>
     public partial class TransaksiJual : Window
     {
-        string database, qry, idcust, nonota;
+        string database, qry, idcust, nonota, pegawai;
         long total, kembali;
         int idxtabel, poin, poinAwal;
         OracleConnection con;
@@ -55,10 +55,11 @@ namespace Project_PCS
             return true;
         }
 
-        public TransaksiJual(string ds)
+        public TransaksiJual(string ds, string user)
         {
             InitializeComponent();
             database = ds;
+            pegawai = user;
             con = new OracleConnection(database);
 
             labIDCust.Content = "-";
@@ -87,7 +88,7 @@ namespace Project_PCS
         
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            PegawaiHome ph = new PegawaiHome(database);
+            PegawaiHome ph = new PegawaiHome(database, pegawai);
             this.Close();
             ph.Show();
         }
@@ -305,7 +306,7 @@ namespace Project_PCS
                 cmd.Parameters.Add("tglnota", OracleDbType.Date).Value = DateTime.Parse(tgl);
                 cmd.Parameters.Add("poin", OracleDbType.Int32).Value = poin;
                 cmd.Parameters.Add("idcust", OracleDbType.Varchar2).Value = idcust;
-                cmd.Parameters.Add("idpegawai", OracleDbType.Varchar2).Value = "PEG01";
+                cmd.Parameters.Add("idpegawai", OracleDbType.Varchar2).Value = pegawai;
                 cmd.ExecuteNonQuery();
                 
                 for (int i = 0; i < dt.Rows.Count; i++)

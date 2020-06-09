@@ -221,9 +221,7 @@ E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\AxShockwaveFlashObj
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\ShockwaveFlashObjects.dll
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\stdole.dll
-E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.g.cs
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.g.cs
-E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MenuReport.baml
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.baml
 E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Project_PCS.csproj.CopyComplete
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.g.cs
@@ -301,18 +299,17 @@ C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\Mat
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.g.cs
 C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.g.cs
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.baml
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
-C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
-C:\Users\Asus\Documents\GitHub\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.baml
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.dll
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.dll
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.pdb
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.xml
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.g.cs
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
+E:\Project_PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.dll
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignThemes.Wpf.dll
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\bin\Debug\MaterialDesignColors.pdb

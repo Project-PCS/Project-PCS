@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="Login Database" Height="447.2" Width="390.8">
+        Title="Login Database" Height="447.2" Width="390.8" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,1.6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="79*"/>
