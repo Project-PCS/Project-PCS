@@ -185,8 +185,6 @@ namespace Project_PCS
                             if (dr.GetString(1).Contains("DISKON"))
                             {
                                 potonganharga = (Convert.ToInt64(dt.Rows[dt.Rows.Count-1][3].ToString()) * dr.GetInt64(2))/100;
-                                MessageBox.Show("harga asli: " + dt.Rows[dt.Rows.Count - 1][3].ToString() + "\n potongan: " + dr.GetInt64(2));
-                                MessageBox.Show("hasil: " + potonganharga);
                             }
                             else
                             {
@@ -292,7 +290,6 @@ namespace Project_PCS
 
         private void BtnSelesai_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("btnselesai masuk");
             con.Open();
             OracleTransaction trans = con.BeginTransaction();
 
@@ -312,19 +309,12 @@ namespace Project_PCS
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     qry = "insert into notajual_body values (:no_nota, :idbarang, :qty, :harga)";
-                    MessageBox.Show("qry string");
                     cmd = new OracleCommand(qry, con);
-                    MessageBox.Show("new cmd");
                     cmd.Parameters.Add("no_nota", OracleDbType.Varchar2).Value = nonota;
-                    MessageBox.Show("param nonota added");
                     cmd.Parameters.Add("idbarang", OracleDbType.Varchar2).Value = dt.Rows[i][0].ToString();
-                    MessageBox.Show("param idbrg added");
                     cmd.Parameters.Add("qty", OracleDbType.Int32).Value = dt.Rows[i][2];
-                    MessageBox.Show("param qty added");
                     cmd.Parameters.Add("harga", OracleDbType.Long).Value = dt.Rows[i][3];
-                    MessageBox.Show("param harga added");
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("done execute " + i);
                 }
                 
                 poin += poinAwal;
