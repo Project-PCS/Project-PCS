@@ -218,8 +218,6 @@ INSERT INTO PROMO VALUES('DIS02','DISKON','B035',10,TO_DATE('2019-05-08','YYYY-M
 INSERT INTO PROMO VALUES('DIS03','POTONGAN','B005',1000,TO_DATE('2019-05-15','YYYY-MM-DD'), TO_DATE('2019-05-21','YYYY-MM-DD'));
 INSERT INTO PROMO VALUES('DIS04','POTONGAN','B012',3000,TO_DATE('2019-05-22','YYYY-MM-DD'), TO_DATE('2019-05-26','YYYY-MM-DD'));
 INSERT INTO PROMO VALUES('DIS05','DISKON','B024',10,TO_DATE('2019-05-27','YYYY-MM-DD'), TO_DATE('2019-05-31','YYYY-MM-DD'));
-INSERT INTO PROMO VALUES('DIS06', 'POTONGAN', 'B041', '1500', TO_DATE('2020-05-25', 'YYYY-MM-DD'), TO_DATE('2020-06-30', 'YYYY-MM-DD'));
-INSERT INTO PROMO VALUES('DIS07', 'DISKON', 'B040', '20', TO_DATE('2020-05-25', 'YYYY-MM-DD'), TO_DATE('2020-06-30', 'YYYY-MM-DD'));
 
 INSERT INTO NOTAJUAL_HDR VALUES('JUAL001',TO_DATE('2019-05-05','YYYY-MM-DD'),8,'CUS001','PEG01');
 INSERT INTO NOTAJUAL_HDR VALUES('JUAL002',TO_DATE('2019-05-05','YYYY-MM-DD'),0,'CUS002','PEG02');
@@ -512,6 +510,7 @@ begin
    raise_application_error(-20001,'No telp sudah terdaftar');
 end;
 /
+
 --CEK NO TELP PEGAWAI
 create or replace procedure cekNotelpPeg(pno_telp in varchar2)
 is
@@ -602,7 +601,7 @@ before insert or update
 on customer
 for each row
 declare
-id varchar2(5);
+id varchar2(6);
 begin
 	if inserting then
 		id := autogenCustomer();
@@ -611,6 +610,7 @@ begin
 	end if;
 end;
 /
+
 --4
 create or replace trigger insertPegawai
 before insert or update

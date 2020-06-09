@@ -324,3 +324,10 @@ D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenari
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml
 D:\LEONY\KELAS\PCS\Project-PCS\Project_PCS\Project_PCS\obj\Debug\TransaksiJual.baml
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.g.cs
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.g.cs
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.g.cs
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\App.baml
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterBrgMenarik.baml
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\MasterReport.baml
+C:\Users\USER\Desktop\DESK\Project-PCS\Project_PCS\Project_PCS\obj\Debug\Penukaran Poin.baml

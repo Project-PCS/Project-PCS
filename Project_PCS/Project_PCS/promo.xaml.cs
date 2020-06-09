@@ -37,9 +37,14 @@ namespace Project_PCS
             show();
 
         }
+        public void buka()
+        {
+            if (con.State == System.Data.ConnectionState.Closed) con.Open();
+
+        }
         public void show()
         {
-            con.Open();
+            buka();
             try
             {
                 string query = "SELECT id_promo as \"ID PROMO\", nama_promo as \"NAMA PROMO\", nama_barang as \"NAMA BARANG\", " +
@@ -73,25 +78,25 @@ namespace Project_PCS
 
 
             }
-            con.Close();
+            
         }
 
         private void cbBarang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //con.Open();
+            //buka();
             //string query = "SELECT nama_barang from barang where id_barang = '" + cbBarang.SelectedValue + "'";
             //OracleCommand cmd = new OracleCommand(query, con);
             //if (cbBarang.SelectedValue != null)
             //{
             //    namaBarang.Content = cmd.ExecuteScalar().ToString();
             //}
-            //con.Close();
+            //
 
         }
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
-            con.Open();
+            buka();
             try
             {
                 long no = Convert.ToInt64(tbdisc.Text);
@@ -135,7 +140,7 @@ namespace Project_PCS
             {
                 MessageBox.Show(ex.Message);
             }
-            con.Close();
+            
         }
 
         string id_promo;
@@ -151,7 +156,7 @@ namespace Project_PCS
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            con.Open();
+            buka();
             try
             {
                 string jenis = "";
@@ -188,7 +193,7 @@ namespace Project_PCS
             {
                 MessageBox.Show(ex.Message);
             }
-            con.Close();
+            
             show();
         }
 
@@ -215,12 +220,12 @@ namespace Project_PCS
                 {
                     promo1.IsChecked = true;
                 }
-                //con.Open();
+                //buka();
                 //MessageBox.Show(idBarang.Substring(0, 4));
                 //string query = "SELECT nama_barang from barang where id_barang = '" + idBarang.Substring(0,4) + "'";
                 //OracleCommand cmd = new OracleCommand(query, con);
                 //cbBarang.SelectedValue = cmd.ExecuteScalar().ToString();
-                //con.Close();
+                //
             }
         }
 
