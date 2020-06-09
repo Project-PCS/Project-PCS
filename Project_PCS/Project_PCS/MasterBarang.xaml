@@ -5,29 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MasterBarang" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="MasterBarang" Height="491.018" Width="800">
     <Grid>
-        <Button Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="17,11,0,0" Click="Button_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="333,8,0,0" TextWrapping="Wrap" Text="Barang" VerticalAlignment="Top" FontSize="14"/>
-        <DataGrid x:Name="viewer" HorizontalAlignment="Left" Height="182" Margin="15,38,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="Viewer_SelectionChanged"/>
+        <Button Content="Kembali" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="17,11,0,0" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="296,8,0,0" TextWrapping="Wrap" Text="Master Barang" VerticalAlignment="Top" FontSize="32" FontWeight="Bold"/>
+        <DataGrid x:Name="viewer" HorizontalAlignment="Left" Height="154" Margin="9,66,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="Viewer_SelectionChanged"/>
         <TextBlock  HorizontalAlignment="Left" Margin="26,234,0,0" TextWrapping="Wrap" Text="Nama Barang" VerticalAlignment="Top"/>
         <TextBox x:Name="tb_nama" HorizontalAlignment="Left" Height="24" Margin="162,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock  HorizontalAlignment="Left" Margin="26,270,0,0" TextWrapping="Wrap" Text="Harga Eceran" VerticalAlignment="Top"/>
         <TextBox x:Name="tbHargaEceran" HorizontalAlignment="Left" Height="24" Margin="162,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock  HorizontalAlignment="Left" Margin="26,306,0,0" TextWrapping="Wrap" Text="Harga Grosir" VerticalAlignment="Top"/>
         <TextBox x:Name="tbHargaGrosir" HorizontalAlignment="Left" Height="24" Margin="162,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock  HorizontalAlignment="Left" Margin="29,362,0,0" TextWrapping="Wrap" Text="Minimal Jumlah Barang" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbMinJum" HorizontalAlignment="Left" Height="24" Margin="165,358,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="23,364,0,0" TextWrapping="Wrap" Text="Minimal Jumlah Barang" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbMinJum" HorizontalAlignment="Left" Height="24" Margin="161,358,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock  HorizontalAlignment="Left" Margin="344,234,0,0" TextWrapping="Wrap" Text="Jumlah Barang" VerticalAlignment="Top"/>
         <TextBox x:Name="tbJumBarang" HorizontalAlignment="Left" Height="24" Margin="492,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock  HorizontalAlignment="Left" Margin="347,330,0,0" TextWrapping="Wrap" Text="Jumlah Minimal Grosir" VerticalAlignment="Top"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="347,334,0,0" TextWrapping="Wrap" Text="Jumlah Minimal Grosir" VerticalAlignment="Top"/>
         <TextBox x:Name="tbJumMinGrosir" HorizontalAlignment="Left" Height="24" Margin="495,326,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock  HorizontalAlignment="Left" Margin="347,366,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
         <CheckBox x:Name="cbxStatus" Content="" HorizontalAlignment="Left" Margin="500,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.975,0.033"/>
-        <Button x:Name="btn_Insert" Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Margin="208,391,0,0" Click="Btn_Insert_Click"/>
-        <Button x:Name="btn_Update" Content="Update" HorizontalAlignment="Left" Margin="350,393,0,0" VerticalAlignment="Top" Width="74" Click="Btn_Update_Click"/>
+        <Button x:Name="btn_Insert" Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Margin="17,418,0,0" Click="Btn_Insert_Click"/>
+        <Button x:Name="btn_Update" Content="Update" HorizontalAlignment="Left" Margin="672,418,0,0" VerticalAlignment="Top" Width="106" Click="Btn_Update_Click"/>
         <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="566,8,0,0"/>
-        <Button Content="Search" HorizontalAlignment="Left" Margin="704,8,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_1"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="696,7,0,0" VerticalAlignment="Top" Width="31" Click="Button_Click_1" Height="27">
+            <Button.Background>
+                <ImageBrush ImageSource="search.png"/>
+            </Button.Background>
+        </Button>
         <TextBlock  HorizontalAlignment="Left" Margin="26,336,0,0" TextWrapping="Wrap" Text="Harga Beli" VerticalAlignment="Top"/>
         <TextBox x:Name="tbHargaBeli" HorizontalAlignment="Left" Height="24" Margin="162,332,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="348,266,0,0" TextWrapping="Wrap" Text="ID Supplier" VerticalAlignment="Top"/>

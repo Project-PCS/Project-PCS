@@ -220,7 +220,7 @@ namespace Project_PCS
         {
             admin a = new admin();
             a.Show();
-            w1.Hide();
+            w1.Close();
             
         }
 
