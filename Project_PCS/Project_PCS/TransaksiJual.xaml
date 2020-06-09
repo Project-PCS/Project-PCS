@@ -32,7 +32,7 @@
             <Label x:Name="labNamaCust" Content="nama cust" Canvas.Left="113" Canvas.Top="61" Width="246"/>
         </Canvas>
         <Canvas x:Name="cBayar" HorizontalAlignment="Left" Height="150" Margin="569,376,0,0" VerticalAlignment="Top" Width="201" Background="#FFD4D4D4">
-            <Button x:Name="btnSelesai" Content="SELESAI" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="30" Canvas.Left="7" Canvas.Top="106" Click="BtnSelesai_Click"/>
+            <Button x:Name="btnSelesai" Content="SELESAI" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="30" Canvas.Left="11" Canvas.Top="110" Click="BtnSelesai_Click"/>
             <Label Content="Bayar" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="38"/>
             <Label Content="Kembali" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="7" Canvas.Top="69"/>
             <TextBox x:Name="tbBayar" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="67" Canvas.Top="41" PreviewTextInput="TbBayar_PreviewTextInput" KeyUp="TbBayar_KeyUp"/>

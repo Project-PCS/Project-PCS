@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="PegawaiHome" Height="450" Width="800">
+        Title="PegawaiHome" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Height="420" Margin="0,0,-0.4,0" VerticalAlignment="Top">
         <Button x:Name="btnPembelian" Content="Transaksi Pembelian" HorizontalAlignment="Left" Margin="304,262,0,0" VerticalAlignment="Top" Width="207" Height="52" Click="btnPembelian_Click" RenderTransformOrigin="0.866,-2.104"/>
         <Button x:Name="btnPenjualan" Content="Transaksi Penjualan" HorizontalAlignment="Left" Margin="304,318,0,0" VerticalAlignment="Top" Width="207" Height="52" Click="BtnPenjualan_Click"/>

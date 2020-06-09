@@ -10,15 +10,15 @@
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="450" Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="800"/>
         <DataGrid x:Name="viewer" HorizontalAlignment="Left" Height="211" Margin="14,48,0,0" VerticalAlignment="Top" Width="775" SelectionChanged="Viewer_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="61,274,0,0" TextWrapping="Wrap" Text="Nama" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
-        <TextBox x:Name="tbnama" HorizontalAlignment="Left" Height="23" Margin="131,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Insert" HorizontalAlignment="Left" Margin="76,415,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="205,415,0,0" VerticalAlignment="Top" Width="75" Click="BtnUpdate_Click"/>
-        <CheckBox x:Name="cbxStatus" Content="" HorizontalAlignment="Left" Margin="135,385,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="65,385,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
-        <TextBlock HorizontalAlignment="Left" Margin="60,315,0,0" TextWrapping="Wrap" Text="Alamat" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
-        <TextBox x:Name="tbalamat" HorizontalAlignment="Left" Height="23" Margin="130,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="62,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"><Run Text="No Te"/><Run Text="l"/><Run Text="epon"/></TextBlock>
-        <TextBox x:Name="tb_notelepon" HorizontalAlignment="Left" Height="23" Margin="132,352,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" MaxLength="13" KeyDown="Tb_notelepon_KeyDown" KeyUp="Tb_notelepon_KeyUp" TextChanged="Tb_notelepon_TextChanged"/>
+        <TextBox x:Name="tbnama" HorizontalAlignment="Left" Height="23" Margin="130,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Insert" HorizontalAlignment="Left" Margin="58,389,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="164,389,0,0" VerticalAlignment="Top" Width="86" Click="BtnUpdate_Click"/>
+        <CheckBox x:Name="cbxStatus" Content="" HorizontalAlignment="Left" Margin="130,358,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61,360,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61,302,0,0" TextWrapping="Wrap" Text="Alamat" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"/>
+        <TextBox x:Name="tbalamat" HorizontalAlignment="Left" Height="23" Margin="130,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.041,0.25"><Run Text="No Te"/><Run Text="l"/><Run Text="epon"/></TextBlock>
+        <TextBox x:Name="tb_notelepon" HorizontalAlignment="Left" Height="23" Margin="130,324,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" MaxLength="13" KeyDown="Tb_notelepon_KeyDown" KeyUp="Tb_notelepon_KeyUp" TextChanged="Tb_notelepon_TextChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="277,9,0,0" TextWrapping="Wrap" Text="Master Supplier" VerticalAlignment="Top" FontWeight="Bold" FontSize="32"/>
         <Button x:Name="btn_Back" Content="Kembali" HorizontalAlignment="Left" Margin="20,18,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.378,0.15" Click="Btn_Back_Click"/>
         <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="22" Margin="606,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120">
