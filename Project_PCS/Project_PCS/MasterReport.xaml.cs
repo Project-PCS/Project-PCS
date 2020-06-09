@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using Oracle.DataAccess.Client;
 
 namespace Project_PCS
 {
@@ -21,15 +23,16 @@ namespace Project_PCS
     {
         List<string> listjenis = new List<string>();
         List<string> listbulan = new List<string>();
-        long tahun; int bulan; string strParam;
-        MainWindow mw = new MainWindow();
+        long tahun; int bulan;
+        public string strParam;
 
         public MasterReport()
         {
             InitializeComponent();
+
             listjenis.Add("Penjualan Barang");
             listjenis.Add("Pembelian Barang");
-            listjenis.Add("Customer Aktif");
+            listjenis.Add("Penukaran Poin");
             cbJenis.ItemsSource = listjenis;
 
             listbulan.Add("Januari");
@@ -67,8 +70,7 @@ namespace Project_PCS
                 if (cbJenis.SelectedIndex == 0)
                 {
                     ReportJual rjual = new ReportJual();
-                    rjual.SetDatabaseLogon(mw.tb_username.Text, mw.tb_pass.Text, mw.tb_datasource.Text, "");
-                    MessageBox.Show("user: " + mw.tb_username.Text + "\n pass: " + mw.tb_pass.Text + "\n ds: " + mw.tb_datasource.Text);
+                    rjual.SetDatabaseLogon(MainWindow.user, MainWindow.pass, MainWindow.data, "");
                     rjual.SetParameterValue("bulan", cbBulan.SelectedValue.ToString().ToUpper());
                     rjual.SetParameterValue("tahun", tahun);
                     rjual.SetParameterValue("BlnTh", strParam);
@@ -77,7 +79,7 @@ namespace Project_PCS
                 else if (cbJenis.SelectedIndex == 1)
                 {
                     ReportBeli rbeli = new ReportBeli();
-                    rbeli.SetDatabaseLogon(mw.user, mw.pass, mw.data, "");
+                    rbeli.SetDatabaseLogon(MainWindow.user, MainWindow.pass, MainWindow.data, "");
                     rbeli.SetParameterValue("bulan", cbBulan.SelectedValue.ToString().ToUpper());
                     rbeli.SetParameterValue("tahun", tahun);
                     rbeli.SetParameterValue("BlnTh", strParam);
@@ -85,16 +87,33 @@ namespace Project_PCS
                 }
                 else if (cbJenis.SelectedIndex == 2)
                 {
-
+                    ReportTukar rtukar = new ReportTukar();
+                    rtukar.SetDatabaseLogon(MainWindow.user, MainWindow.pass, MainWindow.data, "");
+                    rtukar.SetParameterValue("bulan", cbBulan.SelectedValue.ToString().ToUpper());
+                    rtukar.SetParameterValue("tahun", tahun);
+                    rtukar.SetParameterValue("BlnTh", strParam);
+                    CRViewer.ViewerCore.ReportSource = rtukar;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Input Tahun Tidak Valid!");
             }
-            cbJenis.SelectedIndex = -1;
             cbBulan.SelectedIndex = -1;
             tbTahun.Text = "";
+        }
+
+        private void TbTahun_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex reg = new Regex("[^0-9]");
+            e.Handled = reg.IsMatch(e.Text);
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            admin a = new admin();
+            a.Show();
+            this.Close();
         }
     }
 }

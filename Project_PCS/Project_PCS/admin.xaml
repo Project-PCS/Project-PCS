@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="admin" Height="450" Width="800">
+        Title="admin" Height="406.548" Width="798.735" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label Content="MASTER ADMIN" HorizontalAlignment="Left" Margin="204,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.346,0.285" Height="80" Width="379" FontSize="48"/>
-        <Button Content="Open" HorizontalAlignment="Left" Margin="349,254,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="cbPilihan" HorizontalAlignment="Left" Margin="328,193,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="mainmenu" Content="Menu Utama" HorizontalAlignment="Left" Margin="346,296,0,0" VerticalAlignment="Top" Width="78" Height="26" Click="mainmenu_Click"/>
+        <Canvas HorizontalAlignment="Left" Height="110" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794">
+            <Canvas.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#42a1f5" Offset="0.307"/>
+                    <GradientStop Color="#114573" Offset="0.929"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+            <Label Content="MASTER ADMIN" FontFamily="Microsoft YaHei Light" Canvas.Left="218" Canvas.Top="18" FontSize="50" Width="397" Foreground="#DDFFEAEA"/>
+        </Canvas>
+        <Button Content="Open" HorizontalAlignment="Left" Margin="277,252,0,0" VerticalAlignment="Top" Width="234" Click="Button_Click" Background="#FF42A1F5"/>
+        <ComboBox x:Name="cbPilihan" HorizontalAlignment="Left" Margin="277,193,0,0" VerticalAlignment="Top" Width="234"/>
+        <Button x:Name="mainmenu" Content="Keluar" HorizontalAlignment="Left" Margin="274,294,0,0" VerticalAlignment="Top" Width="237" Height="32" Click="mainmenu_Click" Background="#FF42A1F5"/>
 
     </Grid>
 </Window>

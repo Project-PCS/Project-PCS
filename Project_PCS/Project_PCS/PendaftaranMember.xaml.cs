@@ -21,11 +21,12 @@ namespace Project_PCS
     public partial class PendaftaranMember : Window
     {
         OracleConnection con;
-        string database;
-        public PendaftaranMember(string ds)
-        {
+        string database, pegawai;
+        public PendaftaranMember(string ds, string user) 
+        { 
             InitializeComponent();
             this.database = ds;
+            this.pegawai = user;
         }
         
         private void btnDaftar_Click(object sender, RoutedEventArgs e)
@@ -106,7 +107,7 @@ namespace Project_PCS
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            PegawaiHome ph = new PegawaiHome(database);
+            PegawaiHome ph = new PegawaiHome(database, pegawai);
             this.Close();
             ph.Show();
         }

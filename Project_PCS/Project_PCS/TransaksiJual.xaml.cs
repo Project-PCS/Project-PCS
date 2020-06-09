@@ -22,7 +22,7 @@ namespace Project_PCS
     /// </summary>
     public partial class TransaksiJual : Window
     {
-        string database, qry, idcust, nonota;
+        string database, qry, idcust, nonota, pegawai;
         long total, kembali;
         int idxtabel, poin, poinAwal;
         OracleConnection con;
@@ -43,10 +43,23 @@ namespace Project_PCS
             labPoin.Content = poin.ToString();
         }
 
-        public TransaksiJual(string ds)
+        bool cekDataGrid(string idbarang)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (idbarang == dt.Rows[i][0].ToString())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public TransaksiJual(string ds, string user)
         {
             InitializeComponent();
             database = ds;
+            pegawai = user;
             con = new OracleConnection(database);
 
             labIDCust.Content = "-";
@@ -64,6 +77,7 @@ namespace Project_PCS
             dt.Columns.Add("Harga", typeof(Int64));
             dt.Columns.Add("Subtotal", typeof(Int64));
 
+            cCust.IsEnabled = true;
             cBarang.IsEnabled = false;
             cBayar.IsEnabled = false;
             
@@ -74,7 +88,7 @@ namespace Project_PCS
         
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            PegawaiHome ph = new PegawaiHome(database);
+            PegawaiHome ph = new PegawaiHome(database, pegawai);
             this.Close();
             ph.Show();
         }
@@ -134,6 +148,7 @@ namespace Project_PCS
                     {
                         MessageBox.Show("Stok tidak cukup!");
                         tbJumlah.Text = "";
+                        con.Close();
                     }
                     else
                     {
@@ -141,6 +156,7 @@ namespace Project_PCS
                         drow[0] = dr.GetString(0);
                         drow[1] = dr.GetString(1);
                         drow[2] = tbJumlah.Text;
+                        
                         if (Convert.ToInt32(tbJumlah.Text) < dr.GetInt64(9))
                         {
                             drow[3] = dr.GetInt64(2);
@@ -152,6 +168,36 @@ namespace Project_PCS
                         drow[4] = Convert.ToInt64(drow[3].ToString()) * Convert.ToInt64(drow[2].ToString());
                         dr.Close();
                         dt.Rows.Add(drow);
+
+                        //cek promo
+                        qry = $"select id_promo, nama_promo || id_barang, potongan_harga from promo where id_barang = '{dt.Rows[dt.Rows.Count-1][0]}' and to_date(sysdate, 'dd-MM-yy') > to_date(tanggal_promo, 'dd-MM-yy') and to_date(sysdate, 'dd-MM-yy') < to_date(akhir_promo, 'dd-MM-yy') and rownum=1";
+                        cmd = new OracleCommand(qry, con);
+                        dr = cmd.ExecuteReader();
+
+                        while(dr.Read())
+                        {
+                            long potonganharga;
+                            drow = dt.NewRow();
+                            drow[0] = dr.GetString(0);
+                            drow[1] = dr.GetString(1);
+                            drow[2] = dt.Rows[dt.Rows.Count-1][2].ToString();
+
+                            if (dr.GetString(1).Contains("DISKON"))
+                            {
+                                potonganharga = (Convert.ToInt64(dt.Rows[dt.Rows.Count-1][3].ToString()) * dr.GetInt64(2))/100;
+                                MessageBox.Show("harga asli: " + dt.Rows[dt.Rows.Count - 1][3].ToString() + "\n potongan: " + dr.GetInt64(2));
+                                MessageBox.Show("hasil: " + potonganharga);
+                            }
+                            else
+                            {
+                                potonganharga = dr.GetInt64(2);
+                            }
+                            drow[3] = potonganharga * -1;
+                            drow[4] = Convert.ToInt64(drow[3].ToString()) * Convert.ToInt64(drow[2].ToString());
+                            dt.Rows.Add(drow);
+                        }
+                        dr.Close();
+
                         con.Close();
                         labIDBrg.Content = "-";
                         labNamaBrg.Content = "-";
@@ -163,7 +209,7 @@ namespace Project_PCS
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Input tidak valid!");
                     con.Close();
                 }
             }
@@ -183,6 +229,37 @@ namespace Project_PCS
             {
                 btnEnter.Focus();
             }
+            else {
+                if (tbCariCust.Text != "")
+                {
+                    try
+                    {
+                        con.Open();
+                        labIDCust.Content = "";
+                        labNamaCust.Content = "";
+                        qry = $"select id_customer, nama_customer, poin from customer where upper(nama_customer) like '%{tbCariCust.Text.ToUpper()}%' or upper(id_customer) like '%{tbCariCust.Text.ToUpper()}%' and rownum = 1";
+                        OracleCommand cmd = new OracleCommand(qry, con);
+                        dr = cmd.ExecuteReader();
+                        dr.Read();
+                        labIDCust.Content = dr.GetString(0);
+                        labNamaCust.Content = dr.GetString(1);
+                        poinAwal = dr.GetInt32(2);
+                        dr.Close();
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        labIDCust.Content = "-";
+                        labNamaCust.Content = "-";
+                    }
+                }
+                else
+                {
+                    labIDCust.Content = "-";
+                    labNamaCust.Content = "-";
+                }
+            }
         }
 
         private void DgJual_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -190,8 +267,32 @@ namespace Project_PCS
             idxtabel = dgJual.Items.IndexOf(dgJual.CurrentItem);
         }
 
+        private void TbBayar_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                kembali = Convert.ToInt64(tbBayar.Text) - total;
+                labKembali.Content = kembali.ToString();
+                
+                long hargabaru;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    hargabaru = 0;
+                    if (dt.Rows[i][0].ToString().Substring(0, 1) == "D")
+                    {
+                        hargabaru = Convert.ToInt64(dt.Rows[i - 1][3].ToString()) + Convert.ToInt64(dt.Rows[i][3].ToString());
+                        dt.Rows[i - 1][3] = hargabaru;
+                        dt.Rows[i-1][4] = Convert.ToInt64(dt.Rows[i-1][3].ToString()) * Convert.ToInt64(dt.Rows[i-1][2].ToString());
+                        dt.Rows.RemoveAt(i);
+                    }
+                }
+                btnSelesai.Focus();
+            }
+        }
+
         private void BtnSelesai_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("btnselesai masuk");
             con.Open();
             OracleTransaction trans = con.BeginTransaction();
 
@@ -205,33 +306,50 @@ namespace Project_PCS
                 cmd.Parameters.Add("tglnota", OracleDbType.Date).Value = DateTime.Parse(tgl);
                 cmd.Parameters.Add("poin", OracleDbType.Int32).Value = poin;
                 cmd.Parameters.Add("idcust", OracleDbType.Varchar2).Value = idcust;
-                cmd.Parameters.Add("idpegawai", OracleDbType.Varchar2).Value = "PEG01";
+                cmd.Parameters.Add("idpegawai", OracleDbType.Varchar2).Value = pegawai;
                 cmd.ExecuteNonQuery();
-
+                
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     qry = "insert into notajual_body values (:no_nota, :idbarang, :qty, :harga)";
+                    MessageBox.Show("qry string");
                     cmd = new OracleCommand(qry, con);
-                    cmd.Parameters.Add("no_nota", OracleDbType.Varchar2).Value = labNoNota.Content;
+                    MessageBox.Show("new cmd");
+                    cmd.Parameters.Add("no_nota", OracleDbType.Varchar2).Value = nonota;
+                    MessageBox.Show("param nonota added");
                     cmd.Parameters.Add("idbarang", OracleDbType.Varchar2).Value = dt.Rows[i][0].ToString();
-                    cmd.Parameters.Add("qty", OracleDbType.Int32).Value = Convert.ToInt32(dt.Rows[i][2].ToString());
-                    cmd.Parameters.Add("harga", OracleDbType.Long).Value = Convert.ToInt64(dt.Rows[i][3].ToString());
+                    MessageBox.Show("param idbrg added");
+                    cmd.Parameters.Add("qty", OracleDbType.Int32).Value = dt.Rows[i][2];
+                    MessageBox.Show("param qty added");
+                    cmd.Parameters.Add("harga", OracleDbType.Long).Value = dt.Rows[i][3];
+                    MessageBox.Show("param harga added");
                     cmd.ExecuteNonQuery();
-
-                    //qry = "update barang set jum_barang="
+                    MessageBox.Show("done execute " + i);
                 }
-
+                
                 poin += poinAwal;
                 qry = $"update customer set poin={poin} where id_customer='{idcust}'";
-                MessageBox.Show("Transaksi penjualan berhasil");
+                cmd = new OracleCommand(qry, con);
+                cmd.ExecuteNonQuery();
 
                 trans.Commit();
-                dt.Rows.Clear();
                 con.Close();
+                MessageBox.Show("Transaksi penjualan berhasil");
+                dt.Rows.Clear();
+                dt = new DataTable();
 
                 PoinHarga();
                 idcust = "";
                 kembali = 0;
+                labNoNota.Content = "-";
+                labKembali.Content = "0";
+                tbBayar.Text = "";
+                labIDCust.Content = "-";
+                labNamaCust.Content = "-";
+
+                cCust.IsEnabled = true;
+                cBarang.IsEnabled = false;
+                cBayar.IsEnabled = false;
 
             }
             catch (Exception ex)
@@ -242,21 +360,16 @@ namespace Project_PCS
             }
         }
 
-        private void TbBayar_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                kembali = Convert.ToInt64(tbBayar.Text) - total;
-                labKembali.Content = kembali.ToString();
-                btnSelesai.Focus();
-            }
-        }
-
         private void BtnHapus_Click(object sender, RoutedEventArgs e)
         {
-            if (idxtabel >= 0)
+            if (idxtabel >= 0 && dt.Rows[idxtabel][0].ToString().Substring(0,1) == "B")
             {
+                if (idxtabel < dt.Rows.Count - 1 && dt.Rows[idxtabel+1][0].ToString().Substring(0,1) == "D")
+                {
+                    dt.Rows.RemoveAt(idxtabel + 1);
+                }
                 dt.Rows.RemoveAt(idxtabel);
+
                 PoinHarga();
             }
         }
@@ -298,35 +411,7 @@ namespace Project_PCS
 
         private void TbCariCust_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-            if (tbCariCust.Text != "")
-            {
-                try
-                {
-                    con.Open();
-                    labIDCust.Content = "";
-                    labNamaCust.Content = "";
-                    qry = $"select id_customer, nama_customer, poin from customer where upper(nama_customer) like '%{tbCariCust.Text.ToUpper()}%' or upper(id_customer) like '%{tbCariCust.Text.ToUpper()}%' and rownum = 1";
-                    OracleCommand cmd = new OracleCommand(qry, con);
-                    dr = cmd.ExecuteReader();
-                    dr.Read();
-                    labIDCust.Content = dr.GetString(0);
-                    labNamaCust.Content = dr.GetString(1);
-                    poinAwal = dr.GetInt32(2);
-                    dr.Close();
-                    con.Close();
-                }
-                catch (Exception ex)
-                {
-                    con.Close();
-                    labIDCust.Content = "-";
-                    labNamaCust.Content = "-";
-                }
-            }
-            else
-            {
-                labIDCust.Content = "-";
-                labNamaCust.Content = "-";
-            }
+            
         }
         
         private void TbJumlah_PreviewTextInput(object sender, TextCompositionEventArgs e)

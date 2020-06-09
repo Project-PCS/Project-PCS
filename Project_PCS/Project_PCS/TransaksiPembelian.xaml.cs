@@ -22,7 +22,7 @@ namespace Project_PCS
     public partial class TransaksiPembelian : Window
     {
         OracleConnection con;
-        string database;
+        string database, pegawai;
         private OracleDataAdapter da;
         DataSet db = new DataSet();
         DataTable dt = new DataTable();
@@ -33,10 +33,11 @@ namespace Project_PCS
             public string Nama { get; set; }
         }
 
-        public TransaksiPembelian(string ds)
+        public TransaksiPembelian(string ds, string user)
         {
             InitializeComponent();
             this.database = ds;
+            this.pegawai = user;
             dt.Columns.Add("Id Nota", typeof(string));
             dt.Columns.Add("Id Barang", typeof(string));
             dt.Columns.Add("Banyak", typeof(Int64));
@@ -97,7 +98,7 @@ namespace Project_PCS
                 tempjum = Convert.ToInt32(cmd.ExecuteScalar());
                 tempjum = tempjum + Convert.ToInt32(dt.Rows[i][2].ToString());
 
-                query = "update barang set jum_barang = " + tempjum + "where id_barang ='" + dt.Rows[i][1].ToString() + "'";
+                query = $"update barang set jum_barang = {tempjum} where id_barang ='{dt.Rows[i][1].ToString()}'";
                 cmd = new OracleCommand(query, con);
                 cmd.ExecuteNonQuery();
             }
@@ -158,6 +159,10 @@ namespace Project_PCS
                 dgDaftar.ItemsSource = db.Tables[0].DefaultView;
                 con.Close();
             }
+            else
+            {
+                dgDaftar.ItemsSource = null;
+            }
         }
 
         private void cbSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -165,6 +170,7 @@ namespace Project_PCS
             LoadDataSet();
             DateTime batas = DateTime.Now.AddDays(31);
             lblTgl.Content = batas.ToString("yyyy-MM-dd");
+            dt.Rows.Clear();
         }
 
         string id = "";
@@ -241,7 +247,7 @@ namespace Project_PCS
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            PegawaiHome ph = new PegawaiHome(database);
+            PegawaiHome ph = new PegawaiHome(database, pegawai);
             this.Close();
             ph.Show();
         }
@@ -251,6 +257,12 @@ namespace Project_PCS
         {
             idx = dgKeranjang.Items.IndexOf(dgKeranjang.CurrentItem);
             btnHapus.IsEnabled = true;
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            Reset();
+            dt.Rows.Clear();
         }
 
         private void btnHapus_Click(object sender, RoutedEventArgs e)

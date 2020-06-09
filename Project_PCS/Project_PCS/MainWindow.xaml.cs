@@ -22,17 +22,18 @@ namespace Project_PCS
     public partial class MainWindow : Window
     {
         public static OracleConnection con;
-        public string data, user, pass;
+        public static string data, user, pass;
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             data = tb_datasource.Text;
             user = tb_username.Text;
-            pass = tb_pass.Text;
+            pass = tb_pass.Password.ToString();
 
             con = new OracleConnection($"Data Source={data};User Id={user}; Password={pass}");
             try
@@ -43,7 +44,7 @@ namespace Project_PCS
                 con.Close();
                 Window1 w = new Window1($"Data Source={data};User Id={user}; Password={pass}");
                 w.Show();
-                this.Close();
+                this.Hide();
 
             }
             catch (Exception)

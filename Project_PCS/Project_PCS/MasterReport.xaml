@@ -6,18 +6,19 @@
         xmlns:local="clr-namespace:Project_PCS"
         xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="Project_PCS.MasterReport"
         mc:Ignorable="d"
-        Title="MasterReport" Height="728" Width="800">
+        Title="MasterReport" Height="728" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
 
         <Viewer:CrystalReportsViewer x:Name="CRViewer" HorizontalAlignment="Left" Height="571" Margin="10,116,0,-268" VerticalAlignment="Top" Width="772"/>
         <Label Content="Jenis Laporan:" HorizontalAlignment="Left" Margin="11,53,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbJenis" HorizontalAlignment="Left" Margin="100,57,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbTahun" HorizontalAlignment="Left" Height="23" Margin="298,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnCreate" Content="Create Report" HorizontalAlignment="Left" Margin="467,59,0,0" VerticalAlignment="Top" Width="89" Click="BtnCreate_Click"/>
+        <TextBox x:Name="tbTahun" HorizontalAlignment="Left" Height="23" Margin="298,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="TbTahun_PreviewTextInput" MaxLength="4"/>
+        <Button x:Name="btnCreate" Content="BUAT LAPORAN" HorizontalAlignment="Left" Margin="468,63,0,0" VerticalAlignment="Top" Width="159" Click="BtnCreate_Click" Height="40"/>
         <Label Content="Tahun:" HorizontalAlignment="Left" Margin="249,85,0,0" VerticalAlignment="Top"/>
         <Label Content="Bulan:" HorizontalAlignment="Left" Margin="251,54,0,0" VerticalAlignment="Top"/>
         <Label Content="MASTER REPORT" HorizontalAlignment="Left" Margin="328,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
         <ComboBox x:Name="cbBulan" HorizontalAlignment="Left" Margin="298,57,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnBack" Content="Kembali" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Width="82" Click="BtnBack_Click"/>
 
     </Grid>
 </Window>

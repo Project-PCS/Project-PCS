@@ -82,6 +82,14 @@ namespace Project_PCS {
         #line default
         #line hidden
         
+        
+        #line 21 "..\..\MasterReport.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnBack;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -120,6 +128,12 @@ namespace Project_PCS {
             return;
             case 3:
             this.tbTahun = ((System.Windows.Controls.TextBox)(target));
+            
+            #line 15 "..\..\MasterReport.xaml"
+            this.tbTahun.PreviewTextInput += new System.Windows.Input.TextCompositionEventHandler(this.TbTahun_PreviewTextInput);
+            
+            #line default
+            #line hidden
             return;
             case 4:
             this.btnCreate = ((System.Windows.Controls.Button)(target));
@@ -132,6 +146,15 @@ namespace Project_PCS {
             return;
             case 5:
             this.cbBulan = ((System.Windows.Controls.ComboBox)(target));
+            return;
+            case 6:
+            this.btnBack = ((System.Windows.Controls.Button)(target));
+            
+            #line 21 "..\..\MasterReport.xaml"
+            this.btnBack.Click += new System.Windows.RoutedEventHandler(this.BtnBack_Click);
+            
+            #line default
+            #line hidden
             return;
             }
             this._contentLoaded = true;

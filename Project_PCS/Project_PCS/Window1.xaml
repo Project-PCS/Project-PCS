@@ -5,13 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        Title="Halaman Login" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="365*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="admin" Content="Admin" HorizontalAlignment="Left" Margin="350,139,0,0" VerticalAlignment="Top" Width="96" Height="52" Click="admin_Click"/>
-        <Button x:Name="pegawai" Content="Pegawai" HorizontalAlignment="Left" Margin="350,236,0,0" VerticalAlignment="Top" Width="96" Height="52" Click="pegawai_Click"/>
+        <Image Height="645" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="-103,-107,-162.4,-118" Source="photo-1557683311-eac922347aa1.jpg" OpacityMask="#FFDDC0C0"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="283" Stroke="Black" VerticalAlignment="Top" Width="437" Grid.Column="1" Margin="127,99,0,0" Opacity="0.7"/>
+        <Label Content="LOGIN" FontFamily="Microsoft YaHei Light" HorizontalAlignment="Left" Margin="266,23,0,0" VerticalAlignment="Top" Width="160" FontSize="48" Grid.Column="1" Foreground="White" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="232,173,0,0" TextWrapping="Wrap" Text="Username"  FontFamily="Microsoft YaHei Light" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" FontFamily="Microsoft YaHei Light" Margin="234,222,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="23" Margin="232,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Grid.Column="1"/>
+        <Button x:Name="btnLogin" Content="" HorizontalAlignment="Left" Margin="234,295,0,0" VerticalAlignment="Top" Width="219" Click="BtnLogin_Click" Height="64" BorderBrush="{x:Null}" Grid.Column="1" Foreground="#DDFFFFFF">
+            <Button.Background>
+                <ImageBrush ImageSource="login.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="229,122,0,0" TextWrapping="Wrap" Text="Login sebagai:" VerticalAlignment="Top" FontFamily="Microsoft YaHei Light" Grid.Column="1"/>
+        <RadioButton x:Name="peg" Content="Pegawai"  HorizontalAlignment="Left" FontFamily="Microsoft YaHei Light" Margin="232,143,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <RadioButton x:Name="adm" Content="Admin" HorizontalAlignment="Left" FontFamily="Microsoft YaHei Light" Margin="376,146,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <PasswordBox x:Name="tb_pass" HorizontalAlignment="Left" Margin="234,243,0,0" VerticalAlignment="Top" Width="217" Grid.Column="1"/>
 
     </Grid>
 </Window>

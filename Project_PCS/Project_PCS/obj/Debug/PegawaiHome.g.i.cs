@@ -73,6 +73,14 @@ namespace Project_PCS {
         #line default
         #line hidden
         
+        
+        #line 23 "..\..\PegawaiHome.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button mainmenu;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -135,6 +143,15 @@ namespace Project_PCS {
             
             #line 13 "..\..\PegawaiHome.xaml"
             this.btnPenukaran.Click += new System.Windows.RoutedEventHandler(this.btnPenukaran_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 5:
+            this.mainmenu = ((System.Windows.Controls.Button)(target));
+            
+            #line 23 "..\..\PegawaiHome.xaml"
+            this.mainmenu.Click += new System.Windows.RoutedEventHandler(this.mainmenu_Click);
             
             #line default
             #line hidden

@@ -22,17 +22,18 @@ namespace Project_PCS
     public partial class Penukaran_Poin : Window
     {
         OracleConnection con;
-        string database;
+        string database, pegawai;
         private OracleDataAdapter da;
         DataSet db = new DataSet();
         DataTable dt = new DataTable();
         string id;
         int totalpoin = 0;
         int poin = 0;
-        public Penukaran_Poin(string ds)
+        public Penukaran_Poin(string ds, string user)
         {
             InitializeComponent();
             this.database = ds;
+            this.pegawai = user;
             dt.Columns.Add("Id Nota", typeof(string));
             dt.Columns.Add("Id Barang Menarik", typeof(string));
             dt.Columns.Add("Id Barang", typeof(string));
@@ -43,7 +44,7 @@ namespace Project_PCS
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            PegawaiHome ph = new PegawaiHome(database);
+            PegawaiHome ph = new PegawaiHome(database, pegawai);
             this.Close();
             ph.Show();
         }
@@ -176,11 +177,28 @@ namespace Project_PCS
                 tempjum = Convert.ToInt32(cmd.ExecuteScalar());
                 tempjum = tempjum - 1;
 
-                query = "update barang set jum_barang = " + tempjum + "where id_barang ='" + dt.Rows[i][2].ToString() + "'";
+                query = $"update barang set jum_barang = {tempjum} where id_barang ='{dt.Rows[i][2].ToString()}'";
                 cmd = new OracleCommand(query, con);
 
                 cmd.ExecuteNonQuery();
             }
+            con.Close();
+        }
+
+        private void updatePoin()
+        {
+            int temp = Convert.ToInt32(lbPoin.Content);
+            int kurangi = Convert.ToInt32(poinreq.Content);
+            int sisa = temp - kurangi;
+            con = new OracleConnection(database);
+            con.Open();
+            string query = $"UPDATE customer set poin={sisa} where id_customer='{tbId.Text}'";
+            OracleCommand cmd = new OracleCommand(query, con);
+            cmd.ExecuteNonQuery();
+
+            query = "SELECT poin from customer where id_customer='" + tbId.Text + "'";
+            cmd = new OracleCommand(query, con);
+            lbPoin.Content = cmd.ExecuteScalar().ToString();
             con.Close();
         }
 
@@ -209,6 +227,7 @@ namespace Project_PCS
                     con.Close();
                     MessageBox.Show("Penukaran Berhasil");
                     UpdateBarang();
+                    updatePoin();
                     dt.Rows.Clear();
                     Reset();
                 }
@@ -217,7 +236,7 @@ namespace Project_PCS
                     trans.Rollback();
                     con.Close();
                     MessageBox.Show(ex.Message);
-                    //MessageBox.Show("Transaksi Gagal");
+                    MessageBox.Show("Penukaran Gagal");
                 }
             }
         }

@@ -42,17 +42,41 @@ namespace Project_PCS {
     public partial class Window1 : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 13 "..\..\Window1.xaml"
+        #line 19 "..\..\Window1.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button admin;
+        internal System.Windows.Controls.TextBox tb_username;
         
         #line default
         #line hidden
         
         
-        #line 14 "..\..\Window1.xaml"
+        #line 20 "..\..\Window1.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button pegawai;
+        internal System.Windows.Controls.Button btnLogin;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 26 "..\..\Window1.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton peg;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 27 "..\..\Window1.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton adm;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 28 "..\..\Window1.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.PasswordBox tb_pass;
         
         #line default
         #line hidden
@@ -88,22 +112,25 @@ namespace Project_PCS {
             switch (connectionId)
             {
             case 1:
-            this.admin = ((System.Windows.Controls.Button)(target));
+            this.tb_username = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 2:
+            this.btnLogin = ((System.Windows.Controls.Button)(target));
             
-            #line 13 "..\..\Window1.xaml"
-            this.admin.Click += new System.Windows.RoutedEventHandler(this.admin_Click);
+            #line 20 "..\..\Window1.xaml"
+            this.btnLogin.Click += new System.Windows.RoutedEventHandler(this.BtnLogin_Click);
             
             #line default
             #line hidden
             return;
-            case 2:
-            this.pegawai = ((System.Windows.Controls.Button)(target));
-            
-            #line 14 "..\..\Window1.xaml"
-            this.pegawai.Click += new System.Windows.RoutedEventHandler(this.pegawai_Click);
-            
-            #line default
-            #line hidden
+            case 3:
+            this.peg = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 4:
+            this.adm = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 5:
+            this.tb_pass = ((System.Windows.Controls.PasswordBox)(target));
             return;
             }
             this._contentLoaded = true;

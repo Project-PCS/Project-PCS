@@ -42,7 +42,7 @@ namespace Project_PCS {
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 19 "..\..\MainWindow.xaml"
+        #line 16 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tb_username;
         
@@ -50,15 +50,7 @@ namespace Project_PCS {
         #line hidden
         
         
-        #line 20 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox tb_pass;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 21 "..\..\MainWindow.xaml"
+        #line 17 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnLogin;
         
@@ -69,6 +61,14 @@ namespace Project_PCS {
         #line 23 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tb_datasource;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 25 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.PasswordBox tb_pass;
         
         #line default
         #line hidden
@@ -107,19 +107,19 @@ namespace Project_PCS {
             this.tb_username = ((System.Windows.Controls.TextBox)(target));
             return;
             case 2:
-            this.tb_pass = ((System.Windows.Controls.TextBox)(target));
-            return;
-            case 3:
             this.btnLogin = ((System.Windows.Controls.Button)(target));
             
-            #line 21 "..\..\MainWindow.xaml"
+            #line 17 "..\..\MainWindow.xaml"
             this.btnLogin.Click += new System.Windows.RoutedEventHandler(this.BtnLogin_Click);
             
             #line default
             #line hidden
             return;
-            case 4:
+            case 3:
             this.tb_datasource = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 4:
+            this.tb_pass = ((System.Windows.Controls.PasswordBox)(target));
             return;
             }
             this._contentLoaded = true;

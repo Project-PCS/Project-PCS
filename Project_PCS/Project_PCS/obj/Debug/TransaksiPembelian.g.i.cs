@@ -229,6 +229,12 @@ namespace Project_PCS {
             return;
             case 9:
             this.btnReset = ((System.Windows.Controls.Button)(target));
+            
+            #line 24 "..\..\TransaksiPembelian.xaml"
+            this.btnReset.Click += new System.Windows.RoutedEventHandler(this.btnReset_Click);
+            
+            #line default
+            #line hidden
             return;
             case 10:
             this.lblTgl = ((System.Windows.Controls.Label)(target));

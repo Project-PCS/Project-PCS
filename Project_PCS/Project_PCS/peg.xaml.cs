@@ -54,9 +54,12 @@ namespace Project_PCS
                 //Console.WriteLine(ex.StackTrace);
                 //MessageBox.Show("EROR");
                 MessageBox.Show("Gagal karena " + ex.Message);
-
-
             }
+
+            tbID.Text = "";
+            tbNama1.Text = "";
+            tbAlamat.Text = "";
+            tbnotelp.Text = "";
         }
 
         private void tblpeg_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,7 +79,6 @@ namespace Project_PCS
                 {
                     Pria.IsChecked = true;
                 }
-                MessageBox.Show(jk);
                 tbAlamat.Text = dr["ALAMAT"].ToString();
                 tbnotelp.Text = dr["NO_TELP"].ToString();
                 if (dr["STATUS"].ToString()=="1")
@@ -105,80 +107,66 @@ namespace Project_PCS
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
+          
+            con.Open();
+            string id = tbID.Text;
+            string nama = tbNama1.Text;
+            string shift = ""; int stat = 0;
+            string alamat = tbAlamat.Text;
+            string notelp = tbnotelp.Text;
+            string jk = "";
+            if (Pria.IsChecked == true)
+            {
+                jk = "P";
+            }
+            if (Wanita.IsChecked == true)
+            {
+                jk = "W";
+            }
+            if (cbaktif.IsChecked == true)
+            {
+                stat = 1;
+            }
+            if (rbPagi.IsChecked == true)
+            {
+                shift = "Pagi";
+            }
+            else if (rbSiang.IsChecked == true)
+            {
+                shift = "Siang";
+            }
+            else if (rbMalam.IsChecked == true)
+            {
+                shift = "Malam";
+            }
+            //autogen();
             try
             {
-                con.Open();
-                string id = tbID.Text;
-                string nama = tbNama1.Text;
-                string shift = ""; int stat = 0;
-                string alamat = tbAlamat.Text;
-                long notelp = Convert.ToInt64(tbnotelp.Text);
-                string jk = "";
-                if (Pria.IsChecked == true)
+                MessageBoxResult result = MessageBox.Show("Nama: " + nama + "\n" + "JK: " + jk + "\n" + "No telp : " + notelp + "\n" + "Alamat: " + alamat  +"\n" + "Shift: " + shift+  "\n" + "Status: " + stat + "\n" + "Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
-                    jk = "P";
+                    string q = $"insert into pegawai (ID_PEGAWAI,NAMA_PEGAWAI,JK,NO_TELP,ALAMAT,SHIFT,STATUS" +
+                                    $") values" +
+                                $"('{id_peg}','{nama}','{jk}','{notelp}','{alamat}','{shift}',{stat})";
+                    OracleCommand cmd = new OracleCommand(q, con);
+                    cmd.ExecuteNonQuery();
                 }
-                if (Wanita.IsChecked == true)
-                {
-                    jk = "W";
-                }
-                if (cbaktif.IsChecked == true)
-                {
-                    stat = 1;
-                }
-                if (rbPagi.IsChecked == true)
-                {
-                    shift = "Pagi";
-                }
-                else if (rbSiang.IsChecked == true)
-                {
-                    shift = "Siang";
-                }
-                else if (rbMalam.IsChecked == true)
-                {
-                    shift = "Malam";
-                }
-                autogen();
-                try
-                {
-                    MessageBoxResult result = MessageBox.Show("Nama: " + nama + "\n" + "JK: " + jk + "\n" + "No telp : " + notelp + "\n" + "Alamat: " + alamat  +"\n" + "Shift: " + shift+  "\n" + "Status: " + stat + "\n" + "Apakah data sudah benar?", "Konfirmasi", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        string q = $"insert into pegawai (ID_PEGAWAI,NAMA_PEGAWAI,JK,NO_TELP,ALAMAT,SHIFT,STATUS" +
-                                        $") values" +
-                                    $"('{id_peg}','{nama}','{jk}','{notelp}','{alamat}','{shift}',{stat})";
-                        OracleCommand cmd = new OracleCommand(q, con);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //Console.WriteLine(ex.StackTrace);
-                    //MessageBox.Show("EROR");
-                    MessageBox.Show("Gagal karena " + ex.Message);
-
-                }
-                con.Close();
-                show();
-
-
-        }
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("No telp harus angka");
-            }
+                //Console.WriteLine(ex.StackTrace);
+                //MessageBox.Show("EROR");
+                MessageBox.Show("Gagal karena " + ex.Message);
 
-}
-        string id_peg;
-        public void autogen()
-        {
-            //con.Open();
-            string query = "SELECT LPAD(NVL(MAX(SUBSTR(id_pegawai, -2, 2)) + 1,1),2,'0') AS \"COUNT\" FROM pegawai";
-            OracleCommand cmd = new OracleCommand(query, con);
-            string ctr = cmd.ExecuteScalar().ToString();
-            id_peg = "PEG" + ctr;
-            //con.Close();
+            }
+            con.Close();
+            show();
+
+
         }
+
+        string id_peg;
+  
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -189,7 +177,7 @@ namespace Project_PCS
                 string nama = tbNama1.Text;
                 string shift = ""; int stat = 0;
                 string alamat = tbAlamat.Text;
-                long notelp = Convert.ToInt64(tbnotelp.Text);
+                string notelp = tbnotelp.Text;
                 string jk = "";
                 if (Pria.IsChecked == true)
                 {
@@ -227,8 +215,7 @@ namespace Project_PCS
             catch (Exception ex)
             {
                 con.Close();
-                Console.WriteLine(ex.StackTrace);
-                MessageBox.Show("Gagal");
+                MessageBox.Show(ex.Message);
             }
             //show();
         }

@@ -39,53 +39,57 @@ namespace Project_PCS
             {
                 promo p = new promo();
                 p.Show();
-                this.Hide();
+                this.Close();
             }
             else if(cbPilihan.SelectedItem == "Master Customer")
             {
                 cust c = new cust();
                 c.Show();
-                this.Hide();
+                this.Close();
             }
             else if(cbPilihan.SelectedItem == "Master Karyawan")
             {
                 peg p = new peg();
                 p.Show();
-                this.Hide();
+                this.Close();
             }
             else if (cbPilihan.SelectedItem == "Master Kategori")
             {
                 WindowMaster2 mkat = new WindowMaster2();
                 mkat.Show();
-                this.Hide();
+                this.Close();
             }
             else if (cbPilihan.SelectedItem == "Master Supplier")
             {
                 Windowmaster msup = new Windowmaster();
                 msup.Show();
-                this.Hide();
+                this.Close();
             }
             else if (cbPilihan.SelectedItem == "Master Barang")
             {
                 MasterBarang mbar = new MasterBarang(this);
                 mbar.Show();
-                this.Hide();
+                this.Close();
             }
-            else if (cbPilihan.SelectedValue.ToString() == "Barang Menarik")
+            else if (cbPilihan.SelectedValue.ToString() == "Master Barang Menarik")
             {
-
+                MasterBrgMenarik mbm = new MasterBrgMenarik();
+                mbm.Show();
+                this.Close();
             }
             else if (cbPilihan.SelectedValue.ToString() == "Laporan")
             {
                 MasterReport mreport = new MasterReport();
                 mreport.Show();
-                this.Hide();
+                this.Close();
             }
 
         }
 
         private void mainmenu_Click(object sender, RoutedEventArgs e)
         {
+            Window1 mw = new Window1();
+            mw.Show();
             this.Close();
         }
     }

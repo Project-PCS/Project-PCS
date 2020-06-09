@@ -42,7 +42,7 @@ namespace Project_PCS {
     public partial class admin : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 12 "..\..\admin.xaml"
+        #line 20 "..\..\admin.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox cbPilihan;
         
@@ -50,7 +50,7 @@ namespace Project_PCS {
         #line hidden
         
         
-        #line 13 "..\..\admin.xaml"
+        #line 21 "..\..\admin.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button mainmenu;
         
@@ -89,7 +89,7 @@ namespace Project_PCS {
             {
             case 1:
             
-            #line 11 "..\..\admin.xaml"
+            #line 19 "..\..\admin.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default
@@ -101,7 +101,7 @@ namespace Project_PCS {
             case 3:
             this.mainmenu = ((System.Windows.Controls.Button)(target));
             
-            #line 13 "..\..\admin.xaml"
+            #line 21 "..\..\admin.xaml"
             this.mainmenu.Click += new System.Windows.RoutedEventHandler(this.mainmenu_Click);
             
             #line default
