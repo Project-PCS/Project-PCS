@@ -133,7 +133,7 @@ namespace Project_PCS
             string no = tb_notelepon.Text;
             string status = (Convert.ToInt32(cbxStatus.IsChecked)).ToString();
             string query = $"UPDATE supplier set nama_supplier='{nama}',alamat_supplier='{alamat}',nomor_telp='{no}',status='{status}' where id_supplier='{id_supplier}'";
-            MessageBox.Show(query);
+            //MessageBox.Show(query);
             OracleCommand cmd = new OracleCommand(query, con);
             cmd.ExecuteNonQuery();
             con.Close();
