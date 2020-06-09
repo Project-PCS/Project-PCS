@@ -33,7 +33,7 @@ namespace Project_PCS
         {
             data = tb_datasource.Text;
             user = tb_username.Text;
-            pass = tb_pass.Text;
+            pass = tb_pass.Password.ToString();
 
             con = new OracleConnection($"Data Source={data};User Id={user}; Password={pass}");
             try

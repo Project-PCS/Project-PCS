@@ -22,17 +22,18 @@ namespace Project_PCS
     public partial class Penukaran_Poin : Window
     {
         OracleConnection con;
-        string database;
+        string database, pegawai;
         private OracleDataAdapter da;
         DataSet db = new DataSet();
         DataTable dt = new DataTable();
         string id;
         int totalpoin = 0;
         int poin = 0;
-        public Penukaran_Poin(string ds)
+        public Penukaran_Poin(string ds, string user)
         {
             InitializeComponent();
             this.database = ds;
+            this.pegawai = user;
             dt.Columns.Add("Id Nota", typeof(string));
             dt.Columns.Add("Id Barang Menarik", typeof(string));
             dt.Columns.Add("Id Barang", typeof(string));
@@ -43,7 +44,7 @@ namespace Project_PCS
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            PegawaiHome ph = new PegawaiHome(database);
+            PegawaiHome ph = new PegawaiHome(database, pegawai);
             this.Close();
             ph.Show();
         }

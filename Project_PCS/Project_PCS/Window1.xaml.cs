@@ -46,9 +46,12 @@ namespace Project_PCS
         {
             if (peg.IsChecked==true)
             {
-                PegawaiHome pg = new PegawaiHome(database);
-                pg.Show();
-                this.Close();
+                if (tb_username.Text == tb_pass.Password.ToString())
+                {
+                    PegawaiHome pg = new PegawaiHome(database,tb_username.Text);
+                    pg.Show();
+                    this.Close();
+                }
             }
             else if (adm.IsChecked == true)
             {
