@@ -398,11 +398,6 @@ namespace Project_PCS
                 labNamaBrg.Content = "-";
             }
         }
-
-        private void TbCariCust_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            
-        }
         
         private void TbJumlah_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
