@@ -97,6 +97,7 @@ namespace Project_PCS
         {
             cBarang.IsEnabled = true;
             cBayar.IsEnabled = true;
+            btnSelesai.IsEnabled = false;
             cCust.IsEnabled = false;
 
             if (tbCariCust.Text == "")
@@ -269,22 +270,30 @@ namespace Project_PCS
         {
             if (e.Key == Key.Return)
             {
-                kembali = Convert.ToInt64(tbBayar.Text) - total;
-                labKembali.Content = kembali.ToString();
-                
-                long hargabaru;
-                for (int i = 0; i < dt.Rows.Count; i++)
+                if (Convert.ToInt64(tbBayar.Text) < total)
                 {
-                    hargabaru = 0;
-                    if (dt.Rows[i][0].ToString().Substring(0, 1) == "D")
-                    {
-                        hargabaru = Convert.ToInt64(dt.Rows[i - 1][3].ToString()) + Convert.ToInt64(dt.Rows[i][3].ToString());
-                        dt.Rows[i - 1][3] = hargabaru;
-                        dt.Rows[i-1][4] = Convert.ToInt64(dt.Rows[i-1][3].ToString()) * Convert.ToInt64(dt.Rows[i-1][2].ToString());
-                        dt.Rows.RemoveAt(i);
-                    }
+                    MessageBox.Show("Input kurang dari total harga!");
                 }
-                btnSelesai.Focus();
+                else
+                {
+                    kembali = Convert.ToInt64(tbBayar.Text) - total;
+                    labKembali.Content = kembali.ToString();
+
+                    long hargabaru;
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        hargabaru = 0;
+                        if (dt.Rows[i][0].ToString().Substring(0, 1) == "D")
+                        {
+                            hargabaru = Convert.ToInt64(dt.Rows[i - 1][3].ToString()) + Convert.ToInt64(dt.Rows[i][3].ToString());
+                            dt.Rows[i - 1][3] = hargabaru;
+                            dt.Rows[i - 1][4] = Convert.ToInt64(dt.Rows[i - 1][3].ToString()) * Convert.ToInt64(dt.Rows[i - 1][2].ToString());
+                            dt.Rows.RemoveAt(i);
+                        }
+                    }
+                    btnSelesai.IsEnabled = true;
+                    btnSelesai.Focus();
+                }
             }
         }
 
