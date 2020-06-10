@@ -78,12 +78,13 @@ namespace Project_PCS
             string query = "SELECT NAMA_SUPPLIER FROM SUPPLIER";
             OracleCommand cmd = new OracleCommand(query, con);
             cbSupplier.SelectedIndex = -1;
-            lblTgl.Content = "-";
+            dpTime.SelectedDate = null;
             tbNomor.Text = "";
             LoadSup();
             LoadNomor();
             LoadDataSet();
             btnBeli.IsEnabled = false;
+            getIdx = -1;
         }
 
         private void UpdateBarang()
@@ -109,7 +110,11 @@ namespace Project_PCS
         {
             UpdateBarang();
             //MessageBox.Show(DateTime.Now.ToString("yyyy-MM-dd"));
-            string tgl = "TO_DATE('" + lblTgl.Content + "','YYYY-MM-DD')";
+            string gettanggal = dpTime.SelectedDate.Value.Date.ToShortDateString();
+            string thun = "20" + gettanggal.Substring(6);
+            string bulan = gettanggal.Substring(0, 2);
+            string tanggal = thun + "-" + bulan + "-" + gettanggal.Substring(3, 2);
+            string tgl = "TO_DATE('" + tanggal + "','YYYY-MM-DD')";
             //MessageBox.Show(tgl);
             con = new OracleConnection(database);
             con.Open();
@@ -165,12 +170,31 @@ namespace Project_PCS
             }
         }
 
+        int getIdx = -1;
         private void cbSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadDataSet();
-            DateTime batas = DateTime.Now.AddDays(31);
-            lblTgl.Content = batas.ToString("yyyy-MM-dd");
-            dt.Rows.Clear();
+            if(getIdx!=-1)
+            {
+                MessageBoxResult result = MessageBox.Show("Anda yakin akan mengganti supplier?", "Konfirmasi", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    LoadDataSet();
+                    dpTime.SelectedDate = null;
+                    dt.Rows.Clear();
+                    getIdx = cbSupplier.SelectedIndex;
+                }
+                else
+                {
+                    cbSupplier.SelectedIndex = getIdx;
+                }
+            }
+            else
+            {
+                LoadDataSet();
+                dpTime.SelectedDate = null;
+                dt.Rows.Clear();
+                getIdx = cbSupplier.SelectedIndex;
+            }
         }
 
         string id = "";
@@ -261,8 +285,12 @@ namespace Project_PCS
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-            Reset();
-            dt.Rows.Clear();
+            MessageBoxResult result = MessageBox.Show("Anda yakin akan mengulang?", "Konfirmasi", MessageBoxButton.YesNo);
+            if(result == MessageBoxResult.Yes)
+            {
+                Reset();
+                dt.Rows.Clear();
+            }
         }
 
         private void btnHapus_Click(object sender, RoutedEventArgs e)
